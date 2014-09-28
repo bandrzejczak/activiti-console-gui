@@ -1,0 +1,14 @@
+{{msg.base.title}}<br />
+<form ng-controller="LoginController">
+    <label>
+        Login
+        <input type="text" ng-model="login"/>
+    </label><br />
+    <label>
+        Hasło
+        <input type="password" ng-model="password"/>
+    </label><br />
+    <input type="button" value="Loguj" ng-click="doLogin();" />
+    <input type="button" value="Testuj" ng-click="doTest();" />
+    <input type="button" value="Wyloguj" ng-click="doLogout();" />
+</form>

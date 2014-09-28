@@ -1,0 +1,49 @@
+'use strict';
+
+/**
+ * @ngdoc function
+ * @name activitiConsoleApp.controller:messageController
+ * @description
+ * # messageController
+ * Controller of the activitiConsoleApp
+ */
+angular.module('activitiConsoleApp')
+  .controller('messageController', function ($scope, $location, $window, language, messageService) {
+    setApplicationLanguage();
+    $scope.msg = {
+        base:   messageService.get({
+                    packageName: 'base',
+                    lang: $scope.lang
+                })
+    };
+
+    $scope.$on('$routeChangeStart', function(){
+        var newLocation = getLocationBasePath($location.path());
+        if(!$scope.msg[newLocation])
+            fetchMessages(newLocation);
+    });
+
+    function fetchMessages(newLocation) {
+        $scope.msg[newLocation] = messageService.get({
+            packageName: newLocation,
+            lang: $scope.lang
+        });
+    }
+
+    function setApplicationLanguage() {
+        var lang = $window.navigator.userLanguage || $window.navigator.language;
+        lang = lang.toLowerCase();
+        if(language.supported.indexOf(lang) == -1)
+            lang = language.default;
+        $scope.lang = lang;
+    }
+
+    function getLocationBasePath(path){
+        path = path.substr(1);
+        if(path.length == 0)
+            return 'base';
+        var firstSlash = path.indexOf('/');
+        firstSlash = (firstSlash == -1 ? path.length : firstSlash);
+        return path.substr(0, firstSlash);
+    }
+});
