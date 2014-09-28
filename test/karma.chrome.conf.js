@@ -30,18 +30,9 @@ module.exports = function(config) {
 
     // list of files / patterns to exclude
     exclude: [],
-
-    // list of preprocessed files
-    preprocessors: {
-        'app/scripts/services/*.js': 'coverage',
-        'app/scripts/directives/*.js': 'coverage',
-        'app/scripts/filters/*.js': 'coverage',
-        'app/scripts/controllers/*.js': 'coverage',
-        'app/scripts/app.js': 'coverage'
-    },
     
     //list of reporters
-    reporters: ['progress', 'coverage'],
+    reporters: ['progress'],
 
     // web server port
     port: 9876,
@@ -55,19 +46,18 @@ module.exports = function(config) {
     // - PhantomJS
     // - IE (only Windows)
     browsers: [
-      'PhantomJS'
+      'Chrome'
     ],
 
     // Which plugins to enable
     plugins: [
         'karma-jasmine',
-        'karma-coverage',
-        'karma-phantomjs-launcher'
+        'karma-chrome-launcher'
     ],
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: true,
+    singleRun: false,
 
     colors: true,
 
