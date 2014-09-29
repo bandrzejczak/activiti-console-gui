@@ -2,16 +2,16 @@
 
 /**
  * @ngdoc function
- * @name activitiConsoleApp.controller:messageController
+ * @name activitiConsoleApp.controller:MessageCtrl
  * @description
- * # messageController
+ * # MessageCtrl
  * Controller of the activitiConsoleApp
  */
 angular.module('activitiConsoleApp')
-  .controller('messageController', function ($scope, $location, $window, language, messageService) {
+  .controller('MessageCtrl', function ($scope, $location, $window, language, Messages) {
     setApplicationLanguage();
     $scope.msg = {
-        base:   messageService.get({
+        base:   Messages.get({
                     packageName: 'base',
                     lang: $scope.lang
                 })
@@ -24,7 +24,7 @@ angular.module('activitiConsoleApp')
     });
 
     function fetchMessages(newLocation) {
-        $scope.msg[newLocation] = messageService.get({
+        $scope.msg[newLocation] = Messages.get({
             packageName: newLocation,
             lang: $scope.lang
         });

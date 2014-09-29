@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc service
- * @name activitiConsoleApp.Auth
+ * @name activitiConsoleApp.Authorization
  * @description
- * # Auth
+ * # Authorization
  * Service in the activitiConsoleApp.
  */
 angular.module('activitiConsoleApp')
-  .factory('Auth', function ($http, $cookies) {
+  .factory('Authorization', function ($http, $cookies) {
    return {
        login: function (login, password) {
            var auth = 'Basic ' + btoa(login + ":" + password);

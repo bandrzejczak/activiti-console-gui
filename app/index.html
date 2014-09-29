@@ -2,7 +2,7 @@
 <html class="no-js">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title ng-bind="msg.base.title"></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="activitiConsoleApp" ng-controller="messageController">
+  <body ng-app="activitiConsoleApp" ng-controller="MessageCtrl">
     
     <div ng-view>
 
@@ -52,11 +52,12 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/messageController.js"></script>
-        <script src="scripts/controllers/loginController.js"></script>
-        <script src="scripts/services/Auth.js"></script>
-        <script src="scripts/services/messageService.js"></script>
-        <script src="scripts/services/unauthorizedRequestInterceptor.js"></script>
+        <script src="scripts/controllers/MessageCtrl.js"></script>
+        <script src="scripts/controllers/LoginCtrl.js"></script>
+        <script src="scripts/services/Authorization.js"></script>
+        <script src="scripts/services/Messages.js"></script>
+        <script src="scripts/services/UnauthorizedResponseInterceptor.js"></script>
+        <script src="scripts/services/RESTApiURLSetter.js"></script>
         <!-- endbuild -->
 </body>
 </html>

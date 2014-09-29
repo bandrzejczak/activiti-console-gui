@@ -28,12 +28,14 @@ angular
       });
   })
   .config(function ($httpProvider) {
-        $httpProvider.interceptors.push('unauthorizedRequestInterceptor');
+        $httpProvider.interceptors.push('UnauthorizedResponseInterceptor');
+        $httpProvider.interceptors.push('RESTApiURLSetter');
   })
   .value("language", {
     supported: ['en', 'pl'],
     default: 'en'
   })
+  .value("RESTApiURL", "http://localhost:8080/")
   .run(function ($http, $cookies) {
         if($cookies.Authorization)
             $http.defaults.headers.common['Authorization'] = $cookies.Authorization;

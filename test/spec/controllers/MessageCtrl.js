@@ -1,34 +1,34 @@
-describe('messageController', function() {
+describe('MessageCtrl', function() {
     var controller, rootScope, route, scope,
         location, window, lang, msgService, mockHttp;
 
-    beforeEach(module('activitiConsole'));
+    beforeEach(module('activitiConsoleApp'));
 
     beforeEach(inject(
         function($controller, _$httpBackend_, _$route_,
                  _$rootScope_, _$location_, $window,
-                 language, messageService) {
+                 language, Messages) {
         rootScope = _$rootScope_;
         scope = rootScope.$new();
         route = _$route_;
         location = _$location_;
         window = $window;
         lang = language;
-        msgService = messageService;
+        msgService = Messages;
         mockHttp = _$httpBackend_;
         controller = $controller;
     }));
 
     it('should fetch base messages',
         function() {
-            initMessageControllerWithLanguage("en");
+            initMessageCtrlWithLanguage("en");
             expect(scope.msg.base.testMsg).toBe('test');
         }
     );
 
     it('should fetch messages from base package when changing location',
         function(){
-            initMessageControllerWithLanguage("en");
+            initMessageCtrlWithLanguage("en");
             mockHttp
                 .expectGET("messages/en/task.json")
                 .respond({test: 'test'});
@@ -42,7 +42,7 @@ describe('messageController', function() {
 
     it('should fetch messages from base package when changing detailed location',
         function(){
-            initMessageControllerWithLanguage("en");
+            initMessageCtrlWithLanguage("en");
             mockHttp.expectGET("messages/en/task.json").respond({test: 'test'});
             changeLocation('/task/long/url/should/work');
             expect(scope.msg.task.test).toBe('test');
@@ -52,7 +52,7 @@ describe('messageController', function() {
 
     it('shouldnt put non existent messages into scope',
         function(){
-            initMessageControllerWithLanguage("en");
+            initMessageCtrlWithLanguage("en");
             mockHttp.expectGET("messages/en/tasks.json").respond(404);
             changeLocation('/tasks');
             expect(scope.msg.task).toBeUndefined();
@@ -62,14 +62,14 @@ describe('messageController', function() {
 
     it('should fall back to default language if language is not supported',
         function (){
-            initMessageControllerWithLanguage("es");
+            initMessageCtrlWithLanguage("es");
             expect(scope.lang).toBe('en');
         }
     );
 
     it('shouldnt download same messages twice',
         function(){
-            initMessageControllerWithLanguage("en");
+            initMessageCtrlWithLanguage("en");
             mockHttp
                 .expectGET("messages/en/task.json")
                 .respond({test: 'test'});
@@ -83,7 +83,7 @@ describe('messageController', function() {
         }
     );
 
-    function initMessageControllerWithLanguage(language){
+    function initMessageCtrlWithLanguage(language){
         mockHttp
             .expectGET("messages/en/base.json")
             .respond({testMsg: 'test'});
@@ -91,12 +91,12 @@ describe('messageController', function() {
             .expectGET("views/home.html")
             .respond(200);
         window.navigator.userLanguage = language;
-        controller('messageController', {
+        controller('MessageCtrl', {
             $scope: scope,
             $location: location,
             $window: window,
             language: lang,
-            messageService: msgService
+            Messages: msgService
         });
         mockHttp.flush();
     }

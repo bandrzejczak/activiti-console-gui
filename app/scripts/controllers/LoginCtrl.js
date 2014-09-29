@@ -2,15 +2,15 @@
 
 /**
  * @ngdoc function
- * @name activitiConsoleApp.controller:LoginController
+ * @name activitiConsoleApp.controller:LoginCtrl
  * @description
- * # LoginController
+ * # LoginCtrl
  * Controller of the activitiConsoleApp
  */
 angular.module('activitiConsoleApp')
-  .controller('LoginController', function ($scope, $http, Auth) {
+  .controller('LoginCtrl', function ($scope, $http, Authorization) {
     $scope.doLogin = function(){
-        $http.post("/service/validateCredentials", {
+        $http.post("api/validateCredentials", {
                 login:$scope.login,
                 password:$scope.password
             })
@@ -18,7 +18,7 @@ angular.module('activitiConsoleApp')
                 alert(status);
                 alert(data.valid);
                 if(data.valid)
-                    Auth.login($scope.login, $scope.password);
+                    Authorization.login($scope.login, $scope.password);
             }).error(function(data, status, headers, config) {
                 alert(status);
                 alert(data.valid);
@@ -26,7 +26,7 @@ angular.module('activitiConsoleApp')
     }
 
     $scope.doTest = function(){
-        $http.get("/service/test")
+        $http.get("api/test")
             .success(function(data, status, headers, config) {
                 alert(status);
                 alert(data.login);
@@ -37,6 +37,6 @@ angular.module('activitiConsoleApp')
     }
 
     $scope.doLogout = function(){
-        Auth.logout();
+        Authorization.logout();
     }
 });
