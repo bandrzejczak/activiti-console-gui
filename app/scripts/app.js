@@ -31,12 +31,12 @@ angular
         $httpProvider.interceptors.push('RESTApiURLSetter');
         $httpProvider.interceptors.push('UnauthorizedResponseInterceptor');
   })
-  .value("language", {
+  .value('language', {
     supported: ['en', 'pl'],
     default: 'en'
   })
-  .value("RESTApiURL", "http://localhost:8080/")
+  .value('RESTApiURL', 'http://localhost:8080/')
   .run(function ($http, $cookies) {
         if($cookies.Authorization)
-            $http.defaults.headers.common['Authorization'] = $cookies.Authorization;
+            $http.defaults.headers.common.Authorization = $cookies.Authorization;
   });

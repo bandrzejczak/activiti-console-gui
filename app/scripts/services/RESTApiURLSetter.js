@@ -11,9 +11,9 @@ angular.module('activitiConsoleApp')
   .factory('RESTApiURLSetter', function(RESTApiURL) {
         return {
             'request': function(config) {
-                if(_.startsWith(config.url, "api/"))
+                if(config.url.substring(0,4) === 'api/')
                     config.url = RESTApiURL + config.url.substring(4);
                 return config;
-            }
-        };
-    });
+        	}
+    	};
+});

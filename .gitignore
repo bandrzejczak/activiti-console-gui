@@ -7,3 +7,4 @@ bower_components
 .bowerrc
 .editorconfig
 .gitattributes
+coverage
