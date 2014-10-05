@@ -4,3 +4,8 @@ dist
 .sass-cache
 bower_components
 .idea
+.bowerrc
+.editorconfig
+.gitattributes
+.jshintrc
+.travis.yml

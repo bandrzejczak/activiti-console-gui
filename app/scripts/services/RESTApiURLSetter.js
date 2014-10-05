@@ -11,7 +11,7 @@ angular.module('activitiConsoleApp')
   .factory('RESTApiURLSetter', function(RESTApiURL) {
         return {
             'request': function(config) {
-                if(config.url.startsWith("api/"))
+                if(_.startsWith(config.url, "api/"))
                     config.url = RESTApiURL + config.url.substring(4);
                 return config;
             }

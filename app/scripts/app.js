@@ -28,8 +28,8 @@ angular
       });
   })
   .config(function ($httpProvider) {
-        $httpProvider.interceptors.push('UnauthorizedResponseInterceptor');
         $httpProvider.interceptors.push('RESTApiURLSetter');
+        $httpProvider.interceptors.push('UnauthorizedResponseInterceptor');
   })
   .value("language", {
     supported: ['en', 'pl'],
