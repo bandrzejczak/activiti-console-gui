@@ -1,1 +1,2 @@
 ***Activiti Console Front End project built in Angular.js***
+[![Build Status](https://travis-ci.org/bandrzejczak/activiti-console-gui.png?branch=master)](https://travis-ci.org/bandrzejczak/activiti-console-gui)
