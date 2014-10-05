@@ -1,1 +1,1 @@
-****Activiti Console Front End project built in Angular.js****
+***Activiti Console Front End project built in Angular.js***
