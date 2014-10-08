@@ -21,11 +21,14 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  //Plugin for building war
+  grunt.loadNpmTasks('grunt-war');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
-
     // Project settings
     yeoman: appConfig,
+    pkg: grunt.file.readJSON("package.json"),
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -88,7 +91,7 @@ module.exports = function (grunt) {
       },
       test: {
         options: {
-          port: 9001,
+          port: 9002,
           middleware: function (connect) {
             return [
               connect.static('.tmp'),
@@ -118,7 +121,6 @@ module.exports = function (grunt) {
       },
       all: {
         src: [
-          'Gruntfile.js',
           '<%= yeoman.app %>/scripts/{,*/}*.js'
         ]
       },
@@ -142,7 +144,8 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp'
+      server: '.tmp',
+      war: 'war'
     },
 
     // Add vendor prefixed styles
@@ -384,6 +387,32 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    //war file creator
+    war: {
+      target: {
+          options: {
+              war_dist_folder: 'war',
+              war_verbose: false,
+              war_name: '<%= pkg.name %>-<%= pkg.version %>',
+              webxml_welcome: 'index.html',
+              webxml_display_name: '<%= pkg.displayName %>',
+              webxml_mime_mapping: [
+                  {
+                      extension: 'woff',
+                      mime_type: 'application/font-woff'
+                  } ]
+          },
+          files: [
+              {
+                  expand: true,
+                  cwd: '<%= yeoman.dist %>',
+                  src: ['**'],
+                  dest: ''
+              }
+          ]
+      }
     }
   });
 
@@ -430,7 +459,9 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'clean:war',
+    'war'
   ]);
 
   grunt.registerTask('default', [
