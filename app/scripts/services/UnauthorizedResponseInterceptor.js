@@ -16,4 +16,7 @@ angular.module('activitiConsoleApp')
             return $q.reject(rejection);
         }
     };
+  })
+  .config(function ($httpProvider) {
+    $httpProvider.interceptors.push('UnauthorizedResponseInterceptor');
   });

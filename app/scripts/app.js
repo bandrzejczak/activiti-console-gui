@@ -23,13 +23,13 @@ angular
       .when('/task', {
         templateUrl: 'views/task.html'
       })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
-  })
-  .config(function ($httpProvider) {
-        $httpProvider.interceptors.push('RESTApiURLSetter');
-        $httpProvider.interceptors.push('UnauthorizedResponseInterceptor');
   })
   .value('language', {
     supported: ['en', 'pl'],

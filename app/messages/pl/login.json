@@ -1,0 +1,7 @@
+{
+  "login": "Login",
+  "password": "Hasło",
+  "doLogin": "Zaloguj",
+  "error" : "Wystąpił błąd podczas logowania. Kod błędu: ",
+  "invalidCredentials": "Twój login lub hasło są nieprawidłowe"
+}

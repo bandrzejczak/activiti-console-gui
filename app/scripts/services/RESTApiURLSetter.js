@@ -16,4 +16,7 @@ angular.module('activitiConsoleApp')
                 return config;
         	}
     	};
+})
+.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('RESTApiURLSetter');
 });
