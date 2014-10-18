@@ -1,5 +1,5 @@
 <div>
-    <div style="color: red" ng-show="loginError">{{loginError}}</div>
+    <div style="color: red" ng-show="loginError !== undefined">{{loginError}}</div>
     <label for="login">{{msg.login.login}}:</label>
     <input type="text" id="login" ng-model="login"/><br />
     <label for="password">{{msg.login.password}}:</label>
