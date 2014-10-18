@@ -68,6 +68,12 @@ module.exports = function(config) {
         'karma-phantomjs-launcher'
     ],
 
+    //Coverage report for coveralls.io
+    coverageReporter: {
+      type: "lcov",
+      dir: "coverage/"
+    },
+
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
     singleRun: true,

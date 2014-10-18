@@ -34,7 +34,8 @@
     "load-grunt-tasks": "^0.4.0",
     "time-grunt": "^0.3.1",
     "jszip": "~2.4.0",
-    "grunt-war": "~0.3.3"
+    "grunt-war": "~0.3.3",
+    "grunt-karma-coveralls": "~2.5.2"
   },
   "engines": {
     "node": ">=0.10.0"

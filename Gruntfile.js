@@ -23,6 +23,7 @@ module.exports = function (grunt) {
 
   //Plugin for building war
   grunt.loadNpmTasks('grunt-war');
+  grunt.loadNpmTasks('grunt-karma-coveralls');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -389,6 +390,16 @@ module.exports = function (grunt) {
       }
     },
 
+    coveralls: {
+	    options: {
+	        debug: false,
+	        coverage_dir: 'coverage',
+	        dryRun: false,
+	        force: true,
+	        recursive: true
+	    }
+	},
+
     //war file creator
     war: {
       target: {
@@ -442,7 +453,8 @@ module.exports = function (grunt) {
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-    'karma'
+    'karma',
+    'coveralls'
   ]);
 
   grunt.registerTask('build', [
