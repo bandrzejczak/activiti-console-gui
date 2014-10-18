@@ -392,7 +392,7 @@ module.exports = function (grunt) {
 
     coveralls: {
 	    options: {
-	        debug: false,
+	        debug: true,
 	        coverage_dir: 'coverage',
 	        dryRun: false,
 	        force: true,
