@@ -8,22 +8,20 @@
  * Controller of the activitiConsoleApp
  */
 angular.module('activitiConsoleApp')
-  .controller('LoginCtrl', function ($scope, $http, $location, Authorization) {
+  .controller('LoginCtrl', function ($scope, Groups, $state, Authorization) {
     $scope.doLogin = function(){
-        $http.post('api/validateCredentials', {
-                login:$scope.login,
-                password:$scope.password
-        })
-        .success(function(data) {
-            if(data.valid) {
-                Authorization.login($scope.login, $scope.password);
-                $location.path('/');
+        Authorization.login($scope.login, $scope.password);
+        Groups.get().$promise.then(
+            function(data) {
+                Authorization.setAuthorizedUser($scope.login, data.groups);
+                $state.go('main.root');
+            },
+            function(error) {
+                if(error.status === 401)
+                    $scope.loginError = $scope.msg.login.invalidCredentials;
+                else
+                    $scope.loginError = $scope.msg.login.error + error.status;
             }
-            else {
-                $scope.loginError = $scope.msg.login.invalidCredentials;
-            }
-        }).error(function(data, status) {
-            $scope.loginError = $scope.msg.login.error + status;
-        });
+        );
     };
 });

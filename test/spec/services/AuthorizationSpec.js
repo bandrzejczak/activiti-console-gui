@@ -4,6 +4,7 @@ describe('Authorization', function() {
 
     var LOGIN = 'login',
         PASSWORD = 'password',
+        GROUPS = ['group'],
         EXPECTED_HEADER_NAME = 'Authorization',
         EXPECTED_HEADER_VALUE = 'Basic ' + btoa(LOGIN + ':' + PASSWORD),
         TEST_URL = 'http://example.com/';
@@ -95,5 +96,15 @@ describe('Authorization', function() {
         //then
         expect(cookies.Authorization).toBeUndefined();
         mockHttp.verifyNoOutstandingExpectation();
+    });
+
+    it('should be able to set authorizedUser', function () {
+        //given
+
+        //when
+        Authorization.setAuthorizedUser(LOGIN, GROUPS);
+        //then
+        expect(Authorization.getUserLogin()).toBe(LOGIN);
+        expect(Authorization.userGroupsContain(GROUPS[0])).toBeTruthy();
     });
 });

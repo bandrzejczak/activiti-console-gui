@@ -4,24 +4,15 @@ describe('LoginCtrl', function () {
 
     var LOGIN = 'login',
         PASSWORD = 'password',
-        LOGIN_OBJECT = {
-            login: LOGIN,
-            password: PASSWORD
-        },
         REST_API_VALUE_NAME = 'RESTApiURL',
         REST_API_URL = 'http://example.com/',
-        VALIDATE_CREDENTIALS_PATH = 'validateCredentials',
-        POSITIVE_RESPONSE_OBJECT = {
-            valid: true
-        },
-        NEGATIVE_RESPONSE_OBJECT = {
-            valid: false
-        };
+        TASKS_PATH = 'groups';
 
     var LoginCtrl,
         scope,
         mockHttp,
-        Authorization;
+        Authorization,
+        state;
 
     beforeEach(module('activitiConsoleApp'));
 
@@ -29,7 +20,8 @@ describe('LoginCtrl', function () {
         $provide.value(REST_API_VALUE_NAME, REST_API_URL);
     }));
 
-    beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
+    beforeEach(inject(function ($controller, $rootScope, $httpBackend, $state) {
+        state = $state;
         scope = $rootScope.$new();
         scope.msg = {
             login: {
@@ -39,7 +31,8 @@ describe('LoginCtrl', function () {
         };
         mockHttp = $httpBackend;
         Authorization = {
-            login: jasmine.createSpy('login')
+            login: jasmine.createSpy('login'),
+            setAuthorizedUser: jasmine.createSpy('setAuthorizedUser')
         };
         LoginCtrl = $controller('LoginCtrl', {
             $scope: scope,
@@ -54,13 +47,15 @@ describe('LoginCtrl', function () {
 
         //when
         mockHttp
-            .expectPOST(REST_API_URL + VALIDATE_CREDENTIALS_PATH, LOGIN_OBJECT)
-            .respond(200, NEGATIVE_RESPONSE_OBJECT);
+            .expectGET(REST_API_URL + TASKS_PATH)
+            .respond(401);
+        expectHomeViewFetched();
+        expectLoginViewFetched();
         scope.doLogin();
         mockHttp.flush();
 
         //then
-        expect(Authorization.login.callCount).toEqual(0);
+        expect(Authorization.setAuthorizedUser).not.toHaveBeenCalled();
         expect(scope.loginError).toEqual(scope.msg.login.invalidCredentials);
     });
 
@@ -72,13 +67,14 @@ describe('LoginCtrl', function () {
 
         //when
         mockHttp
-            .expectPOST(REST_API_URL + VALIDATE_CREDENTIALS_PATH, LOGIN_OBJECT)
+            .expectGET(REST_API_URL + TASKS_PATH)
             .respond(errorCode);
+        expectHomeViewFetched();
         scope.doLogin();
         mockHttp.flush();
 
         //then
-        expect(Authorization.login.callCount).toEqual(0);
+        expect(Authorization.setAuthorizedUser).not.toHaveBeenCalled();
         expect(scope.loginError).toEqual(scope.msg.login.error + errorCode);
     });
 
@@ -89,13 +85,31 @@ describe('LoginCtrl', function () {
 
         //when
         mockHttp
-            .expectPOST(REST_API_URL + VALIDATE_CREDENTIALS_PATH, LOGIN_OBJECT)
-            .respond(200, POSITIVE_RESPONSE_OBJECT);
+            .expectGET(REST_API_URL + TASKS_PATH)
+            .respond(200);
+        expectHomeViewFetched();
         scope.doLogin();
         mockHttp.flush();
 
         //then
-        expect(Authorization.login).toHaveBeenCalled();
+        expect(Authorization.setAuthorizedUser).toHaveBeenCalled();
+        expect(state.current.name).toBe('main.root');
     });
+
+
+    function expectHomeViewFetched() {
+        mockHttp
+            .expectGET('views/mainLayout.html')
+            .respond(200);
+        mockHttp
+            .expectGET('views/home.html')
+            .respond(200);
+    }
+
+    function expectLoginViewFetched() {
+        mockHttp
+            .expectGET('views/login.html')
+            .respond(200);
+    }
 
 });
