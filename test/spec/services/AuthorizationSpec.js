@@ -17,11 +17,29 @@ describe('Authorization', function() {
 
     beforeEach(inject(
         function (_Authorization_, $httpBackend, $http, $cookies) {
-            Authorization = _Authorization_;
             mockHttp = $httpBackend;
             http = $http;
             cookies = $cookies;
-        }));
+            Authorization = _Authorization_;
+        })
+    );
+
+    it('should add authorization header if its saved as a cookie', function () {
+        //given
+        cookies[EXPECTED_HEADER_NAME] = EXPECTED_HEADER_VALUE;
+        Authorization.init();
+
+        //when
+        mockHttp.expectGET(TEST_URL, function(headers) {
+            return headers[EXPECTED_HEADER_NAME] === EXPECTED_HEADER_VALUE;
+        }).respond(200);
+        http.get(TEST_URL);
+        mockHttp.flush();
+
+        //then
+        expect(cookies.Authorization).toBe(EXPECTED_HEADER_VALUE);
+        mockHttp.verifyNoOutstandingExpectation();
+    });
 
     it('should be defined', function () {
         expect(Authorization).toBeDefined();
@@ -43,7 +61,7 @@ describe('Authorization', function() {
     it('should add authorization header if user is logged in', function () {
         //given
         Authorization.login(LOGIN, PASSWORD);
-        
+
         //when
         mockHttp.expectGET(TEST_URL, function(headers) {
             return headers[EXPECTED_HEADER_NAME] === EXPECTED_HEADER_VALUE;
@@ -78,5 +96,4 @@ describe('Authorization', function() {
         expect(cookies.Authorization).toBeUndefined();
         mockHttp.verifyNoOutstandingExpectation();
     });
-
 });

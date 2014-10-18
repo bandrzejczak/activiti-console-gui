@@ -10,6 +10,10 @@
 angular.module('activitiConsoleApp')
   .factory('Authorization', function ($http, $cookies) {
    return {
+       init: function() {
+           if($cookies.Authorization)
+               $http.defaults.headers.common.Authorization = $cookies.Authorization;
+       },
        login: function (login, password) {
            var auth = 'Basic ' + btoa(login + ':' + password);
            $http.defaults.headers.common.Authorization = auth;
@@ -20,4 +24,7 @@ angular.module('activitiConsoleApp')
            delete $cookies.Authorization;
        }
    };
-  });
+  })
+    .run(function (Authorization) {
+        Authorization.init();
+    });

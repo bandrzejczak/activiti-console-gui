@@ -1,19 +1,32 @@
 'use strict';
 
 describe('MessageCtrl', function() {
-    var controller, rootScope, route, scope,
-        location, window, lang, msgService, mockHttp;
+    var controller, rootScope, scope,
+        state, window, lang, msgService, mockHttp;
 
     beforeEach(module('activitiConsoleApp'));
 
+    beforeEach(module(
+        function ($stateProvider) {
+            $stateProvider
+                .state('test', {
+                    url: '/test',
+                    templateUrl: 'views/test.html'
+                })
+                .state('deepTest', {
+                    url: '/test/deeper',
+                    templateUrl: 'views/test.html'
+                });
+        }
+    ));
+
     beforeEach(inject(
-        function($controller, _$httpBackend_, _$route_,
-                 _$rootScope_, _$location_, $window,
+        function($controller, _$httpBackend_,
+                 _$rootScope_, _$state_, $window,
                  language, Messages) {
         rootScope = _$rootScope_;
         scope = rootScope.$new();
-        route = _$route_;
-        location = _$location_;
+        state = _$state_;
         window = $window;
         lang = language;
         msgService = Messages;
@@ -38,15 +51,15 @@ describe('MessageCtrl', function() {
 
             //when
             mockHttp
-                .expectGET('messages/en/task.json')
+                .expectGET('messages/en/test.json')
                 .respond({test: 'test'});
             mockHttp
-                .expectGET('views/task.html')
+                .expectGET('views/test.html')
                 .respond(200);
-            changeLocation('/task');
+            changeLocation('test');
 
             //then
-            expect(scope.msg.task.test).toBe('test');
+            expect(scope.msg.test.test).toBe('test');
         }
     );
 
@@ -56,12 +69,17 @@ describe('MessageCtrl', function() {
             initMessageCtrlWithLanguage('en');
 
             //when
-            mockHttp.expectGET('messages/en/task.json').respond({test: 'test'});
-            changeLocation('/task/long/url/should/work');
+            mockHttp
+                .expectGET('messages/en/test.json')
+                .respond({test: 'test'});
+            mockHttp
+                .expectGET('views/test.html')
+                .respond(200);
+            changeLocation('deepTest');
 
             //then
-            expect(scope.msg.task.test).toBe('test');
-            expect(route.current.templateUrl).toBe('views/home.html');
+            expect(scope.msg.test.test).toBe('test');
+            expect(state.current.templateUrl).toBe('views/test.html');
         }
     );
 
@@ -71,12 +89,17 @@ describe('MessageCtrl', function() {
             initMessageCtrlWithLanguage('en');
 
             //when
-            mockHttp.expectGET('messages/en/tasks.json').respond(404);
-            changeLocation('/tasks');
+            mockHttp
+                .expectGET('messages/en/test.json')
+                .respond(404);
+            mockHttp
+                .expectGET('views/test.html')
+                .respond(200);
+            changeLocation('test');
 
             //then
-            expect(scope.msg.task).toBeUndefined();
-            expect(route.current.templateUrl).toBe('views/home.html');
+            expect(scope.msg.test.test).toBeUndefined();
+            expect(state.current.templateUrl).toBe('views/test.html');
         }
     );
 
@@ -97,14 +120,14 @@ describe('MessageCtrl', function() {
 
             //when
             mockHttp
-                .expectGET('messages/en/task.json')
+                .expectGET('messages/en/test.json')
                 .respond({test: 'test'});
             mockHttp
-                .expectGET('views/task.html')
+                .expectGET('views/test.html')
                 .respond(200);
-            changeLocation('/task');
-            expect(scope.msg.task.test).toBe('test');
-            location.path('/task/deeper');
+            changeLocation('test');
+            expect(scope.msg.test.test).toBe('test');
+            state.go('deepTest');
             rootScope.$digest();
 
             //then
@@ -122,16 +145,16 @@ describe('MessageCtrl', function() {
         window.navigator.userLanguage = language;
         controller('MessageCtrl', {
             $scope: scope,
-            $location: location,
             $window: window,
+            $state: state,
             language: lang,
             Messages: msgService
         });
         mockHttp.flush();
     }
 
-    function changeLocation(path) {
-        location.path(path);
+    function changeLocation(stateName) {
+        state.go(stateName);
         rootScope.$digest();
         mockHttp.flush();
     }

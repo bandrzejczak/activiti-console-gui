@@ -8,10 +8,10 @@
  * Controller of the activitiConsoleApp
  */
 angular.module('activitiConsoleApp')
-  .controller('MessageCtrl', function ($scope, $location, $window, language, Messages) {
+  .controller('MessageCtrl', function ($scope, $state, $window, language, Messages) {
 
-    $scope.$on('$routeChangeStart', function(){
-        var newLocation = getLocationBasePath($location.path());
+    $scope.$on('$stateChangeStart', function(event, toState){
+        var newLocation = getLocationBasePath(toState.url);
         if(!$scope.msg[newLocation])
             fetchMessages(newLocation);
     });
