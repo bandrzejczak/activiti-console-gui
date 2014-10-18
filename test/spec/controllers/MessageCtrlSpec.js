@@ -140,6 +140,9 @@ describe('MessageCtrl', function() {
             .expectGET('messages/en/base.json')
             .respond({testMsg: 'test'});
         mockHttp
+            .expectGET('views/mainLayout.html')
+            .respond(200);
+        mockHttp
             .expectGET('views/home.html')
             .respond(200);
         window.navigator.userLanguage = language;

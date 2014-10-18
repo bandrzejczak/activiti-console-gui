@@ -19,14 +19,17 @@ angular
     $urlRouterProvider.otherwise('/');
 
     $stateProvider
-      .state('root', {
-        url: '/',
-        templateUrl: 'views/home.html'
-      })
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
+      })
+      .state('main', {
+        templateUrl: 'views/mainLayout.html'
+      })
+      .state('main.root', {
+        url: '/',
+        templateUrl: 'views/home.html'
       });
   })
   .value('language', {
