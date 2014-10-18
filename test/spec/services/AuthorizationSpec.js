@@ -7,21 +7,30 @@ describe('Authorization', function() {
         GROUPS = ['group'],
         EXPECTED_HEADER_NAME = 'Authorization',
         EXPECTED_HEADER_VALUE = 'Basic ' + btoa(LOGIN + ':' + PASSWORD),
-        TEST_URL = 'http://example.com/';
+        TEST_URL = 'http://example.com/',
+        TIMEOUT_VALUE_NAME = 'loginTimeout',
+        LOGIN_TIMEOUT = 100;
     
     var Authorization,
         mockHttp,
         http,
-        cookies;
+        cookies,
+        timeout;
 
     beforeEach(module('activitiConsoleApp'));
 
+    beforeEach(module(function($provide){
+        $provide.value(TIMEOUT_VALUE_NAME, LOGIN_TIMEOUT);
+    }));
+
+
     beforeEach(inject(
-        function (_Authorization_, $httpBackend, $http, $cookies) {
+        function (_Authorization_, $httpBackend, $http, $cookies, $timeout) {
             mockHttp = $httpBackend;
             http = $http;
             cookies = $cookies;
             Authorization = _Authorization_;
+            timeout = $timeout;
         })
     );
 
@@ -47,30 +56,17 @@ describe('Authorization', function() {
     });
 
     it('shouldnt add authorization header if user is not logged in', function () {
-        //when
-        mockHttp.expectGET(TEST_URL, function(headers) {
-            return headers[EXPECTED_HEADER_NAME] === undefined;
-        }).respond(200);
-        http.get(TEST_URL);
-        mockHttp.flush();
-
-        //then
+        expectAuthorizationHeaderNotToBeSet();
         expect(cookies.Authorization).toBeUndefined();
         mockHttp.verifyNoOutstandingExpectation();
     });
 
     it('should add authorization header if user is logged in', function () {
-        //given
+        //when
         Authorization.login(LOGIN, PASSWORD);
 
-        //when
-        mockHttp.expectGET(TEST_URL, function(headers) {
-            return headers[EXPECTED_HEADER_NAME] === EXPECTED_HEADER_VALUE;
-        }).respond(200);
-        http.get(TEST_URL);
-        mockHttp.flush();
-
         //then
+        expectAuthorizationHeaderToBeSet();
         expect(cookies.Authorization).toBe(EXPECTED_HEADER_VALUE);
         mockHttp.verifyNoOutstandingExpectation();
     });
@@ -78,33 +74,53 @@ describe('Authorization', function() {
     it('shouldnt add authorization header if user logged out', function () {
         //given
         Authorization.login(LOGIN, PASSWORD);
-        mockHttp.expectGET(TEST_URL, function(headers) {
-            return headers[EXPECTED_HEADER_NAME] === EXPECTED_HEADER_VALUE;
-        }).respond(200);
-        http.get(TEST_URL);
-        mockHttp.flush();
+        expectAuthorizationHeaderToBeSet();
         expect(cookies.Authorization).toBe(EXPECTED_HEADER_VALUE);
-        Authorization.logout();
 
         //when
-        mockHttp.expectGET(TEST_URL, function(headers) {
-            return headers[EXPECTED_HEADER_NAME] === undefined;
-        }).respond(200);
-        http.get(TEST_URL);
-        mockHttp.flush();
+        Authorization.logout();
 
         //then
+        expectAuthorizationHeaderNotToBeSet();
         expect(cookies.Authorization).toBeUndefined();
         mockHttp.verifyNoOutstandingExpectation();
     });
 
     it('should be able to set authorizedUser', function () {
-        //given
-
         //when
         Authorization.setAuthorizedUser(LOGIN, GROUPS);
         //then
         expect(Authorization.getUserLogin()).toBe(LOGIN);
         expect(Authorization.userGroupsContain(GROUPS[0])).toBeTruthy();
     });
+
+    it('should logout user after timeout', function () {
+        //given
+        Authorization.login(LOGIN, PASSWORD);
+        expectAuthorizationHeaderToBeSet();
+        timeout.flush(LOGIN_TIMEOUT*60000 - 1);
+        expectAuthorizationHeaderToBeSet();
+
+        //when
+        timeout.flush(1);
+
+        //then
+        expectAuthorizationHeaderNotToBeSet();
+    });
+
+    function expectAuthorizationHeaderNotToBeSet() {
+        mockHttp.expectGET(TEST_URL, function (headers) {
+            return headers[EXPECTED_HEADER_NAME] === undefined;
+        }).respond(200);
+        http.get(TEST_URL);
+        mockHttp.flush();
+    }
+
+    function expectAuthorizationHeaderToBeSet() {
+        mockHttp.expectGET(TEST_URL, function (headers) {
+            return headers[EXPECTED_HEADER_NAME] === EXPECTED_HEADER_VALUE;
+        }).respond(200);
+        http.get(TEST_URL);
+        mockHttp.flush();
+    }
 });

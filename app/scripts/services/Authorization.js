@@ -11,7 +11,7 @@ angular.module('activitiConsoleApp')
   .provider('Authorization', {
         user: {},
 
-        $get: function($http, $cookies) {
+        $get: function($http, $cookies, $timeout, loginTimeout) {
             return {
                 init: function () {
                     if ($cookies.Authorization)
@@ -21,6 +21,7 @@ angular.module('activitiConsoleApp')
                     var auth = 'Basic ' + btoa(login + ':' + password);
                     $http.defaults.headers.common.Authorization = auth;
                     $cookies.Authorization = auth;
+                    $timeout(this.logout, loginTimeout*60000);
                 },
                 logout: function () {
                     delete $http.defaults.headers.common.Authorization;
@@ -30,7 +31,7 @@ angular.module('activitiConsoleApp')
                     this.user = {
                         login: login,
                         groups: groups
-                    }
+                    };
                 },
                 getUserLogin: function() {
                     return this.user.login;

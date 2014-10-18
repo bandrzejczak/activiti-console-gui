@@ -36,4 +36,5 @@ angular
     supported: ['en', 'pl'],
     default: 'en'
   })
-  .value('RESTApiURL', 'http://localhost:8080/');
+  .value('RESTApiURL', 'http://localhost:8080/')
+  .value('loginTimeout', 30); // in minutes
