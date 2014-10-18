@@ -8,11 +8,8 @@ before_script:
     # install dependencies
     - gem update --system
     - gem install compass
-    - gem install coveralls
     - npm install -g grunt-cli bower
     - bower install
 script:
     # We want to gate on passing tests and a successful build
     - grunt
-after_success:
-    - coveralls
