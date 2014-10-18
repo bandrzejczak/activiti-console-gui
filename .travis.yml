@@ -8,6 +8,7 @@ before_script:
     # install dependencies
     - gem update --system
     - gem install compass
+    - gem install coveralls
     - npm install -g grunt-cli bower
     - bower install
 script:
