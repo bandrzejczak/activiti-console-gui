@@ -188,7 +188,7 @@ module.exports = function (grunt) {
         importPath: './bower_components',
         httpImagesPath: '/images',
         httpGeneratedImagesPath: '/images/generated',
-        httpFontsPath: '/styles/fonts',
+        httpFontsPath: '/fonts',
         relativeAssets: false,
         assetCacheBuster: false,
         raw: 'Sass::Script::Number.precision = 10\n'
@@ -349,6 +349,11 @@ module.exports = function (grunt) {
           ]
         }, {
           expand: true,
+          cwd: '<%= yeoman.app %>/messages',
+          dest: '<%= yeoman.dist %>/messages',
+          src: ['**']
+        }, {
+          expand: true,
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
@@ -471,9 +476,9 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin',
-    'clean:war',
-    'war'
+    'htmlmin'
+    //'clean:war'
+    //'war'
   ]);
 
   grunt.registerTask('default', [

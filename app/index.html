@@ -1,10 +1,10 @@
 <!doctype html>
-<html ng-controller="MessageCtrl">
+<html ng-app="activitiConsoleApp" ng-controller="MessageCtrl">
   <head>
     <meta charset="utf-8">
     <title ng-bind="msg.base.title"></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="activitiConsoleApp">
+  <body>
     
     <div ui-view>
 
@@ -47,6 +47,7 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -59,6 +60,7 @@
     <script src="scripts/services/Groups.js"></script>
     <script src="scripts/services/UnauthorizedResponseInterceptor.js"></script>
     <script src="scripts/services/RESTApiURLSetter.js"></script>
+    <script src="scripts/directives/guiErrorShake.js"></script>
     <!-- endbuild -->
 </body>
 </html>

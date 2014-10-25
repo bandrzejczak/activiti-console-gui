@@ -1,8 +1,14 @@
-<div>
-    <div style="color: red" ng-show="loginError !== undefined">{{loginError}}</div>
-    <label for="login">{{msg.login.login}}:</label>
-    <input type="text" id="login" ng-model="login"/><br />
-    <label for="password">{{msg.login.password}}:</label>
-    <input type="password" id="password" ng-model="password"/><br />
-    <input type="button" id="doLogin" value="{{msg.login.doLogin}}" ng-click="doLogin()" />
+<div gui-error-shake error-msg="loginError" class="login-container">
+    <div class="login-form" class="form-horizontal">
+        <div class="error-msg" ng-show="loginError !== undefined"><span class="error-msg-icon"></span>{{loginError}}</div>
+        <div class="form-group">
+            <label for="login">{{msg.login.login}}:</label>
+            <input type="text" id="login" class="form-control" ng-model="login"/>
+        </div>
+        <div class="form-group">
+            <label for="password">{{msg.login.password}}:</label>
+            <input type="password" id="password" class="form-control" ng-model="password"/>
+        </div>
+        <input class="btn center-block" type="button" id="doLogin" value="{{msg.login.doLogin}}" ng-click="doLogin()" />
+    </div>
 </div>

@@ -13,6 +13,7 @@ angular
     'ngCookies',
     'ngResource',
     'ui.router',
+    'ngAnimate',
     'ngSanitize'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {

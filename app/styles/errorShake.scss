@@ -1,0 +1,15 @@
+@import "mixins/transform";
+
+@keyframes shake {
+  0% {@include transform(translate(-50%, -50%));}
+  12.5% {@include transform(rotate(-5deg) translate(-50%, -50%));}
+  37.5% {@include transform(rotate(10deg) translate(-50%, -50%));}
+  62.5% {@include transform(rotate(-10deg) translate(-50%, -50%));}
+  87.5% {@include transform(rotate(5deg) translate(-50%, -50%));}
+  100% {@include transform(translate(-50%, -50%));}
+}
+
+.shake {
+  transform-origin: 0% 0%;
+  animation: shake 300ms ease-in-out;
+}
