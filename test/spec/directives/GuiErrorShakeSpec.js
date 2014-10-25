@@ -17,7 +17,7 @@ describe('guiErrorShake', function() {
         element.attr('class', '');
 
         //when
-        scope.error = "new error";
+        scope.error = 'new error';
         scope.$digest();
 
         //then
