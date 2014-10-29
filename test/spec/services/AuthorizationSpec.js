@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Authorization', function() {
+describe('Authorization', function () {
 
     var LOGIN = 'login',
         PASSWORD = 'password',
@@ -10,7 +10,7 @@ describe('Authorization', function() {
         TEST_URL = 'http://example.com/',
         TIMEOUT_VALUE_NAME = 'loginTimeout',
         LOGIN_TIMEOUT = 100;
-    
+
     var Authorization,
         mockHttp,
         http,
@@ -19,19 +19,19 @@ describe('Authorization', function() {
 
     beforeEach(module('activitiConsoleApp'));
 
-    beforeEach(module(function($provide){
+    beforeEach(module(function ($provide) {
         $provide.value(TIMEOUT_VALUE_NAME, LOGIN_TIMEOUT);
     }));
 
 
     beforeEach(inject(
-        function (_Authorization_, $httpBackend, $http, $cookies, $timeout) {
-            mockHttp = $httpBackend;
-            http = $http;
-            cookies = $cookies;
-            Authorization = _Authorization_;
-            timeout = $timeout;
-        })
+            function (_Authorization_, $httpBackend, $http, $cookies, $timeout) {
+                mockHttp = $httpBackend;
+                http = $http;
+                cookies = $cookies;
+                Authorization = _Authorization_;
+                timeout = $timeout;
+            })
     );
 
     it('should add authorization header if its saved as a cookie', function () {
@@ -40,7 +40,7 @@ describe('Authorization', function() {
         Authorization.init();
 
         //when
-        mockHttp.expectGET(TEST_URL, function(headers) {
+        mockHttp.expectGET(TEST_URL, function (headers) {
             return headers[EXPECTED_HEADER_NAME] === EXPECTED_HEADER_VALUE;
         }).respond(200);
         http.get(TEST_URL);
@@ -98,7 +98,7 @@ describe('Authorization', function() {
         //given
         Authorization.login(LOGIN, PASSWORD);
         expectAuthorizationHeaderToBeSet();
-        timeout.flush(LOGIN_TIMEOUT*60000 - 1);
+        timeout.flush(LOGIN_TIMEOUT * 60000 - 1);
         expectAuthorizationHeaderToBeSet();
 
         //when

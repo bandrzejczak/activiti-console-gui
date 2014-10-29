@@ -16,7 +16,7 @@ describe('LoginCtrl', function () {
 
     beforeEach(module('activitiConsoleApp'));
 
-    beforeEach(module(function($provide){
+    beforeEach(module(function ($provide) {
         $provide.value(REST_API_VALUE_NAME, REST_API_URL);
     }));
 

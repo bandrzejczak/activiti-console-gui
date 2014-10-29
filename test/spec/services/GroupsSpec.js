@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Groups', function() {
+describe('Groups', function () {
 
     var REST_API_VALUE_NAME = 'RESTApiURL',
         REST_API_URL = 'http://example.com/',
@@ -11,7 +11,7 @@ describe('Groups', function() {
 
     beforeEach(module('activitiConsoleApp'));
 
-    beforeEach(module(function($provide){
+    beforeEach(module(function ($provide) {
         $provide.value(REST_API_VALUE_NAME, REST_API_URL);
     }));
 

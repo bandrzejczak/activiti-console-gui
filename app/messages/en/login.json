@@ -2,6 +2,6 @@
   "login": "Login",
   "password": "Password",
   "doLogin": "Login",
-  "error" : "An error occurred during login process. Error code: ",
+  "error": "An error occurred during login process. Error code: ",
   "invalidCredentials": "Your username or password is invalid"
 }

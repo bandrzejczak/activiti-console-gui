@@ -8,6 +8,6 @@
  * Service in the activitiConsoleApp.
  */
 angular.module('activitiConsoleApp')
-  .factory('Groups', function ($resource) {
-        return $resource('api/groups', {}, { get: { isArray: true }});
-  });
+    .factory('Groups', function ($resource) {
+        return $resource('api/groups', {}, {get: {isArray: true}});
+    });

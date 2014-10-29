@@ -1,12 +1,12 @@
 'use strict';
 
-describe('guiErrorShake', function() {
+describe('guiErrorShake', function () {
 
     var element, scope, timeout;
 
     beforeEach(module('activitiConsoleApp'));
 
-    beforeEach(inject(function($rootScope, $compile, $timeout) {
+    beforeEach(inject(function ($rootScope, $compile, $timeout) {
         scope = $rootScope.$new();
         scope.error = undefined;
         timeout = $timeout;
@@ -33,7 +33,7 @@ describe('guiErrorShake', function() {
         expect(element.attr('class')).toBe('shake');
 
         //when
-        timeout(function() {
+        timeout(function () {
             scope.error = undefined;
             scope.$digest();
         });

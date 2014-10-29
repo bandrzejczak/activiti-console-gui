@@ -1,6 +1,6 @@
 'use strict';
 
-describe('RESTApiURLSetter', function() {
+describe('RESTApiURLSetter', function () {
 
     var REST_API_VALUE_NAME = 'RESTApiURL',
         REST_API_URL = 'http://example.com/',
@@ -14,7 +14,7 @@ describe('RESTApiURLSetter', function() {
 
     beforeEach(module('activitiConsoleApp'));
 
-    beforeEach(module(function($provide){
+    beforeEach(module(function ($provide) {
         $provide.value(REST_API_VALUE_NAME, REST_API_URL);
     }));
 
@@ -38,7 +38,7 @@ describe('RESTApiURLSetter', function() {
         mockHttp.flush();
     });
 
-    it('shouldnt interfere if api/ prefix isnt used', function (){
+    it('shouldnt interfere if api/ prefix isnt used', function () {
         //when
         http.get(NON_API_CALL);
 

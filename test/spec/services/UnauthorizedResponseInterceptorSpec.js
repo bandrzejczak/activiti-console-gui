@@ -1,6 +1,6 @@
 'use strict';
 
-describe('UnauthorizedResponseInterceptor', function() {
+describe('UnauthorizedResponseInterceptor', function () {
 
     var EXAMPLE_WEBSITE = 'http://example.com',
         EXAMPLE_DATA = 'data';
@@ -34,14 +34,14 @@ describe('UnauthorizedResponseInterceptor', function() {
         expect(location.path()).toBe('/login');
     });
 
-    it('shouldnt interfere if the server doenst respond with Unauthorized', function (){
+    it('shouldnt interfere if the server doenst respond with Unauthorized', function () {
         //given
         var resultingData = '';
 
         //when
         http
             .get(EXAMPLE_WEBSITE)
-            .success(function (data){
+            .success(function (data) {
                 resultingData = data;
             });
 

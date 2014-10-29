@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Messages', function() {
+describe('Messages', function () {
 
     var PACKAGE_NAME = 'base',
         LANGUAGE = 'en',

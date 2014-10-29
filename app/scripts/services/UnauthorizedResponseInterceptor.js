@@ -8,15 +8,16 @@
  * Service in the activitiConsoleApp.
  */
 angular.module('activitiConsoleApp')
-  .factory('UnauthorizedResponseInterceptor', function($q, $location) {
-    return {
-        'responseError': function(rejection) {
-            if(rejection.status === 401)
-                $location.path('/login');
-            return $q.reject(rejection);
-        }
-    };
-  })
-  .config(function ($httpProvider) {
-    $httpProvider.interceptors.push('UnauthorizedResponseInterceptor');
-  });
+    .factory('UnauthorizedResponseInterceptor', function ($q, $location) {
+        return {
+            'responseError': function (rejection) {
+                if (rejection.status === 401) {
+                    $location.path('/login');
+                }
+                return $q.reject(rejection);
+            }
+        };
+    })
+    .config(function ($httpProvider) {
+        $httpProvider.interceptors.push('UnauthorizedResponseInterceptor');
+    });

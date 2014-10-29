@@ -1,6 +1,6 @@
 'use strict';
 
-describe('MessageCtrl', function() {
+describe('MessageCtrl', function () {
     var controller, rootScope, scope,
         state, window, lang, msgService, mockHttp;
 
@@ -21,21 +21,21 @@ describe('MessageCtrl', function() {
     ));
 
     beforeEach(inject(
-        function($controller, _$httpBackend_,
-                 _$rootScope_, _$state_, $window,
-                 language, Messages) {
-        rootScope = _$rootScope_;
-        scope = rootScope.$new();
-        state = _$state_;
-        window = $window;
-        lang = language;
-        msgService = Messages;
-        mockHttp = _$httpBackend_;
-        controller = $controller;
-    }));
+        function ($controller, _$httpBackend_,
+                  _$rootScope_, _$state_, $window,
+                  language, Messages) {
+            rootScope = _$rootScope_;
+            scope = rootScope.$new();
+            state = _$state_;
+            window = $window;
+            lang = language;
+            msgService = Messages;
+            mockHttp = _$httpBackend_;
+            controller = $controller;
+        }));
 
     it('should fetch base messages',
-        function() {
+        function () {
             //when
             initMessageCtrlWithLanguage('en');
 
@@ -45,7 +45,7 @@ describe('MessageCtrl', function() {
     );
 
     it('should fetch messages from base package when changing location',
-        function(){
+        function () {
             //given
             initMessageCtrlWithLanguage('en');
 
@@ -64,7 +64,7 @@ describe('MessageCtrl', function() {
     );
 
     it('should fetch messages from base package when changing detailed location',
-        function(){
+        function () {
             //given
             initMessageCtrlWithLanguage('en');
 
@@ -84,7 +84,7 @@ describe('MessageCtrl', function() {
     );
 
     it('shouldnt put non existent messages into scope',
-        function(){
+        function () {
             //given
             initMessageCtrlWithLanguage('en');
 
@@ -104,7 +104,7 @@ describe('MessageCtrl', function() {
     );
 
     it('should fall back to default language if language is not supported',
-        function (){
+        function () {
             //when
             initMessageCtrlWithLanguage('es');
 
@@ -114,7 +114,7 @@ describe('MessageCtrl', function() {
     );
 
     it('shouldnt download same messages twice',
-        function(){
+        function () {
             //given
             initMessageCtrlWithLanguage('en');
 
@@ -135,7 +135,7 @@ describe('MessageCtrl', function() {
         }
     );
 
-    function initMessageCtrlWithLanguage(language){
+    function initMessageCtrlWithLanguage(language) {
         mockHttp
             .expectGET('messages/en/base.json')
             .respond({testMsg: 'test'});

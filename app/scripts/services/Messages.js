@@ -8,7 +8,7 @@
  * Service in the activitiConsoleApp.
  */
 angular.module('activitiConsoleApp')
-  .factory('Messages', function ($resource) {
+    .factory('Messages', function ($resource) {
         return $resource('messages/:lang/:packageName.json',
             {packageName: '@packageName', lang: '@lang'}, {});
-  });
+    });
