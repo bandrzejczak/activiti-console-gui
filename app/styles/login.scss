@@ -1,6 +1,6 @@
 @import 'mixins/centre';
 @import 'mixins/borderRadius';
-@import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
 
 .login-container{
   width: 520px;
@@ -13,7 +13,7 @@
 }
 
 .login-form{
-  color: $text-color;
+  color: blue;
   width: 85%;
 
   @include centre();

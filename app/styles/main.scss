@@ -2,12 +2,14 @@
 @import 'layoutVariables';
 
 //styles
+@import 'layout';
 @import 'error';
 @import 'login';
 
 //animations
 @import 'errorShake';
 
-body{
-  background-color: $background-color;
+html, body {
+  overflow: auto;
+  background-color: $main-color;
 }

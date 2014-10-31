@@ -1,4 +1,4 @@
-@import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap/mixins";
 
 @mixin border-radius($radius){
   @include border-bottom-radius($radius);
