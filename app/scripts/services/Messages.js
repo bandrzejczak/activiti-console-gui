@@ -9,6 +9,5 @@
  */
 angular.module('activitiConsoleApp')
     .factory('Messages', function ($resource) {
-        return $resource('messages/:lang/:packageName.json',
-            {packageName: '@packageName', lang: '@lang'}, {});
+        return $resource('messages/:lang/:packageName.json', {}, {});
     });

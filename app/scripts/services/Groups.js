@@ -9,5 +9,5 @@
  */
 angular.module('activitiConsoleApp')
     .factory('Groups', function ($resource) {
-        return $resource('api/groups', {}, {get: {isArray: true}});
+        return $resource('api/groups', {}, {});
     });

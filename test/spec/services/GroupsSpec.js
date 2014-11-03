@@ -34,8 +34,8 @@ describe('Groups', function () {
         mockHttp.flush();
 
         //then
-        expect(actualGroups).toBeDefined();
-        expect(actualGroups[0]).toBe(TEST_GROUPS[0]);
+        expect(actualGroups.response).toBeDefined();
+        expect(actualGroups.response[0]).toBe(TEST_GROUPS[0]);
     });
 
 });

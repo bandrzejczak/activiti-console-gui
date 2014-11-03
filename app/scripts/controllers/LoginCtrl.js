@@ -14,7 +14,7 @@ angular.module('activitiConsoleApp')
             $scope.loginError = undefined;
             Groups.get().$promise.then(
                 function (data) {
-                    Authorization.setAuthorizedUser($scope.login, data.groups);
+                    Authorization.setAuthorizedUser($scope.login, data.response.groups);
                     $state.go('main.root');
                 },
                 function (error) {

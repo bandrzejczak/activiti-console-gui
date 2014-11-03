@@ -6,7 +6,8 @@ describe('LoginCtrl', function () {
         PASSWORD = 'password',
         REST_API_VALUE_NAME = 'RESTApiURL',
         REST_API_URL = 'http://example.com/',
-        TASKS_PATH = 'groups';
+        TASKS_PATH = 'groups',
+        TEST_GROUPS = ['group'];
 
     var LoginCtrl,
         scope,
@@ -86,7 +87,7 @@ describe('LoginCtrl', function () {
         //when
         mockHttp
             .expectGET(REST_API_URL + TASKS_PATH)
-            .respond(200);
+            .respond(200, TEST_GROUPS);
         expectHomeViewFetched();
         scope.doLogin();
         mockHttp.flush();
