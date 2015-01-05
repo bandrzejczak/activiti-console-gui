@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="activitiConsoleApp" ng-controller="MessageCtrl">
+<html ng-app="bpmConsoleApp" ng-controller="MessageCtrl">
 <head>
     <meta charset="utf-8">
     <title ng-bind="msg.base.title"></title>
@@ -8,6 +8,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/sweetalert/lib/sweet-alert.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -47,6 +48,7 @@
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-ui-bootstrap/src/dropdown/dropdown.js"></script>
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
@@ -60,9 +62,11 @@
 <script src="scripts/services/Groups.js"></script>
 <script src="scripts/services/HATEOASEnhancer.js"></script>
 <script src="scripts/services/UnauthorizedResponseInterceptor.js"></script>
+<script src="scripts/services/ServerErrorInterceptor.js"></script>
 <script src="scripts/services/RESTApiURLSetter.js"></script>
 <script src="scripts/services/ResourceLinkBuilder.js"></script>
 <script src="scripts/directives/GuiErrorShake.js"></script>
+<script src="scripts/directives/FileUpload.js"></script>
 <!-- endbuild -->
 </body>
 </html>

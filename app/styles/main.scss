@@ -1,3 +1,5 @@
+@import 'sweetalert/lib/sweet-alert';
+
 //variables
 @import 'layoutVariables';
 
@@ -11,5 +13,13 @@
 
 html, body {
   overflow: auto;
-  background-color: $main-color;
+  background-color: $background;
+}
+
+a, a:link, a:visited{
+  color: $main-color;
+}
+
+a:hover, a:active{
+  color: $main-color-darker;
 }

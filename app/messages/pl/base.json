@@ -1,3 +1,20 @@
 {
-  "title": "Activiti Console"
+  "title": "BPM Console",
+  "menu":{
+    "inbox": "Twoje zadania",
+    "awaitingTasks": "Oczekujące zadania",
+    "deployments": {
+      "dropdown":"Wdrożenia",
+      "add":"Wdróż nowy proces",
+      "list": "Pokaż wdrożone procesy"
+    },
+    "processes": "Instancje procesów",
+    "users": {
+      "dropdown": "Użytkownicy",
+      "addUser": "Dodaj użytkownika",
+      "listUsers": "Pokaż listę użytkownika",
+      "addGroup": "Dodaj grupę",
+      "listGroups": "Pokaż listę grup"
+    }
+  }
 }

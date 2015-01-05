@@ -1,6 +1,6 @@
 {
-  "name": "activiti-console",
-  "displayName": "Activiti Console",
+  "name": "bpm-console",
+  "displayName": "BPM Console",
   "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
