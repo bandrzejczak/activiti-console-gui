@@ -33,7 +33,7 @@ angular.module('bpmConsoleApp')
         }
 
         function getLocationBasePath(path) {
-            path = path.substr(1);
+            path = path.substr(path.indexOf('/')+1);
             if (path.length === 0) {
                 return 'base';
             }
