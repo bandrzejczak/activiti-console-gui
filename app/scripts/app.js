@@ -25,7 +25,7 @@ angular
             $scope.success = function(){
                 $http.post('api/deployment', $scope.file);
             };
-        }
+        };
 
         $stateProvider
             .state('login', {
@@ -39,7 +39,7 @@ angular
                 controller: function($scope, $state){
                     $scope.stateIncludes = function(name){
                         return $state.includes('app.'+name+'.*');
-                    }
+                    };
                 }
             })
             .state('app.tasks', {
