@@ -16,5 +16,29 @@
       "addGroup": "Add group",
       "listGroups": "List groups"
     }
+  },
+  "directives": {
+    "fileUpload": {
+      "title": "Drop your file here",
+      "content": "You can either drop your file here, or you can just click on this space",
+      "fileTooBig": {
+        "title": "File too big",
+        "message": "Your file is too big! Maximum size is {size}MB"
+      }
+    }
+  },
+  "errors": {
+    "default": {
+      "title": "Error",
+      "message": "There was an unexpected error on the server side!\nWould you mind trying that again?"
+    },
+    "ProcessDeploymentFailedException": {
+      "title": "Process deployment failed!",
+      "message": "There was some problem with your deployment. Please check whether it has *.bpmn or *.bpmn20.xml extension and a valid syntax."
+    },
+    "ZipFileHasNoProcessesException": {
+      "title": "Processes archive deployment failed!",
+      "message": "We couldn't deploy any of the processes supplied in your archive. Please check it and try again."
+    }
   }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('activitiConsoleApp')
+angular.module('bpmConsoleApp')
     .directive('guiErrorShake', function ($animate) {
         return {
             scope: {

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name activitiConsoleApp.RESTApiURLSetter
+ * @name bpmConsoleApp.RESTApiURLSetter
  * @description
  * # RESTApiURLSetter
- * Service in the activitiConsoleApp.
+ * Service in the bpmConsoleApp.
  */
-angular.module('activitiConsoleApp')
+angular.module('bpmConsoleApp')
     .factory('RESTApiURLSetter', function (RESTApiURL) {
         return {
             'request': function (config) {

@@ -15,7 +15,7 @@ describe('LoginCtrl', function () {
         Authorization,
         state;
 
-    beforeEach(module('activitiConsoleApp'));
+    beforeEach(module('bpmConsoleApp'));
 
     beforeEach(module(function ($provide) {
         $provide.value(REST_API_VALUE_NAME, REST_API_URL);
@@ -23,13 +23,21 @@ describe('LoginCtrl', function () {
 
     beforeEach(inject(function ($controller, $rootScope, $httpBackend, $state) {
         state = $state;
-        scope = $rootScope.$new();
-        scope.msg = {
+        $rootScope.msg = {
+            base: {
+                errors: {
+                    default: {
+                        title: "Error",
+                        message: "There was an unexpected error on the server side!\nWould you mind trying that again?"
+                    }
+                }
+            },
             login: {
                 invalidCredentials: 'invalidCredentials',
                 error: 'error'
             }
         };
+        scope = $rootScope.$new();
         mockHttp = $httpBackend;
         Authorization = {
             login: jasmine.createSpy('login'),
@@ -94,7 +102,7 @@ describe('LoginCtrl', function () {
 
         //then
         expect(Authorization.setAuthorizedUser).toHaveBeenCalled();
-        expect(state.current.name).toBe('main.root');
+        expect(state.current.name).toBe('app.tasks.inbox');
     });
 
 
@@ -103,7 +111,7 @@ describe('LoginCtrl', function () {
             .expectGET('views/mainLayout.html')
             .respond(200);
         mockHttp
-            .expectGET('views/home.html')
+            .expectGET('views/lipsum.html')
             .respond(200);
     }
 

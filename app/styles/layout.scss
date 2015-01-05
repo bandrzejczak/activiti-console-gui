@@ -8,22 +8,21 @@
   left: 0;
   width: 100%;
   height: $logo-height + $menu-height;
-  background: $background;
+  background: url('../images/bg.png') repeat;
 
   .logoText {
     color: $main-color;
     text-align: center;
     width: 70%;
-    height: $logo-height - 20px;
-    margin: 20px auto 0 auto;
-    font-size: ($logo-height - 20px) / 2;
-    font-weight: bold;
+    height: $logo-height - 10px;
+    margin: 10px auto 0 auto;
+    font-size: ($logo-height) / 2;
   }
 
   .menu {
     width: 70%;
     font-size: 120%;
-    margin: 0 auto 20px auto;
+    margin: 0 auto;
   }
 
   .nav-tabs > li {
@@ -33,9 +32,6 @@
     zoom:1; /* hasLayout ie7 trigger */
   }
 
-  .nav-tabs > li > a:hover {
-    background-color: #f8f8f8;
-  }
 
   .nav-tabs {
     text-align:center;

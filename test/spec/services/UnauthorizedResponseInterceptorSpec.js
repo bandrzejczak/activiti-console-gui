@@ -10,7 +10,7 @@ describe('UnauthorizedResponseInterceptor', function () {
         http,
         location;
 
-    beforeEach(module('activitiConsoleApp'));
+    beforeEach(module('bpmConsoleApp'));
 
     beforeEach(inject(
         function (_UnauthorizedResponseInterceptor_, $httpBackend, $http, $location) {

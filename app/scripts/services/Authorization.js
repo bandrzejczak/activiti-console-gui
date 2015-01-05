@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name activitiConsoleApp.Authorization
+ * @name bpmConsoleApp.Authorization
  * @description
  * # Authorization
- * Service in the activitiConsoleApp.
+ * Service in the bpmConsoleApp.
  */
-angular.module('activitiConsoleApp')
+angular.module('bpmConsoleApp')
     .provider('Authorization', {
         user: {},
 

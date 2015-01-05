@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name activitiConsoleApp.Messages
+ * @name bpmConsoleApp.Messages
  * @description
  * # Messages
- * Service in the activitiConsoleApp.
+ * Service in the bpmConsoleApp.
  */
-angular.module('activitiConsoleApp')
+angular.module('bpmConsoleApp')
     .factory('Messages', function ($resource) {
         return $resource('messages/:lang/:packageName.json', {}, {});
     });

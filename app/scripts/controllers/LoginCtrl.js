@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name activitiConsoleApp.controller:LoginCtrl
+ * @name bpmConsoleApp.controller:LoginCtrl
  * @description
  * # LoginCtrl
- * Controller of the activitiConsoleApp
+ * Controller of the bpmConsoleApp
  */
-angular.module('activitiConsoleApp')
+angular.module('bpmConsoleApp')
     .controller('LoginCtrl', function ($scope, Groups, $state, $animate, Authorization) {
         $scope.doLogin = function () {
             Authorization.login($scope.login, $scope.password);
@@ -15,7 +15,7 @@ angular.module('activitiConsoleApp')
             Groups.get().$promise.then(
                 function (data) {
                     Authorization.setAuthorizedUser($scope.login, data.response.groups);
-                    $state.go('main.root');
+                    $state.go('app.tasks.inbox');
                 },
                 function (error) {
                     if (error.status === 401) {

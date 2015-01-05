@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name activitiConsoleApp.HATEOASEnhancer
+ * @name bpmConsoleApp.HATEOASEnhancer
  * @description
  * # HATEOASEnhancer
- * Service in the activitiConsoleApp.
+ * Service in the bpmConsoleApp.
  */
-angular.module('activitiConsoleApp')
+angular.module('bpmConsoleApp')
     .factory('HATEOASEnhancer', function (ResourceLinkBuilder, RESTApiURL) {
         return {
             'response': function (response) {

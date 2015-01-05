@@ -1,0 +1,7 @@
+<div class="addDeployment">
+    <h1>{{msg.deployments.add.title}}</h1>
+
+    <p class="deploymentDescription" ng-bind-html="msg.deployments.add.content"></p>
+    <br/>
+    <file-upload file="file" max-file-size="3" upload-success="deployProcess"></file-upload>
+</div>

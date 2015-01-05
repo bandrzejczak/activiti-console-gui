@@ -17,7 +17,7 @@ describe('Authorization', function () {
         cookies,
         timeout;
 
-    beforeEach(module('activitiConsoleApp'));
+    beforeEach(module('bpmConsoleApp'));
 
     beforeEach(module(function ($provide) {
         $provide.value(TIMEOUT_VALUE_NAME, LOGIN_TIMEOUT);

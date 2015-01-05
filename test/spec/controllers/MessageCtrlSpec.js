@@ -4,7 +4,7 @@ describe('MessageCtrl', function () {
     var controller, rootScope, scope,
         state, window, lang, msgService, mockHttp;
 
-    beforeEach(module('activitiConsoleApp'));
+    beforeEach(module('bpmConsoleApp'));
 
     beforeEach(module(
         function ($stateProvider) {
@@ -140,10 +140,13 @@ describe('MessageCtrl', function () {
             .expectGET('messages/en/base.json')
             .respond({testMsg: 'test'});
         mockHttp
+            .expectGET('messages/en/tasks.json')
+            .respond({testMsg: 'test'});
+        mockHttp
             .expectGET('views/mainLayout.html')
             .respond(200);
         mockHttp
-            .expectGET('views/home.html')
+            .expectGET('views/lipsum.html')
             .respond(200);
         window.navigator.userLanguage = language;
         controller('MessageCtrl', {

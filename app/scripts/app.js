@@ -16,16 +16,11 @@ angular
         'ui.bootstrap.dropdown',
         'ngAnimate',
         'ngSanitize',
-        'oitozero.ngSweetAlert'
+        'oitozero.ngSweetAlert',
+        'angular-loading-bar'
     ])
-    .config(function ($stateProvider, $urlRouterProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
         $urlRouterProvider.otherwise('/tasks/inbox');
-
-        var testController = function($scope, $http){
-            $scope.success = function(){
-                $http.post('api/deployment', $scope.file);
-            };
-        };
 
         $stateProvider
             .state('login', {
@@ -49,13 +44,11 @@ angular
             })
             .state('app.tasks.inbox', {
                 url: '/inbox',
-                templateUrl: 'views/home.html',
-                controller: testController
+                templateUrl: 'views/lipsum.html'
             })
             .state('app.tasks.awaiting', {
                 url: '/awaiting',
-                templateUrl: 'views/home.html',
-                controller: testController
+                templateUrl: 'views/lipsum.html'
             })
             .state('app.deployments', {
                 abstract: true,
@@ -64,18 +57,16 @@ angular
             })
             .state('app.deployments.add', {
                 url: '/add',
-                templateUrl: 'views/home.html',
-                controller: testController
+                templateUrl: 'views/deployment.add.html',
+                controller: 'AddDeploymentCtrl'
             })
             .state('app.deployments.list', {
                 url: '/list',
-                templateUrl: 'views/home.html',
-                controller: testController
+                templateUrl: 'views/lipsum.html'
             })
             .state('app.processes', {
                 url: '/processes',
-                templateUrl: 'views/home.html',
-                controller: testController
+                templateUrl: 'views/lipsum.html'
             })
             .state('app.users', {
                 abstract: true,
@@ -84,13 +75,11 @@ angular
             })
             .state('app.users.add', {
                 url: '/add',
-                templateUrl: 'views/home.html',
-                controller: testController
+                templateUrl: 'views/lipsum.html'
             })
             .state('app.users.list', {
                 url: '/list',
-                templateUrl: 'views/home.html',
-                controller: testController
+                templateUrl: 'views/lipsum.html'
             })
             .state('app.groups', {
                 abstract: true,
@@ -99,14 +88,16 @@ angular
             })
             .state('app.groups.add', {
                 url: '/add',
-                templateUrl: 'views/home.html',
-                controller: testController
+                templateUrl: 'views/lipsum.html'
             })
             .state('app.groups.list', {
                 url: '/list',
-                templateUrl: 'views/home.html',
-                controller: testController
+                templateUrl: 'views/lipsum.html'
             });
+
+        cfpLoadingBarProvider.includeBar = true;
+        cfpLoadingBarProvider.includeSpinner = true;
+        cfpLoadingBarProvider.latencyThreshold = 0;
     })
     .value('language', {
         supported: ['en', 'pl'],

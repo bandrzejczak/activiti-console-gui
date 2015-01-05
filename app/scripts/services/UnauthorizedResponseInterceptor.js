@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name activitiConsoleApp.UnauthorizedResponseInterceptor
+ * @name bpmConsoleApp.UnauthorizedResponseInterceptor
  * @description
  * # UnauthorizedResponseInterceptor
- * Service in the activitiConsoleApp.
+ * Service in the bpmConsoleApp.
  */
-angular.module('activitiConsoleApp')
+angular.module('bpmConsoleApp')
     .factory('UnauthorizedResponseInterceptor', function ($q, $location) {
         return {
             'responseError': function (rejection) {

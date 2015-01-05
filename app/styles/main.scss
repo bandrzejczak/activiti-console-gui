@@ -7,6 +7,8 @@
 @import 'layout';
 @import 'error';
 @import 'login';
+@import 'fileUpload';
+@import 'deployment';
 
 //animations
 @import 'errorShake';
@@ -14,6 +16,8 @@
 html, body {
   overflow: auto;
   background-color: $background;
+  font-size: 12pt;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 a, a:link, a:visited{
@@ -22,4 +26,17 @@ a, a:link, a:visited{
 
 a:hover, a:active{
   color: $main-color-darker;
+}
+
+h1 {
+  color: $main-color-darker;
+}
+
+#loading-bar-spinner .spinner-icon {
+  border-top-color: $main-color;
+  border-left-color: $main-color;
+}
+
+#loading-bar .bar {
+  background: $main-color;
 }

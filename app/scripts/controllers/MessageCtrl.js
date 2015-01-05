@@ -2,25 +2,24 @@
 
 /**
  * @ngdoc function
- * @name activitiConsoleApp.controller:MessageCtrl
+ * @name bpmConsoleApp.controller:MessageCtrl
  * @description
  * # MessageCtrl
- * Controller of the activitiConsoleApp
+ * Controller of the bpmConsoleApp
  */
-angular.module('activitiConsoleApp')
-    .controller('MessageCtrl', function ($scope, $state, $window, language, Messages) {
-
-        $scope.$on('$stateChangeStart', function (event, toState) {
-            var newLocation = getLocationBasePath(toState.url);
-            if (!$scope.msg[newLocation]) {
+angular.module('bpmConsoleApp')
+    .controller('MessageCtrl', function ($rootScope, $state, $window, language, Messages) {
+        $rootScope.$on('$stateChangeStart', function (event, toState) {
+            var newLocation = getLocationBasePath($state.href(toState));
+            if (!$rootScope.msg[newLocation]) {
                 fetchMessages(newLocation);
             }
         });
 
         function fetchMessages(newLocation) {
-            $scope.msg[newLocation] = Messages.get({
+            $rootScope.msg[newLocation] = Messages.get({
                 packageName: newLocation,
-                lang: $scope.lang
+                lang: $rootScope.lang
             });
         }
 
@@ -30,7 +29,7 @@ angular.module('activitiConsoleApp')
             if (language.supported.indexOf(lang) === -1) {
                 lang = language.default;
             }
-            $scope.lang = lang;
+            $rootScope.lang = lang;
         }
 
         function getLocationBasePath(path) {
@@ -45,10 +44,10 @@ angular.module('activitiConsoleApp')
 
         setApplicationLanguage();
 
-        $scope.msg = {
+        $rootScope.msg = {
             base: Messages.get({
                 packageName: 'base',
-                lang: $scope.lang
+                lang: $rootScope.lang
             })
         };
     });

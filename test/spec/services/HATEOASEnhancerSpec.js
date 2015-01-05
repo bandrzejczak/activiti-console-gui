@@ -12,7 +12,7 @@ describe('HATEOASEnhancer', function () {
         mockHttp,
         http;
 
-    beforeEach(module('activitiConsoleApp'));
+    beforeEach(module('bpmConsoleApp'));
 
     beforeEach(module(function ($provide) {
         $provide.value(REST_API_VALUE_NAME, REST_API_URL);

@@ -1,0 +1,7 @@
+{
+  "add": {
+    "title": "Process deployment",
+    "content": "You can deploy your business process here. We accept <strong>*.bpmn</strong> and <strong>*.bpmn20.xml</strong> extensions. You can also deploy several processes at once - all you have to do is to pack them nicely into one zip archive!",
+    "success": "Deployment successful"
+  }
+}

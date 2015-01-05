@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name activitiConsoleApp.ResourceLinkBuilder
+ * @name bpmConsoleApp.ResourceLinkBuilder
  * @description
  * # ResourceLinkBuilder
- * Service in the activitiConsoleApp.
+ * Service in the bpmConsoleApp.
  */
-angular.module('activitiConsoleApp')
+angular.module('bpmConsoleApp')
     .factory('ResourceLinkBuilder', function ($injector) {
 
         var pathPattern = /<(.*?)>/;
@@ -20,7 +20,7 @@ angular.module('activitiConsoleApp')
 
         function createLinkResource(header){
             var path = 'api' + pathPattern.exec(header)[1];
-            var actions = actionsPattern.exec(header)[1];
+            var actions = (actionsPattern.exec(header)[1]).replace(/'/g, '"');
             var $resource = $injector.get('$resource');
             return $resource(path, {}, transformResourceActions(JSON.parse(actions)));
         }

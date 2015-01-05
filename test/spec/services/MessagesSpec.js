@@ -11,7 +11,7 @@ describe('Messages', function () {
     var Messages,
         mockHttp;
 
-    beforeEach(module('activitiConsoleApp'));
+    beforeEach(module('bpmConsoleApp'));
 
     beforeEach(inject(
         function (_Messages_, $httpBackend) {

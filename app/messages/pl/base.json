@@ -16,5 +16,29 @@
       "addGroup": "Dodaj grupę",
       "listGroups": "Pokaż listę grup"
     }
+  },
+  "directives": {
+    "fileUpload": {
+      "title": "Upuść swój plik tutaj",
+      "content": "Możesz upuścić tu swój plik lub po prostu kliknąć na ten obszar",
+      "fileTooBig": {
+        "title": "Zbyt duży rozmiar pliku",
+        "message": "Twój plik jest zbyt duży! Maksymalny rozmiar to {size}MB"
+      }
+    }
+  },
+  "errors": {
+    "default": {
+      "title": "Błąd",
+      "message": "Wystąpił nieoczekiwany błąd. Czy mógłbyś spróbować ponownie?"
+    },
+    "ProcessDeploymentFailedException": {
+      "title": "Błąd wdrożenia procesu!",
+      "message": "Wystąpił problem z wdrożeniem Twojego procesu. Sprawdź, czy plik ma rozszerzenie *.bpmn lub *.bpmn20.xml i poprawną składnię."
+    },
+    "ZipFileHasNoProcessesException": {
+      "title": "Błąd wdrożenia paczki procesów!",
+      "message": "Nie udało nam się wdrożyć żadnego z procesów w paczce. Sprawdź swoją paczkę i spróbuj ponownie."
+    }
   }
 }

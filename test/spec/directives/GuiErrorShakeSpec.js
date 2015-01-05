@@ -4,7 +4,7 @@ describe('guiErrorShake', function () {
 
     var element, scope, timeout;
 
-    beforeEach(module('activitiConsoleApp'));
+    beforeEach(module('bpmConsoleApp'));
 
     beforeEach(inject(function ($rootScope, $compile, $timeout) {
         scope = $rootScope.$new();
