@@ -27,8 +27,8 @@ describe('LoginCtrl', function () {
             base: {
                 errors: {
                     default: {
-                        title: "Error",
-                        message: "There was an unexpected error on the server side!\nWould you mind trying that again?"
+                        title: 'Error',
+                        message: 'There was an unexpected error on the server side!\nWould you mind trying that again?'
                     }
                 }
             },
