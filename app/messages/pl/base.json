@@ -39,6 +39,10 @@
     "ZipFileHasNoProcessesException": {
       "title": "Błąd wdrożenia paczki procesów!",
       "message": "Nie udało nam się wdrożyć żadnego z procesów w paczce. Sprawdź swoją paczkę i spróbuj ponownie."
+    },
+    "ProcessDefinitionDoesntExistsException": {
+      "title": "Definicja procesu nie istnije!",
+      "message": "Nie mogliśmy znaleźć procesu, którego szukasz. Czy mógłbyś spróbować ponownie?"
     }
   }
 }

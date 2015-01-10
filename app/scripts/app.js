@@ -13,11 +13,12 @@ angular
         'ngCookies',
         'ngResource',
         'ui.router',
-        'ui.bootstrap.dropdown',
+        'ui.bootstrap',
         'ngAnimate',
         'ngSanitize',
         'oitozero.ngSweetAlert',
-        'angular-loading-bar'
+        'angular-loading-bar',
+        'ngTable'
     ])
     .config(function ($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
         $urlRouterProvider.otherwise('/tasks/inbox');
@@ -39,7 +40,7 @@ angular
             })
             .state('app.tasks', {
                 abstract: true,
-                template: '<ui-view/>',
+                template: '<ui-view></ui-view>',
                 url: '/tasks'
             })
             .state('app.tasks.inbox', {
@@ -52,7 +53,7 @@ angular
             })
             .state('app.deployments', {
                 abstract: true,
-                template: '<ui-view/>',
+                template: '<ui-view></ui-view>',
                 url: '/deployments'
             })
             .state('app.deployments.add', {
@@ -62,7 +63,8 @@ angular
             })
             .state('app.deployments.list', {
                 url: '/list',
-                templateUrl: 'views/lipsum.html'
+                templateUrl: 'views/deployment.list.html',
+                controller: 'ListDeploymentsCtrl'
             })
             .state('app.processes', {
                 url: '/processes',
@@ -70,7 +72,7 @@ angular
             })
             .state('app.users', {
                 abstract: true,
-                template: '<ui-view/>',
+                template: '<ui-view></ui-view>',
                 url: '/users'
             })
             .state('app.users.add', {
@@ -83,7 +85,7 @@ angular
             })
             .state('app.groups', {
                 abstract: true,
-                template: '<ui-view/>',
+                template: '<ui-view></ui-view>',
                 url: '/groups'
             })
             .state('app.groups.add', {

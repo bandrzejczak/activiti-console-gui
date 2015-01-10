@@ -1,0 +1,51 @@
+<div class="deployments-list">
+    <h1>{{msg.deployments.list.title}}</h1>
+    <table ng-table="tableParams" show-filter="true" class="table">
+        <colgroup>
+            <col width="5%"/>
+            <col width="20%"/>
+            <col width="15%"/>
+            <col width="25%"/>
+            <col width="20%"/>
+            <col width="10%"/>
+            <col width="5%"/>
+        </colgroup>
+        <tbody ng-repeat="group in $groups">
+        <tr class="ng-table-group">
+            <td colspan="{{$columns.length}}">
+                <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                    <span class="glyphicon"
+                          ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                    <strong>{{ group.value }}</strong>
+                </a>
+            </td>
+        </tr>
+        <tr ng-hide="group.$hideRows" ng-repeat="process in group.data">
+            <td>
+                <image-tooltip data="process.diagramBase64"></image-tooltip>
+            </td>
+            <td data-title="msg.deployments.list.tableHeaders.key" sortable="'key'" filter="{ 'key': 'text' }">
+                {{process.key}}
+            </td>
+            <td style="text-align: center" data-title="msg.deployments.list.tableHeaders.version" sortable="'version'"
+                filter="{ 'version': 'text' }">
+                {{process.version}}
+            </td>
+            <td data-title="msg.deployments.list.tableHeaders.name" sortable="'name'" filter="{ 'name': 'text' }">
+                {{process.name}}
+            </td>
+            <td style="text-align: center" data-title="msg.deployments.list.tableHeaders.deploymentTime"
+                sortable="'deploymentTime'">
+                {{process.deploymentTime | date:'yyyy-MM-dd HH:mm:ss'}}
+            </td>
+            <td style="text-align: center" data-title="msg.deployments.list.tableHeaders.active"
+                filter="{ 'active': 'boolean' }">
+                <span ng-class="{ 'active': process.active, 'inactive': !process.active }"></span>
+            </td>
+            <td style="text-align: center">
+                <span class="remove" ng-click="remove(process.id)"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

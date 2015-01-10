@@ -39,6 +39,10 @@
     "ZipFileHasNoProcessesException": {
       "title": "Processes archive deployment failed!",
       "message": "We couldn't deploy any of the processes supplied in your archive. Please check it and try again."
+    },
+    "ProcessDefinitionDoesntExistsException": {
+      "title": "Processes definition doesn't exist!",
+      "message": "We couldn't find process definition you were asking for. Could you try again?"
     }
   }
 }

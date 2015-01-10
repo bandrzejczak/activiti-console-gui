@@ -23,6 +23,7 @@ module.exports = function (config) {
             'bower_components/angular-ui-bootstrap-bower/ui-bootstrap.js',
             'bower_components/angular-loading-bar/build/loading-bar.js',
             'bower_components/angular-sweetalert/SweetAlert.js',
+            'bower_components/ng-table/ng-table.js',
             'app/scripts/**/*.js',
             'test/mock/**/*.js',
             'test/spec/**/*.js'

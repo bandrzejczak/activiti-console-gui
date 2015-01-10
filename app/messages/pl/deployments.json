@@ -3,5 +3,22 @@
     "title": "Wdrażanie procesu",
     "content": "Tutaj możesz wdrożyć swój proces biznesowy. Akceptujemy pliki o rozszerzeniach <strong>*.bpmn</strong> oraz <strong>*.bpmn20.xml</strong>. Możesz także wdrożyć kilka procesów na raz - aby to zrobić musisz spakować je w jedno archiwum zip!",
     "success": "Wdrożenie zakończone sukcesem"
+  },
+  "list": {
+    "title": "Wdrożone procesy",
+    "tableHeaders": {
+      "key": "Klucz",
+      "version": "Wersja",
+      "name": "Nazwa",
+      "deploymentTime": "Czas wdrożenia",
+      "active": "Aktywny"
+    },
+    "delete": {
+      "title": "Czy jesteś pewien?",
+      "text": "Po usunięciu procesu nie będzie można go odzyskać!",
+      "confirmButtonText": "Tak",
+      "cancelButtonText": "Nie",
+      "success": "Proces został usunięty!"
+    }
   }
 }

@@ -9,6 +9,7 @@
   width: 100%;
   height: $logo-height + $menu-height;
   background: url('../images/bg.png') repeat;
+  z-index: 100;
 
   .logoText {
     color: $main-color;
@@ -25,16 +26,18 @@
     margin: 0 auto;
   }
 
-  .nav-tabs > li {
-    float:none;
-    display:inline-block;
-    *display:inline; /* ie7 fix */
-    zoom:1; /* hasLayout ie7 trigger */
-  }
-
-
   .nav-tabs {
     text-align:center;
+
+    li {
+      float: none;
+      display: inline-block;
+    }
+
+    li.active > a, li.active > a:hover, li.active > a:link, li.active > a:visited {
+      background-color: $background;
+    }
+
   }
 }
 
