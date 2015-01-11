@@ -111,7 +111,7 @@ describe('LoginCtrl', function () {
             .expectGET('views/mainLayout.html')
             .respond(200);
         mockHttp
-            .expectGET('views/tasks.inbox.html')
+            .expectGET('../views/tasks.html')
             .respond(200);
     }
 

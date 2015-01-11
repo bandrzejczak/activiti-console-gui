@@ -9,5 +9,5 @@
  */
 angular.module('bpmConsoleApp')
     .factory('Tasks', function ($resource) {
-        return $resource('api/tasks', {}, {});
+        return $resource('api/tasks/:type', {}, {});
     });

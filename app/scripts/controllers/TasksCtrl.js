@@ -2,14 +2,16 @@
 
 /**
  * @ngdoc function
- * @name bpmConsoleApp.controller:TasksInboxCtrl
+ * @name bpmConsoleApp.controller:TasksCtrl
  * @description
- * # TasksInboxCtrl
+ * # TasksCtrl
  * Controller of the bpmConsoleApp
  */
 angular.module('bpmConsoleApp')
-    .controller('TasksInboxCtrl', ['$scope', 'Tasks', 'ngTableParams', '$filter', function ($scope, Tasks, NgTableParams, $filter) {
-        Tasks.get().$promise.then(function (response) {
+    .controller('TasksCtrl', ['$scope', 'Tasks', 'ngTableParams', '$filter', '$state', function ($scope, Tasks, NgTableParams, $filter, $state) {
+        $scope.type = $state.$current.type;
+
+        Tasks.get({type: $scope.type}).$promise.then(function (response) {
             var data = response.response;
             $scope.tableParams = new NgTableParams({
                 page: 1,
@@ -51,6 +53,10 @@ angular.module('bpmConsoleApp')
             } else {
                 return 'danger';
             }
+        };
+
+        $scope.claim = function (taskId) {
+            return taskId;
         };
     }]
 );

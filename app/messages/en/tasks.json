@@ -1,11 +1,15 @@
 {
   "inbox": {
-    "title": "Inbox",
-    "tableHeaders": {
-      "name": "Name",
-      "processName": "Process name",
-      "priority": "Priority",
-      "dueDate": "Due date"
-    }
+    "title": "Inbox"
+  },
+  "awaiting": {
+    "title": "Awaiting tasks",
+    "claim": "Claim"
+  },
+  "tableHeaders": {
+    "name": "Name",
+    "processName": "Process name",
+    "priority": "Priority",
+    "dueDate": "Due date"
   }
 }

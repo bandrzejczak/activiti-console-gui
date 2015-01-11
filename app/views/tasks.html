@@ -1,11 +1,20 @@
 <div class="tasks-list">
-    <h1>{{msg.tasks.inbox.title}}</h1>
+    <h1 ng-show="type == 'inbox'">{{msg.tasks.inbox.title}}</h1>
+
+    <h1 ng-show="type == 'awaiting'">{{msg.tasks.awaiting.title}}</h1>
     <table ng-table="tableParams" show-filter="true" class="table">
-        <colgroup>
+        <colgroup ng-if="type == 'inbox'">
             <col width="25%"/>
             <col width="25%"/>
             <col width="25%"/>
             <col width="25%"/>
+        </colgroup>
+        <colgroup ng-if="type == 'awaiting'">
+            <col width="25%"/>
+            <col width="25%"/>
+            <col width="20%"/>
+            <col width="20%"/>
+            <col width="10%"/>
         </colgroup>
         <tbody ng-repeat="group in $groups">
         <tr class="ng-table-group">
@@ -17,24 +26,30 @@
                 </a>
             </td>
         </tr>
-        <tr ng-hide="group.$hideRows" ng-repeat="task in group.data" class="table-row-hover">
-            <td data-title="msg.tasks.inbox.tableHeaders.name" sortable="'name'" filter="{ 'name': 'text' }">
+        <tr ng-hide="group.$hideRows" ng-repeat="task in group.data" ng-class="{'table-row-hover': (type == 'inbox')}">
+            <td data-title="msg.tasks.tableHeaders.name" sortable="'name'" filter="{ 'name': 'text' }">
                 {{task.name}}
             </td>
-            <td data-title="msg.tasks.inbox.tableHeaders.processName" sortable="'processName'"
+            <td data-title="msg.tasks.tableHeaders.processName" sortable="'processName'"
                 filter="{ 'version': 'text' }">
                 {{task.processName}}
             </td>
-            <td data-title="msg.tasks.inbox.tableHeaders.priority" sortable="'priority'">
+            <td data-title="msg.tasks.tableHeaders.priority" sortable="'priority'">
                 <progressbar value="task.priority" type="{{progressBarType(task.priority)}}"></progressbar>
             </td>
-            <td style="text-align: center" data-title="msg.tasks.inbox.tableHeaders.dueDate"
+            <td style="text-align: center" data-title="msg.tasks.tableHeaders.dueDate"
                 sortable="'dueDate'">
                 <progressbar ng-show="task.dueDate" class="progress-bar-center"
                              value="dateProgress(task.dueDate, task.createTime)"
                              type="{{progressBarType(dateProgress(task.dueDate, task.createTime))}}">{{task.dueDate |
                     date:'yyyy-MM-dd HH:mm:ss'}}
                 </progressbar>
+            </td>
+            <td ng-if="type == 'awaiting'">
+                <button style="display: block; width: 100%;" type="button" class="btn btn-success"
+                        ng-click="claim(task.id)">
+                    {{msg.tasks.awaiting.claim}}
+                </button>
             </td>
         </tr>
         </tbody>

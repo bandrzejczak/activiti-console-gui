@@ -1,11 +1,15 @@
 {
   "inbox": {
-    "title": "Moje zadania",
-    "tableHeaders": {
-      "name": "Nazwa",
-      "processName": "Nazwa procesu",
-      "priority": "Priorytet",
-      "dueDate": "Termin wykonania"
-    }
+    "title": "Moje zadania"
+  },
+  "awaiting": {
+    "title": "Oczekujące zadania",
+    "claim": "Podejmij"
+  },
+  "tableHeaders": {
+    "name": "Nazwa",
+    "processName": "Nazwa procesu",
+    "priority": "Priorytet",
+    "dueDate": "Termin wykonania"
   }
 }

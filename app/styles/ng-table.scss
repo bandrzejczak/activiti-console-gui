@@ -1,0 +1,50 @@
+$icon-font-path: '/bower_components/bootstrap-sass-official/assets/fonts/bootstrap/';
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+
+.ng-table {
+
+  .active {
+    color: #069509;
+    @extend .glyphicon;
+    @extend .glyphicon-ok;
+  }
+
+  .inactive {
+    color: #c70000;
+    @extend .glyphicon;
+    @extend .glyphicon-ban-circle;
+  }
+
+  .any {
+    @extend .glyphicon;
+    @extend .glyphicon-minus;
+  }
+
+  .remove {
+    font-size: 110%;
+    font-weight: bold;
+    cursor: pointer;
+    @extend .glyphicon;
+    @extend .glyphicon-remove;
+  }
+
+  .remove:hover {
+    color: #c70000;
+  }
+
+  .table-row-hover:hover {
+    td {
+      background-color: #ddd;
+    }
+    cursor: pointer;
+  }
+
+  td {
+    vertical-align: middle !important;
+  }
+
+  .progress {
+    margin-bottom: 0;
+  }
+
+}

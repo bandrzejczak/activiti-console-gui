@@ -45,12 +45,15 @@ angular
             })
             .state('app.tasks.inbox', {
                 url: '/inbox',
-                templateUrl: 'views/tasks.inbox.html',
-                controller: 'TasksInboxCtrl'
+                templateUrl: '../views/tasks.html',
+                controller: 'TasksCtrl',
+                type: 'inbox'
             })
             .state('app.tasks.awaiting', {
                 url: '/awaiting',
-                templateUrl: 'views/lipsum.html'
+                templateUrl: '../views/tasks.html',
+                controller: 'TasksCtrl',
+                type: 'awaiting'
             })
             .state('app.deployments', {
                 abstract: true,
