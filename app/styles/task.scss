@@ -1,0 +1,19 @@
+@import "layoutVariables";
+
+.progress-bar-center {
+  position: relative;
+
+  span {
+    position: absolute;
+    display: block;
+    width: 100%;
+    color: $text-color;
+  }
+}
+
+.table-row-hover:hover {
+  td {
+    background-color: #ddd;
+  }
+  cursor: pointer;
+}

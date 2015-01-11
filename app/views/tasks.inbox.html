@@ -1,0 +1,42 @@
+<div class="tasks-list">
+    <h1>{{msg.tasks.inbox.title}}</h1>
+    <table ng-table="tableParams" show-filter="true" class="table">
+        <colgroup>
+            <col width="25%"/>
+            <col width="25%"/>
+            <col width="25%"/>
+            <col width="25%"/>
+        </colgroup>
+        <tbody ng-repeat="group in $groups">
+        <tr class="ng-table-group">
+            <td colspan="{{$columns.length}}">
+                <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                        <span class="glyphicon"
+                              ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                    <strong>{{ group.value }}</strong>
+                </a>
+            </td>
+        </tr>
+        <tr ng-hide="group.$hideRows" ng-repeat="task in group.data" class="table-row-hover">
+            <td data-title="msg.tasks.inbox.tableHeaders.name" sortable="'name'" filter="{ 'name': 'text' }">
+                {{task.name}}
+            </td>
+            <td data-title="msg.tasks.inbox.tableHeaders.processName" sortable="'processName'"
+                filter="{ 'version': 'text' }">
+                {{task.processName}}
+            </td>
+            <td data-title="msg.tasks.inbox.tableHeaders.priority" sortable="'priority'">
+                <progressbar value="task.priority" type="{{progressBarType(task.priority)}}"></progressbar>
+            </td>
+            <td style="text-align: center" data-title="msg.tasks.inbox.tableHeaders.dueDate"
+                sortable="'dueDate'">
+                <progressbar ng-show="task.dueDate" class="progress-bar-center"
+                             value="dateProgress(task.dueDate, task.createTime)"
+                             type="{{progressBarType(dateProgress(task.dueDate, task.createTime))}}">{{task.dueDate |
+                    date:'yyyy-MM-dd HH:mm:ss'}}
+                </progressbar>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

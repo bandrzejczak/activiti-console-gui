@@ -45,7 +45,8 @@ angular
             })
             .state('app.tasks.inbox', {
                 url: '/inbox',
-                templateUrl: 'views/lipsum.html'
+                templateUrl: 'views/tasks.inbox.html',
+                controller: 'TasksInboxCtrl'
             })
             .state('app.tasks.awaiting', {
                 url: '/awaiting',

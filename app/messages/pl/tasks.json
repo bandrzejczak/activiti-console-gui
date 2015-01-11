@@ -1,0 +1,11 @@
+{
+  "inbox": {
+    "title": "Moje zadania",
+    "tableHeaders": {
+      "name": "Nazwa",
+      "processName": "Nazwa procesu",
+      "priority": "Priorytet",
+      "dueDate": "Termin wykonania"
+    }
+  }
+}

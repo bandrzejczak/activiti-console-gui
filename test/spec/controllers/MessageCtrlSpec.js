@@ -146,7 +146,7 @@ describe('MessageCtrl', function () {
             .expectGET('views/mainLayout.html')
             .respond(200);
         mockHttp
-            .expectGET('views/lipsum.html')
+            .expectGET('views/tasks.inbox.html')
             .respond(200);
         window.navigator.userLanguage = language;
         controller('MessageCtrl', {

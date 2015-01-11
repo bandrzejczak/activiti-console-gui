@@ -26,9 +26,8 @@ angular.module('bpmConsoleApp')
                 }, {
                     groupBy: 'key',
                     filterDelay: 100,
-                    total: data.length, // length of data
+                    total: data.length,
                     getData: function ($defer, params) {
-                        // use build-in angular filter
                         var filteredData = params.filter() ?
                             $filter('filter')(data, params.filter()) :
                             data;
