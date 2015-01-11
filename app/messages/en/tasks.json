@@ -6,6 +6,9 @@
     "title": "Awaiting tasks",
     "claim": "Claim"
   },
+  "claim": {
+    "success": "Task was claimed successfully"
+  },
   "tableHeaders": {
     "name": "Name",
     "processName": "Process name",

@@ -6,6 +6,9 @@
     "title": "Oczekujące zadania",
     "claim": "Podejmij"
   },
+  "claim": {
+    "success": "Zadanie zostało podjęte"
+  },
   "tableHeaders": {
     "name": "Nazwa",
     "processName": "Nazwa procesu",

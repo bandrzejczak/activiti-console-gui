@@ -8,7 +8,8 @@
  * Controller of the bpmConsoleApp
  */
 angular.module('bpmConsoleApp')
-    .controller('TasksCtrl', ['$scope', 'Tasks', 'ngTableParams', '$filter', '$state', function ($scope, Tasks, NgTableParams, $filter, $state) {
+    .controller('TasksCtrl', ['$scope', 'Tasks', 'ngTableParams', '$filter', '$state', 'SweetAlert',
+        function ($scope, Tasks, NgTableParams, $filter, $state, SweetAlert) {
         $scope.type = $state.$current.type;
 
         Tasks.get({type: $scope.type}).$promise.then(function (response) {
@@ -56,7 +57,12 @@ angular.module('bpmConsoleApp')
         };
 
         $scope.claim = function (taskId) {
-            return taskId;
+            Tasks.claim({type: taskId}).$promise.then(
+                function () {
+                    SweetAlert.swal($scope.msg.tasks.claim.success, '', 'success');
+                    $state.go('app.tasks.inbox');
+                }
+            );
         };
     }]
 );
