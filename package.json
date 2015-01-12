@@ -1,7 +1,7 @@
 {
   "name": "bpm-console",
   "displayName": "BPM Console",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.1",
