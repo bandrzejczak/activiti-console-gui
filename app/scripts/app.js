@@ -55,6 +55,11 @@ angular
                 controller: 'TasksCtrl',
                 type: 'awaiting'
             })
+            .state('app.tasks.task', {
+                url: '/:id',
+                templateUrl: '../views/task.html',
+                controller: 'TaskCtrl'
+            })
             .state('app.deployments', {
                 abstract: true,
                 template: '<ui-view></ui-view>',

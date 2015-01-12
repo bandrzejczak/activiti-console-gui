@@ -10,3 +10,35 @@
     color: $text-color;
   }
 }
+
+.form {
+  width: 80%;
+  margin: 0 auto;
+
+  .form-data-piece {
+    float: left;
+    width: 33%;
+    padding: 3px 10px;
+
+    .label {
+      font-size: 90%;
+      font-weight: bold;
+      color: $text-color;
+    }
+
+    .progress-bar-big {
+      height: 30px;
+
+      span {
+        font-size: 17px;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .fields {
+    clear: both;
+    margin: 0 auto;
+    width: 60%;
+  }
+}

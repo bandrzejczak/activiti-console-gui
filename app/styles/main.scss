@@ -34,6 +34,12 @@ h1 {
   color: $main-color-darker;
 }
 
+h2 {
+  margin-top: 0;
+  color: $main-color;
+  font-size: 110%;
+}
+
 #loading-bar-spinner .spinner-icon {
   border-top-color: $main-color;
   border-left-color: $main-color;

@@ -64,5 +64,9 @@ angular.module('bpmConsoleApp')
                 }
             );
         };
+
+            $scope.openTask = function (taskId) {
+                $state.go('app.tasks.task', {id: taskId});
+            };
     }]
 );

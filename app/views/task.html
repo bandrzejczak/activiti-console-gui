@@ -1,0 +1,46 @@
+<div class="form">
+    <h1>{{task.name}}</h1>
+
+    <h2>{{task.processName}}</h2>
+
+    <div class="clear"></div>
+    <div class="form-data-piece">
+        <div class="label">Priority</div>
+        <progressbar animate="false" class="progress-bar-big" value="task.priority"
+                     type="{{progressBarType(task.priority)}}"></progressbar>
+    </div>
+    <div class="form-data-piece">
+        <div class="label">Created</div>
+        <progressbar animate="false" class="progress-bar-center progress-bar-big" value="100" type="success">
+            {{task.createTime | date:'yyyy-MM-dd HH:mm:ss'}}
+        </progressbar>
+    </div>
+    <div class="form-data-piece">
+        <div class="label">Due date</div>
+        <progressbar ng-if="task.dueDate" ng-show="task.dueDate" class="progress-bar-center progress-bar-big"
+                     value="dateProgress(task.dueDate, task.createTime)"
+                     type="{{progressBarType(dateProgress(task.dueDate, task.createTime))}}">{{task.dueDate |
+            date:'yyyy-MM-dd HH:mm:ss'}}
+        </progressbar>
+        <progressbar ng-if="!task.dueDate" animate="false" class="progress-bar-center progress-bar-big" value="100"
+                     type="success">No due date
+        </progressbar>
+
+    </div>
+    <div ng-show="description" class="description">
+        <h3>Task description</h3>
+
+        <p ng-bind-html="description"></p>
+    </div>
+    <div class="fields">
+        <form class="form-horizontal">
+            <fieldset>
+                <div ng-repeat="field in form" class="control-group">
+                    <field form-data="formData" type="field.type" name="field.name" id="field.id" value="field.value"
+                           required="field.required" read-only="field.readOnly"
+                           enum-options="field.enumOptions"></field>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

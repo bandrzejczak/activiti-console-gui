@@ -26,7 +26,8 @@
                 </a>
             </td>
         </tr>
-        <tr ng-hide="group.$hideRows" ng-repeat="task in group.data" ng-class="{'table-row-hover': (type == 'inbox')}">
+        <tr ng-hide="group.$hideRows" ng-click="type == 'inbox' && openTask(task.id)" ng-repeat="task in group.data"
+            ng-class="{'table-row-hover': (type == 'inbox')}">
             <td data-title="msg.tasks.tableHeaders.name" sortable="'name'" filter="{ 'name': 'text' }">
                 {{task.name}}
             </td>

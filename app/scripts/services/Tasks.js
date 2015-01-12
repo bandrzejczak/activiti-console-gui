@@ -9,5 +9,11 @@
  */
 angular.module('bpmConsoleApp')
     .factory('Tasks', function ($resource) {
-        return $resource('api/tasks/:type/:action', {}, {claim: {method: 'GET', params: {action: 'claim'}}});
+        return $resource(
+            'api/tasks/:type/:action',
+            {'type': '@type'},
+            {
+                claim: {method: 'POST', params: {action: 'claim'}},
+                form: {method: 'GET', params: {action: 'form'}}
+            });
     });
