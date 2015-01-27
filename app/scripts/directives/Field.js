@@ -16,7 +16,7 @@ angular.module('bpmConsoleApp')
             string: wrapWithNormalLabel('<input class="form-control" type="text" id="{{id}}" ng-model="formData[id]" ng-required="required" ng-disabled="readOnly" />'),
             long: wrapWithNormalLabel('<input class="form-control" type="number" id="{{id}}" ng-model="formData[id]" ng-required="required" ng-disabled="readOnly" step="1" />'),
             date: wrapWithNormalLabel('<p class="input-group">' +
-            '<input type="text" datepicker-popup="yyyy-MM-dd" class="form-control" id="{{id}}" ng-model="dates[id]" ng-change="parseDate(id, dates[id])" is-open="opened" close-text="Close"  ng-required="required" ng-disabled="readOnly" />' +
+            '<input type="text" datepicker-popup="yyyy-MM-dd" current-text="{{i18n.current}}" close-text="{{i18n.close}}" clear-text="{{i18n.clear}}" class="form-control" id="{{id}}" ng-model="dates[id]" ng-change="parseDate(id, dates[id])" is-open="opened" close-text="Close"  ng-required="required" ng-disabled="readOnly" />' +
             '<span class="input-group-btn">' +
             '<button type="button" class="btn btn-default" ng-click="open($event)" ng-disabled="readOnly"><i class="glyphicon glyphicon-calendar"></i></button>' +
             '</span>' +
@@ -82,7 +82,8 @@ angular.module('bpmConsoleApp')
                 'value': '=',
                 'required': '=',
                 'readOnly': '=',
-                'enumOptions': '='
+                'enumOptions': '=',
+                'i18n': '='
             },
             link: function (scope, element) {
                 scope.dates = {};

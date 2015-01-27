@@ -14,5 +14,10 @@
     "processName": "Nazwa procesu",
     "priority": "Priorytet",
     "dueDate": "Termin wykonania"
+  },
+  "datepicker": {
+    "current": "Dziś",
+    "clear": "Wyczyść",
+    "close": "Zamknij"
   }
 }

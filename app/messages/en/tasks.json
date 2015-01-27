@@ -14,5 +14,10 @@
     "processName": "Process name",
     "priority": "Priority",
     "dueDate": "Due date"
+  },
+  "datepicker": {
+    "current": "Today",
+    "clear": "Clear",
+    "close": "Done"
   }
 }
