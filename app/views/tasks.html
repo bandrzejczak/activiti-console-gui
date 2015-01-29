@@ -26,13 +26,13 @@
                 </a>
             </td>
         </tr>
-        <tr ng-hide="group.$hideRows" ng-click="openTask(task.id)" ng-repeat="task in group.data"
+        <tr ng-hide="group.$hideRows" ng-click="openTask(task.id, $event)" ng-repeat="task in group.data"
             class="table-row-hover">
             <td data-title="msg.tasks.tableHeaders.name" sortable="'name'" filter="{ 'name': 'text' }">
                 {{task.name}}
             </td>
             <td data-title="msg.tasks.tableHeaders.processName" sortable="'processName'"
-                filter="{ 'version': 'text' }">
+                filter="{ 'processName': 'text' }">
                 {{task.processName}}
             </td>
             <td data-title="msg.tasks.tableHeaders.priority" sortable="'priority'">

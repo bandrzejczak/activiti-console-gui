@@ -56,7 +56,7 @@ angular.module('bpmConsoleApp')
             }
         };
 
-        $scope.claim = function (taskId) {
+            $scope.claim = function (taskId) {
             Tasks.claim({type: taskId}).$promise.then(
                 function () {
                     SweetAlert.swal($scope.msg.tasks.claim.success, '', 'success');
@@ -65,7 +65,8 @@ angular.module('bpmConsoleApp')
             );
         };
 
-            $scope.openTask = function (taskId) {
+            $scope.openTask = function (taskId, $event) {
+                if ($event.target.tagName.toLowerCase() !== 'button')
                 $state.go('app.tasks.task', {id: taskId});
             };
     }]

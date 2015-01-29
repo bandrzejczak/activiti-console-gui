@@ -38,7 +38,7 @@ angular.module('bpmConsoleApp')
                 buttons.append(addButton(buttonTypes.unclaim, scope.unclaim));
             if (scope.rights.write)
                 buttons.append(addButton(buttonTypes.submit, scope.submit));
-            if (!scope.rights.unclaim && !scope.rights.write && scope.rights.read)
+            if (scope.rights.claim)
                 buttons.append(addButton(buttonTypes.claim, scope.claim));
             return buttons;
         }
