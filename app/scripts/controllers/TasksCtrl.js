@@ -20,7 +20,8 @@ angular.module('bpmConsoleApp')
                 filter: {},
                 sorting: {
                     priority: 'desc',
-                    dueDate: 'asc'
+                    dueDate: 'asc',
+                    createTime: 'desc'
                 }
             }, {
                 groupBy: 'processName',

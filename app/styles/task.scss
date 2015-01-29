@@ -52,10 +52,10 @@
   }
 }
 
-input.ng-invalid {
+input.ng-invalid:not(.ng-pristine), form.ng-submitted input.ng-invalid {
   border: 1px solid red;
 }
 
-label.ng-invalid {
+label.ng-invalid:not(.ng-pristine), form.ng-submitted label.ng-invalid {
   color: red;
 }

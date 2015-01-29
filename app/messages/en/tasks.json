@@ -6,6 +6,7 @@
     "title": "Awaiting tasks",
     "claim": "Claim"
   },
+  "noDueDate": "No due date",
   "claim": {
     "success": "Task was claimed successfully"
   },
@@ -18,6 +19,7 @@
   "tableHeaders": {
     "name": "Name",
     "processName": "Process name",
+    "createTime": "Creation time",
     "priority": "Priority",
     "dueDate": "Due date"
   },

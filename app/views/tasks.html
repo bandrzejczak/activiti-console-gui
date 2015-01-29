@@ -5,16 +5,18 @@
     <table ng-table="tableParams" show-filter="true" class="table">
         <colgroup ng-if="type == 'inbox'">
             <col width="25%"/>
-            <col width="25%"/>
-            <col width="25%"/>
-            <col width="25%"/>
+            <col width="20%"/>
+            <col width="15%"/>
+            <col width="20%"/>
+            <col width="20%"/>
         </colgroup>
         <colgroup ng-if="type == 'awaiting'">
             <col width="25%"/>
-            <col width="25%"/>
-            <col width="20%"/>
-            <col width="20%"/>
-            <col width="10%"/>
+            <col width="19%"/>
+            <col width="15%"/>
+            <col width="16%"/>
+            <col width="16%"/>
+            <col width="9%"/>
         </colgroup>
         <tbody ng-repeat="group in $groups">
         <tr class="ng-table-group">
@@ -35,15 +37,18 @@
                 filter="{ 'processName': 'text' }">
                 {{task.processName}}
             </td>
+            <td data-title="msg.tasks.tableHeaders.createTime" sortable="'createTime'">
+                {{task.createTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+            </td>
             <td data-title="msg.tasks.tableHeaders.priority" sortable="'priority'">
                 <progressbar value="task.priority" type="{{progressBarType(task.priority)}}"></progressbar>
             </td>
             <td style="text-align: center" data-title="msg.tasks.tableHeaders.dueDate"
                 sortable="'dueDate'">
-                <progressbar ng-show="task.dueDate" class="progress-bar-center"
-                             value="dateProgress(task.dueDate, task.createTime)"
-                             type="{{progressBarType(dateProgress(task.dueDate, task.createTime))}}">{{task.dueDate |
-                    date:'yyyy-MM-dd HH:mm:ss'}}
+                <progressbar class="progress-bar-center"
+                             value="task.dueDate ? dateProgress(task.dueDate, task.createTime) : 100"
+                             type="{{task.dueDate ? progressBarType(dateProgress(task.dueDate, task.createTime)) : 'success'}}">
+                    {{task.dueDate ? (task.dueDate | date:'yyyy-MM-dd HH:mm:ss') : msg.tasks.noDueDate}}
                 </progressbar>
             </td>
             <td ng-if="type == 'awaiting'">
