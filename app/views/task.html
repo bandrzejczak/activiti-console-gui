@@ -33,13 +33,15 @@
         <p ng-bind-html="description"></p>
     </div>
     <div class="fields">
-        <form class="form-horizontal">
+        <form name="taskForm" class="form-horizontal" novalidate>
             <fieldset>
                 <div ng-repeat="field in form" class="control-group">
-                    <field form-data="formData" type="field.type" name="field.name" id="field.id" value="field.value"
-                           required="field.required" read-only="field.readOnly"
+                    <field form="taskForm" form-data="formData" type="field.type" name="field.name" id="field.id"
+                           value="field.value"
+                           required="field.required" read-only="!rights.write || field.readOnly"
                            enum-options="field.enumOptions" i18n="msg.tasks.datepicker"></field>
                 </div>
+                <form-buttons rights="rights" claim="claim" submit="submit" unclaim="unclaim"></form-buttons>
             </fieldset>
         </form>
     </div>

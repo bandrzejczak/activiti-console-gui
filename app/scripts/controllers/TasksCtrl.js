@@ -60,7 +60,7 @@ angular.module('bpmConsoleApp')
             Tasks.claim({type: taskId}).$promise.then(
                 function () {
                     SweetAlert.swal($scope.msg.tasks.claim.success, '', 'success');
-                    $state.go('app.tasks.inbox');
+                    $state.go('app.tasks.task', {id: taskId});
                 }
             );
         };

@@ -9,6 +9,12 @@
   "claim": {
     "success": "Task was claimed successfully"
   },
+  "unclaim": {
+    "success": "Task was unclaimed successfully"
+  },
+  "submit": {
+    "success": "Task was submitted successfully"
+  },
   "tableHeaders": {
     "name": "Name",
     "processName": "Process name",
@@ -19,5 +25,10 @@
     "current": "Today",
     "clear": "Clear",
     "close": "Done"
+  },
+  "buttons": {
+    "claim": "Claim",
+    "submit": "Submit",
+    "unclaim": "Unclaim"
   }
 }

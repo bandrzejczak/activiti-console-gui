@@ -8,11 +8,13 @@
  * Controller of the bpmConsoleApp
  */
 angular.module('bpmConsoleApp')
-    .controller('TaskCtrl', ['$scope', 'Tasks', '$stateParams', function ($scope, Tasks, $stateParams) {
+    .controller('TaskCtrl', ['$scope', 'Tasks', '$stateParams', 'SweetAlert', '$state',
+        function ($scope, Tasks, $stateParams, SweetAlert, $state) {
         Tasks.form({type: $stateParams.id}).$promise.then(function (data) {
             $scope.task = data.response.task;
             $scope.description = data.response.description;
             $scope.form = data.response.fields;
+            $scope.rights = data.response.rights;
         });
 
         $scope.formData = {};
@@ -33,5 +35,34 @@ angular.module('bpmConsoleApp')
                 return 'danger';
             }
         };
+
+            $scope.claim = function () {
+                Tasks.claim({type: $scope.task.id}).$promise.then(
+                    function () {
+                        SweetAlert.swal($scope.msg.tasks.claim.success, '', 'success');
+                        $state.reload();
+                    }
+                );
+            };
+
+            $scope.unclaim = function () {
+                Tasks.unclaim({type: $scope.task.id}).$promise.then(
+                    function () {
+                        SweetAlert.swal($scope.msg.tasks.unclaim.success, '', 'success');
+                        $state.reload();
+                    }
+                );
+            };
+
+            $scope.submit = function () {
+                if ($scope.taskForm.$valid) {
+                    Tasks.submit({type: $scope.task.id}, $scope.formData).$promise.then(
+                        function () {
+                            SweetAlert.swal($scope.msg.tasks.submit.success, '', 'success');
+                            $state.go('app.tasks.inbox');
+                        }
+                    );
+                }
+            };
     }]
 );

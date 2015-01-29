@@ -22,12 +22,12 @@
                 <a href="" ng-click="group.$hideRows = !group.$hideRows">
                         <span class="glyphicon"
                               ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
-                    <strong>{{ group.value }}</strong>
+                    <strong>{{group.value}}</strong>
                 </a>
             </td>
         </tr>
-        <tr ng-hide="group.$hideRows" ng-click="type == 'inbox' && openTask(task.id)" ng-repeat="task in group.data"
-            ng-class="{'table-row-hover': (type == 'inbox')}">
+        <tr ng-hide="group.$hideRows" ng-click="openTask(task.id)" ng-repeat="task in group.data"
+            class="table-row-hover">
             <td data-title="msg.tasks.tableHeaders.name" sortable="'name'" filter="{ 'name': 'text' }">
                 {{task.name}}
             </td>

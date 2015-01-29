@@ -9,6 +9,12 @@
   "claim": {
     "success": "Zadanie zostało podjęte"
   },
+  "unclaim": {
+    "success": "Zadanie zostało zwrócone"
+  },
+  "submit": {
+    "success": "Zadanie zostało przesłane"
+  },
   "tableHeaders": {
     "name": "Nazwa",
     "processName": "Nazwa procesu",
@@ -19,5 +25,10 @@
     "current": "Dziś",
     "clear": "Wyczyść",
     "close": "Zamknij"
+  },
+  "buttons": {
+    "claim": "Podejmij",
+    "submit": "Prześlij",
+    "unclaim": "Zwróć"
   }
 }

@@ -2,30 +2,30 @@
 angular.module('bpmConsoleApp')
     .directive('field', ['$compile', function ($compile) {
         function wrapWithNormalLabel(input) {
-            return '<label class="control-label" for="{{id}}">{{name}}{{required ? \'*\' : \'\'}}</label>' +
+            return '<label class="control-label" ng-class="{\'ng-invalid\': !form[id].$pristine && form[id].$invalid}" for="{{id}}">{{name}}{{required ? \'*\' : \'\'}}</label>' +
                 '<div class="controls">' +
                 input +
                 '</div>';
         }
 
         function wrapWithCheckboxLabel(input) {
-            return '<div class="controls"><label for="{{id}}">{{name}}{{required ? \'*\' : \'\'}}&nbsp;</label>' + input + '</div>';
+            return '<div class="controls"><label for="{{id}}" ng-class="{\'ng-invalid\': form[id].$invalid}">{{name}}{{required ? \'*\' : \'\'}}&nbsp;</label>' + input + '</div>';
         }
 
         var templates = {
-            string: wrapWithNormalLabel('<input class="form-control" type="text" id="{{id}}" ng-model="formData[id]" ng-required="required" ng-disabled="readOnly" />'),
-            long: wrapWithNormalLabel('<input class="form-control" type="number" id="{{id}}" ng-model="formData[id]" ng-required="required" ng-disabled="readOnly" step="1" />'),
+            string: wrapWithNormalLabel('<input class="form-control" type="text" id="{{id}}" name="{{id}}" ng-model="formData[id]" ng-required="required" ng-disabled="readOnly" />'),
+            long: wrapWithNormalLabel('<input class="form-control" type="number" id="{{id}}" name="{{id}}" ng-model="formData[id]" ng-required="required" ng-disabled="readOnly" step="1" />'),
             date: wrapWithNormalLabel('<p class="input-group">' +
-            '<input type="text" datepicker-popup="yyyy-MM-dd" current-text="{{i18n.current}}" close-text="{{i18n.close}}" clear-text="{{i18n.clear}}" class="form-control" id="{{id}}" ng-model="dates[id]" ng-change="parseDate(id, dates[id])" is-open="opened" close-text="Close"  ng-required="required" ng-disabled="readOnly" />' +
+            '<input type="text" datepicker-popup="yyyy-MM-dd" current-text="{{i18n.current}}" close-text="{{i18n.close}}" clear-text="{{i18n.clear}}" class="form-control" id="{{id}}" name="{{id}}" ng-model="dates[id]" ng-change="parseDate(id, dates[id])" is-open="opened" close-text="Close"  ng-required="required" ng-disabled="readOnly" />' +
             '<span class="input-group-btn">' +
             '<button type="button" class="btn btn-default" ng-click="open($event)" ng-disabled="readOnly"><i class="glyphicon glyphicon-calendar"></i></button>' +
             '</span>' +
             '</p>'),
-            boolean: wrapWithCheckboxLabel('<input type="checkbox" id="{{id}}" ng-model="formData[id]" ng-required="required" ng-disabled="readOnly" />'),
-            enum: wrapWithNormalLabel('<select class="form-control" id="{{id}}" ng-model="formData[id]" ng-required="required" ng-disabled="readOnly">' +
+            boolean: wrapWithCheckboxLabel('<input type="checkbox" id="{{id}}" name="{{id}}" ng-model="formData[id]" ng-required="required" ng-disabled="readOnly" />'),
+            enum: wrapWithNormalLabel('<select class="form-control" id="{{id}}" name="{{id}}" ng-model="formData[id]" ng-required="required" ng-disabled="readOnly">' +
             '<option ng-repeat="(id, name) in enumOptions" value="{{id}}">{{name}}</option>' +
             '</select>'),
-            double: wrapWithNormalLabel('<input class="form-control" type="number" id="{{id}}" ng-model="formData[id]" step="any" ng-required="required" ng-disabled="readOnly" />')
+            double: wrapWithNormalLabel('<input class="form-control" type="number" id="{{id}}" name="{{id}}" ng-model="formData[id]" step="any" ng-required="required" ng-disabled="readOnly" />')
         };
 
         var parseValue = {
@@ -75,6 +75,7 @@ angular.module('bpmConsoleApp')
         return {
             restrict: 'E',
             scope: {
+                'form': '=',
                 'formData': '=',
                 'type': '=',
                 'id': '=',

@@ -13,7 +13,9 @@ angular.module('bpmConsoleApp')
             'api/tasks/:type/:action',
             {'type': '@type'},
             {
+                form: {method: 'GET', params: {action: 'form'}},
                 claim: {method: 'POST', params: {action: 'claim'}},
-                form: {method: 'GET', params: {action: 'form'}}
+                unclaim: {method: 'POST', params: {action: 'unclaim'}},
+                submit: {method: 'POST', params: {action: 'submit'}}
             });
     });
