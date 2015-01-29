@@ -60,6 +60,11 @@ angular
                 templateUrl: '../views/task.html',
                 controller: 'TaskCtrl'
             })
+            .state('app.processes', {
+                url: '/processes',
+                templateUrl: '../views/processes.html',
+                controller: 'ProcessesCtrl'
+            })
             .state('app.deployments', {
                 abstract: true,
                 template: '<ui-view></ui-view>',
@@ -75,8 +80,8 @@ angular
                 templateUrl: 'views/deployment.list.html',
                 controller: 'ListDeploymentsCtrl'
             })
-            .state('app.processes', {
-                url: '/processes',
+            .state('app.instances', {
+                url: '/instances',
                 templateUrl: 'views/lipsum.html'
             })
             .state('app.users', {

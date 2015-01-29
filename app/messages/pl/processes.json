@@ -1,0 +1,9 @@
+{
+  "title": "Wystartuj nowy proces",
+  "tableHeaders": {
+    "name": "Nazwa",
+    "version": "Wersja",
+    "deployTime": "Czas wdrożenia"
+  },
+  "start": "Wystartuj"
+}

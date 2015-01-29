@@ -13,7 +13,8 @@
                     <li role="presentation"><a ui-sref="app.deployments.list" ng-bind="msg.base.menu.deployments.list"></a></li>
                 </ul>
             </li>
-            <li role="presentation" ui-sref-active="active"><a ui-sref="app.processes" ng-bind="msg.base.menu.processes"></a></li>
+            <li role="presentation" ui-sref-active="active"><a ui-sref="app.instances"
+                                                               ng-bind="msg.base.menu.instances"></a></li>
             <li role="presentation" ng-class="{active: stateIncludes('users') || stateIncludes('groups')}" dropdown class="dropdown">
                 <a class="dropdown-toggle" dropdown-toggle href="#" role="button" aria-expanded="false">
                     <span ng-bind="msg.base.menu.users.dropdown"></span> <span class="caret"></span>

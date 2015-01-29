@@ -6,6 +6,7 @@
     "title": "Oczekujące zadania",
     "claim": "Podejmij"
   },
+  "startNewProcess": "Wystartuj nowy proces",
   "noDueDate": "Brak terminu wykonania",
   "claim": {
     "success": "Zadanie zostało podjęte"

@@ -6,6 +6,7 @@
     "title": "Awaiting tasks",
     "claim": "Claim"
   },
+  "startNewProcess": "Start new process",
   "noDueDate": "No due date",
   "claim": {
     "success": "Task was claimed successfully"

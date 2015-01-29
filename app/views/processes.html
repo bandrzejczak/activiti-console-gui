@@ -1,0 +1,33 @@
+<h1>{{msg.processes.title}}</h1>
+<table ng-table="tableParams" show-filter="!empty" class="table">
+    <colgroup>
+        <col width="30%"/>
+        <col width="30%"/>
+        <col width="30%"/>
+        <col width="10%"/>
+    </colgroup>
+    <tbody>
+    <tr ng-repeat="process in $data">
+        <td data-title="msg.processes.tableHeaders.name" sortable="'name'" filter="{ 'name': 'text' }">
+            {{process.name}}
+        </td>
+        <td data-title="msg.processes.tableHeaders.version" sortable="'version'" filter="{ 'version': 'text' }">
+            {{process.version}}
+        </td>
+        <td data-title="msg.processes.tableHeaders.deployTime" sortable="'deployTime'">
+            {{process.deployTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+        </td>
+        <td>
+            <button type="button" class="btn btn-block btn-success"
+                    ng-click="start(process.id)">
+                {{msg.processes.start}}
+            </button>
+        </td>
+    </tr>
+    </tbody>
+    <tr ng-if="empty">
+        <td colspan="4" style="text-align: center">
+            No processes for you, sir!
+        </td>
+    </tr>
+</table>

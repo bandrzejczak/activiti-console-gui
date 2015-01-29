@@ -8,7 +8,7 @@
       "add":"Wdróż nowy proces",
       "list": "Pokaż wdrożone procesy"
     },
-    "processes": "Instancje procesów",
+    "instances": "Instancje procesów",
     "users": {
       "dropdown": "Użytkownicy",
       "addUser": "Dodaj użytkownika",

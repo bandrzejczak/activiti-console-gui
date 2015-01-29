@@ -8,7 +8,7 @@
       "add":"Add new deployment",
       "list": "List deployments"
     },
-    "processes": "Process instances",
+    "instances": "Process instances",
     "users": {
       "dropdown": "Users",
       "addUser": "Add user",

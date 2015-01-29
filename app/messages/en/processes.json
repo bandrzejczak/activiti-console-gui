@@ -1,0 +1,9 @@
+{
+  "title": "Start new process",
+  "tableHeaders": {
+    "name": "Name",
+    "version": "Version",
+    "deployTime": "Deploy time"
+  },
+  "start": "Start"
+}

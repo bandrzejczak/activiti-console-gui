@@ -11,9 +11,12 @@ angular.module('bpmConsoleApp')
     .controller('TasksCtrl', ['$scope', 'Tasks', 'ngTableParams', '$filter', '$state', 'SweetAlert',
         function ($scope, Tasks, NgTableParams, $filter, $state, SweetAlert) {
         $scope.type = $state.$current.type;
+            $scope.empty = true;
 
         Tasks.get({type: $scope.type}).$promise.then(function (response) {
             var data = response.response;
+            if (data.length > 0)
+                $scope.empty = false;
             $scope.tableParams = new NgTableParams({
                 page: 1,
                 count: 10,
@@ -26,6 +29,7 @@ angular.module('bpmConsoleApp')
             }, {
                 groupBy: 'processName',
                 filterDelay: 100,
+                counts: $scope.empty ? [] : [10, 25, 50, 100],
                 total: data.length,
                 getData: function ($defer, params) {
                     var filteredData = params.filter() ?
@@ -40,6 +44,10 @@ angular.module('bpmConsoleApp')
                 }
             });
         });
+
+            $scope.goToProcessesList = function () {
+                $state.go('app.processes');
+            };
 
         $scope.dateProgress = function (dueDate, createTime) {
             return Math.floor((Date.now() - createTime) / (dueDate - createTime) * 100);
