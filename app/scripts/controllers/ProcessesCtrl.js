@@ -8,8 +8,8 @@
  * Controller of the bpmConsoleApp
  */
 angular.module('bpmConsoleApp')
-    .controller('ProcessesCtrl', ['$scope', 'Processes', 'ngTableParams', '$filter',
-        function ($scope, Processes, NgTableParams, $filter) {
+    .controller('ProcessesCtrl', ['$scope', 'Processes', 'ngTableParams', '$filter', 'SweetAlert', '$state',
+        function ($scope, Processes, NgTableParams, $filter, SweetAlert, $state) {
             $scope.empty = true;
             Processes.get().$promise.then(function (response) {
                 var data = response.response;
@@ -40,5 +40,14 @@ angular.module('bpmConsoleApp')
                     }
                 });
             });
+
+            $scope.start = function (processId) {
+                Processes.start({id: processId}).$promise.then(
+                    function () {
+                        SweetAlert.swal($scope.msg.processes.start.success, '', 'success');
+                        $state.go('app.tasks.inbox');
+                    }
+                );
+            };
         }]
 );

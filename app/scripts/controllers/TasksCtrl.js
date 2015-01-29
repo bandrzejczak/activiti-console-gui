@@ -76,7 +76,7 @@ angular.module('bpmConsoleApp')
 
             $scope.openTask = function (taskId, $event) {
                 if ($event.target.tagName.toLowerCase() !== 'button')
-                $state.go('app.tasks.task', {id: taskId});
+                    $state.go('app.tasks.task', {id: taskId});
             };
     }]
 );

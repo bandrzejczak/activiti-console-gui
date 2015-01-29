@@ -5,5 +5,8 @@
     "version": "Wersja",
     "deployTime": "Czas wdrożenia"
   },
-  "start": "Wystartuj"
+  "start": {
+    "text": "Wystartuj",
+    "success": "Wybrany proces został pomyślnie wystartowany"
+  }
 }

@@ -5,5 +5,8 @@
     "version": "Version",
     "deployTime": "Deploy time"
   },
-  "start": "Start"
+  "start": {
+    "text": "Start",
+    "success": "Chosen process was successfully started"
+  }
 }
