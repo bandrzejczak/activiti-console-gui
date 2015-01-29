@@ -1,3 +1,10 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none;">
+    <defs>
+        <g id="check" transform="scale(4)">
+            <path d="M9,16.2L4.8 12 3.4 13.4 9 19 21 7 19.6 5.6 z"></path>
+        </g>
+    </defs>
+</svg>
 <table class="header-table">
     <tr>
         <td>
@@ -69,8 +76,15 @@
     </tr>
     </tbody>
     <tr ng-if="empty">
-        <td colspan="{{type === 'inbox' ? 5 : 6}}" style="text-align: center">
-            No processes for you, sir!
+        <td colspan="{{type === 'inbox' ? 5 : 6}}">
+            <div class="no-tasks-info">
+                <svg>
+                    <use xlink:href="#check"></use>
+                </svg>
+                <span>
+                    {{msg.tasks.noTasks}}
+                </span>
+            </div>
         </td>
     </tr>
 </table>

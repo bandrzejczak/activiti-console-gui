@@ -11,9 +11,12 @@ angular.module('bpmConsoleApp')
     .controller('ListDeploymentsCtrl', ['$scope', '$filter', 'Deployments', 'ngTableParams', '$state', 'SweetAlert',
         function ($scope, $filter, Deployments, NgTableParams, $state, SweetAlert) {
             var deleteResource;
+            $scope.empty = true;
 
             Deployments.get().$promise.then(function (response) {
                 var data = response.response;
+                if (data.length > 0)
+                    $scope.empty = false;
                 deleteResource = response.links.delete;
                 $scope.tableParams = new NgTableParams({
                     page: 1,
@@ -26,6 +29,7 @@ angular.module('bpmConsoleApp')
                 }, {
                     groupBy: 'key',
                     filterDelay: 100,
+                    counts: $scope.empty ? [] : [10, 25, 50, 100],
                     total: data.length,
                     getData: function ($defer, params) {
                         var filteredData = params.filter() ?

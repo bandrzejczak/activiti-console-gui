@@ -32,5 +32,6 @@
     "claim": "Podejmij",
     "submit": "Prześlij",
     "unclaim": "Zwróć"
-  }
+  },
+  "noTasks": "To już wszystko na dzisiaj!"
 }

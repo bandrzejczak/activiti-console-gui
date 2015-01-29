@@ -19,6 +19,7 @@
       "confirmButtonText": "Yes, delete it!",
       "cancelButtonText": "No, leave it",
       "success": "The process was deleted!"
-    }
+    },
+    "noDeployments": "There are no deployed processes"
   }
 }

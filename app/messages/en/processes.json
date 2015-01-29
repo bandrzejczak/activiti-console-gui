@@ -8,5 +8,6 @@
   "start": {
     "text": "Start",
     "success": "Chosen process was successfully started"
-  }
+  },
+  "noProcesses": "There are no processes for you to start"
 }

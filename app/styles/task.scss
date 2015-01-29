@@ -75,3 +75,24 @@ input.ng-invalid:not(.ng-pristine), form.ng-submitted input.ng-invalid {
 label.ng-invalid:not(.ng-pristine), form.ng-submitted label.ng-invalid {
   color: red;
 }
+
+.no-tasks-info {
+  font-size: 40px;
+  margin: 50px auto;
+  height: 110px;
+  position: relative;
+  width: 675px;
+
+  svg {
+    color: #339833;
+    width: 85px;
+    height: 75px;
+  }
+
+  span {
+    height: 110px;
+    position: absolute;
+    left: 100px;
+    top: 25px;
+  }
+}

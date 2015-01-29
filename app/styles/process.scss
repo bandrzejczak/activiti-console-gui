@@ -1,0 +1,22 @@
+@import "layoutVariables";
+
+.no-processes-info {
+  font-size: 40px;
+  margin: 50px auto;
+  height: 110px;
+  position: relative;
+  width: 790px;
+
+  svg {
+    color: #950700;
+    width: 85px;
+    height: 75px;
+  }
+
+  span {
+    height: 110px;
+    position: absolute;
+    left: 100px;
+    top: 10px;
+  }
+}

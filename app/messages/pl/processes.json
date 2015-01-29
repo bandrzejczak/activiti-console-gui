@@ -8,5 +8,6 @@
   "start": {
     "text": "Wystartuj",
     "success": "Wybrany proces został pomyślnie wystartowany"
-  }
+  },
+  "noProcesses": "Brak procesów do wystartowania"
 }

@@ -1,6 +1,6 @@
 <div class="deployments-list">
     <h1>{{msg.deployments.list.title}}</h1>
-    <table ng-table="tableParams" show-filter="true" class="table">
+    <table ng-table="tableParams" show-filter="!empty" class="table">
         <colgroup>
             <col width="5%"/>
             <col width="20%"/>
@@ -47,5 +47,10 @@
             </td>
         </tr>
         </tbody>
+        <tr ng-if="empty">
+            <td colspan="7" class="no-deployments-info">
+                {{msg.deployments.list.noDeployments}}
+            </td>
+        </tr>
     </table>
 </div>

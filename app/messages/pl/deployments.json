@@ -19,6 +19,7 @@
       "confirmButtonText": "Tak",
       "cancelButtonText": "Nie",
       "success": "Proces został usunięty!"
-    }
+    },
+    "noDeployments": "Brak wdrożonych procesów"
   }
 }

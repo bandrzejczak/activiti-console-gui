@@ -33,5 +33,6 @@
     "claim": "Claim",
     "submit": "Submit",
     "unclaim": "Unclaim"
-  }
+  },
+  "noTasks": "Looks like you're done for today!"
 }

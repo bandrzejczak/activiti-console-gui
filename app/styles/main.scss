@@ -10,6 +10,7 @@
 @import 'fileUpload';
 @import 'deployment';
 @import 'task';
+@import 'process';
 @import 'ng-table';
 
 //animations
@@ -48,4 +49,8 @@ h2 {
 
 #loading-bar .bar {
   background: $main-color;
+}
+
+svg {
+  fill: currentColor;
 }
