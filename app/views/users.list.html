@@ -1,0 +1,34 @@
+<div class="user-list">
+    <h1>{{msg.users.list.title}}</h1>
+    <table ng-table="tableParams" show-filter="!empty" class="table">
+        <colgroup>
+            <col width="20%"/>
+            <col width="25%"/>
+            <col width="25%"/>
+            <col width="30%"/>
+        </colgroup>
+        <tbody>
+        <tr ng-hide="group.$hideRows" ng-repeat="user in $data" class="table-row-hover" ng-click="editUser(user.id)">
+            <td data-title="msg.users.list.tableHeaders.id" sortable="'id'" filter="{ 'id': 'text' }">
+                {{user.id}}
+            </td>
+            <td data-title="msg.users.list.tableHeaders.firstName" sortable="'firstName'"
+                filter="{ 'firstName': 'text' }">
+                {{user.firstName}}
+            </td>
+            <td data-title="msg.users.list.tableHeaders.lastName" sortable="'lastName'" filter="{ 'lastName': 'text' }">
+                {{user.lastName}}
+            </td>
+            <td data-title="msg.users.list.tableHeaders.email"
+                sortable="'email'" filter="{ 'email': 'text' }">
+                {{user.email}}
+            </td>
+        </tr>
+        </tbody>
+        <tr ng-if="empty">
+            <td colspan="4" class="no-deployments-info">
+                {{msg.users.list.noUsers}}
+            </td>
+        </tr>
+    </table>
+</div>

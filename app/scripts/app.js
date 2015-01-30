@@ -94,9 +94,14 @@ angular
                 url: '/add',
                 templateUrl: 'views/lipsum.html'
             })
+            .state('app.users.edit', {
+                url: '/edit/:id',
+                templateUrl: 'views/lipsum.html'
+            })
             .state('app.users.list', {
                 url: '/list',
-                templateUrl: 'views/lipsum.html'
+                templateUrl: 'views/users.list.html',
+                controller: 'ListUsersCtrl'
             })
             .state('app.groups', {
                 abstract: true,
@@ -105,6 +110,10 @@ angular
             })
             .state('app.groups.add', {
                 url: '/add',
+                templateUrl: 'views/lipsum.html'
+            })
+            .state('app.groups.edit', {
+                url: '/edit/:id',
                 templateUrl: 'views/lipsum.html'
             })
             .state('app.groups.list', {
