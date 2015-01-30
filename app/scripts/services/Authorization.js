@@ -12,10 +12,15 @@ angular.module('bpmConsoleApp')
         user: {},
 
         $get: function ($http, $cookies, $timeout, loginTimeout) {
+            var ADMIN_GROUP = 'admin';
+
             return {
                 init: function () {
                     if ($cookies.Authorization) {
                         $http.defaults.headers.common.Authorization = $cookies.Authorization;
+                    }
+                    if ($cookies.AuthorizedUser) {
+                        this.user = angular.fromJson($cookies.AuthorizedUser);
                     }
                 },
                 login: function (login, password) {
@@ -33,12 +38,16 @@ angular.module('bpmConsoleApp')
                         login: login,
                         groups: groups
                     };
+                    $cookies.AuthorizedUser = angular.toJson(this.user);
                 },
                 getUserLogin: function () {
                     return this.user.login;
                 },
                 userGroupsContain: function (group) {
                     return this.user.groups.indexOf(group) !== -1;
+                },
+                isAdmin: function () {
+                    return this.userGroupsContain(ADMIN_GROUP);
                 }
             };
         }

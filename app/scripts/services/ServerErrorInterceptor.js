@@ -8,21 +8,13 @@
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')
-    .factory('ServerErrorInterceptor', function ($q, $rootScope, SweetAlert) {
+    .factory('ServerErrorInterceptor', function ($q, $rootScope) {
 
-        function errorMessage(data) {
-            var errorMsg = $rootScope.msg.base.errors;
-            var defaultErrorMsg = $rootScope.msg.base.errors.default;
-            if (data && data.errorClass)
-                return errorMsg[data.errorClass] || defaultErrorMsg;
-            return defaultErrorMsg;
-        }
 
         return {
             'responseError': function (rejection) {
                 if (rejection.status === 500 || (rejection.data && rejection.data.errorClass)) {
-                    var errorMsg = errorMessage(rejection.data);
-                    SweetAlert.swal(errorMsg.title, errorMsg.message, 'error');
+                    $rootScope.$emit('exception', rejection.data);
                 }
                 return $q.reject(rejection);
             }

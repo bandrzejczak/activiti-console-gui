@@ -32,7 +32,7 @@ angular
             .state('app', {
                 abstract: true,
                 templateUrl: 'views/mainLayout.html',
-                controller: function($scope, $state){
+                controller: function ($scope, $state) {
                     $scope.stateIncludes = function(name){
                         return $state.includes('app.'+name+'.*');
                     };

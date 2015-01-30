@@ -35,6 +35,6 @@ angular.module('bpmConsoleApp')
     }]
 ).run(function ($templateCache) {
         $templateCache.put('ng-table/filters/boolean.html', '<boolean filter="params.filter()[name]"></boolean>');
-        //$templateCache.put('ng-table/filters/boolean.html', '<input type="checkbox" ng-model="params.filter()[name]" name="filter-boolean" value="true" />');
-    });
+    }
+);
 

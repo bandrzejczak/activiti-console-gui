@@ -12,8 +12,8 @@ angular.module('bpmConsoleApp')
         return $resource(
             'api/users/:id/:action',
             {
-                'id': '=',
-                'action': '='
+                'id': '@id',
+                'action': '@action'
             },
             {
                 'groups': {method: 'GET', params: {action: 'groups'}}

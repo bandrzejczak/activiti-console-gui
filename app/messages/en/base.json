@@ -45,8 +45,8 @@
       "message": "We couldn't find process definition you were asking for. Could you try again?"
     },
     "AccessDeniedException": {
-      "title": "You can't see this task!",
-      "message": "You have no rights to see chosen task."
+      "title": "You can't see this page!",
+      "message": "You have no rights to see chosen page."
     },
     "DeploymentTooBigException": {
       "title": "Deployment file exceeds maximum size!",
