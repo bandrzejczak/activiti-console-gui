@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc service
- * @name bpmConsoleApp.Messages
+ * @name bpmConsoleApp.Processes
  * @description
- * # Messages
+ * # Processes
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')

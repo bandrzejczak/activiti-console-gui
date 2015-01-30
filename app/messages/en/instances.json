@@ -1,0 +1,17 @@
+{
+  "title": "Process instances",
+  "tableHeaders": {
+    "id": "ID",
+    "name": "Name",
+    "startTime": "Start time",
+    "assignee": "Assignee",
+    "currentTask": {
+      "name": "Name",
+      "createTime": "Creation time",
+      "priority": "Priority",
+      "dueDate": "Due date"
+    }
+  },
+  "noDueDate": "No due date",
+  "noInstances": ""
+}

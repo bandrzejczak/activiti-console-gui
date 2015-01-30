@@ -1,0 +1,64 @@
+<h1>{{msg.instances.title}}</h1>
+<table ng-table="tableParams" show-filter="!empty" class="table">
+    <colgroup>
+        <col width="5%"/>
+        <col width="15%"/>
+        <col width="12%"/>
+        <col width="20%"/>
+        <col width="10%"/>
+        <col width="12%"/>
+        <col width="13%"/>
+        <col width="13%"/>
+    </colgroup>
+    <tbody ng-repeat="group in $groups">
+    <tr class="ng-table-group">
+        <td colspan="{{$columns.length}}">
+            <a href="" ng-click="group.$hideRows = !group.$hideRows">
+                            <span class="glyphicon"
+                                  ng-class="{ 'glyphicon-chevron-right': group.$hideRows, 'glyphicon-chevron-down': !group.$hideRows }"></span>
+                <strong>{{group.value}}</strong>
+            </a>
+        </td>
+    </tr>
+    <tr ng-hide="group.$hideRows" ng-repeat="instance in group.data" style="font-size: 90%">
+        <td data-title="msg.instances.tableHeaders.id" sortable="'id'" filter="{ 'id': 'text' }">
+            {{instance.id}}
+        </td>
+        <td data-title="msg.instances.tableHeaders.name" sortable="'name'" filter="{ 'name': 'text' }">
+            {{instance.name}}
+        </td>
+        <td data-title="msg.instances.tableHeaders.startTime" sortable="'startTime'">
+            {{instance.startTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+        </td>
+        <td data-title="msg.instances.tableHeaders.currentTask.name" sortable="'currentTaskName'"
+            filter="{ 'currentTaskName': 'text' }">
+            {{instance.currentTaskName}}
+        </td>
+        <td data-title="msg.instances.tableHeaders.assignee" sortable="'assignee'"
+            filter="{ 'assignee': 'text' }">
+            {{instance.assignee}}
+        </td>
+        <td data-title="msg.instances.tableHeaders.currentTask.createTime" sortable="'currentTaskCreateTime'">
+            {{instance.currentTaskCreateTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+        </td>
+        <td data-title="msg.instances.tableHeaders.currentTask.priority" sortable="'currentTaskPriority'">
+            <progressbar value="instance.currentTaskPriority"
+                         type="{{progressBarType(instance.currentTaskPriority)}}"></progressbar>
+        </td>
+        <td style="text-align: center" data-title="msg.instances.tableHeaders.currentTask.dueDate"
+            sortable="'currentTaskDueDate'">
+            <progressbar class="progress-bar-center"
+                         value="instance.currentTaskDueDate ? dateProgress(instance.currentTaskDueDate, instance.currentTaskCreateTime) : 100"
+                         type="{{instance.currentTaskDueDate ? progressBarType(dateProgress(instance.currentTaskDueDate, instance.currentTaskCreateTime)) : 'success'}}">
+                {{instance.currentTaskDueDate ? (instance.currentTaskDueDate | date:'yyyy-MM-dd HH:mm:ss') :
+                msg.instances.noDueDate}}
+            </progressbar>
+        </td>
+    </tr>
+    </tbody>
+    <tr ng-if="empty">
+        <td colspan="8" class="no-tasks-info">
+            {{msg.instances.noInstances}}
+        </td>
+    </tr>
+</table>

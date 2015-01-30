@@ -82,7 +82,8 @@ angular
             })
             .state('app.instances', {
                 url: '/instances',
-                templateUrl: 'views/lipsum.html'
+                templateUrl: 'views/instances.html',
+                controller: 'InstancesCtrl'
             })
             .state('app.users', {
                 abstract: true,
