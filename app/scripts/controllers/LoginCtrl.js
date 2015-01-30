@@ -8,13 +8,14 @@
  * Controller of the bpmConsoleApp
  */
 angular.module('bpmConsoleApp')
-    .controller('LoginCtrl', function ($scope, Groups, $state, $animate, Authorization) {
+    .controller('LoginCtrl', ['$scope', 'Users', '$state', '$animate', 'Authorization',
+        function ($scope, Users, $state, $animate, Authorization) {
         $scope.doLogin = function () {
             Authorization.login($scope.login, $scope.password);
             $scope.loginError = undefined;
-            Groups.get().$promise.then(
+            Users.groups({id: $scope.login}).$promise.then(
                 function (data) {
-                    Authorization.setAuthorizedUser($scope.login, data.response.groups);
+                    Authorization.setAuthorizedUser($scope.login, data.response);
                     $state.go('app.tasks.inbox');
                 },
                 function (error) {
@@ -26,4 +27,4 @@ angular.module('bpmConsoleApp')
                 }
             );
         };
-    });
+        }]);

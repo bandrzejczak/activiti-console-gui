@@ -9,5 +9,13 @@
  */
 angular.module('bpmConsoleApp')
     .factory('Users', function ($resource) {
-        return $resource('api/users', {}, {});
+        return $resource(
+            'api/users/:id/:action',
+            {
+                'id': '=',
+                'action': '='
+            },
+            {
+                'groups': {method: 'GET', params: {action: 'groups'}}
+            });
     });

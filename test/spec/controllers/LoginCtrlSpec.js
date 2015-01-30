@@ -6,7 +6,8 @@ describe('LoginCtrl', function () {
         PASSWORD = 'password',
         REST_API_VALUE_NAME = 'RESTApiURL',
         REST_API_URL = 'http://example.com/',
-        TASKS_PATH = 'groups',
+        USERS_PATH = 'users/',
+        GROUPS_PATH = '/groups',
         TEST_GROUPS = ['group'];
 
     var LoginCtrl,
@@ -56,7 +57,7 @@ describe('LoginCtrl', function () {
 
         //when
         mockHttp
-            .expectGET(REST_API_URL + TASKS_PATH)
+            .expectGET(REST_API_URL + USERS_PATH + LOGIN + GROUPS_PATH)
             .respond(401);
         expectHomeViewFetched();
         expectLoginViewFetched();
@@ -76,7 +77,7 @@ describe('LoginCtrl', function () {
 
         //when
         mockHttp
-            .expectGET(REST_API_URL + TASKS_PATH)
+            .expectGET(REST_API_URL + USERS_PATH + LOGIN + GROUPS_PATH)
             .respond(errorCode);
         expectHomeViewFetched();
         scope.doLogin();
@@ -94,7 +95,7 @@ describe('LoginCtrl', function () {
 
         //when
         mockHttp
-            .expectGET(REST_API_URL + TASKS_PATH)
+            .expectGET(REST_API_URL + USERS_PATH + LOGIN + GROUPS_PATH)
             .respond(200, TEST_GROUPS);
         expectHomeViewFetched();
         scope.doLogin();
