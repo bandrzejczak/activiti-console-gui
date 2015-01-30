@@ -20,6 +20,7 @@
   "tableHeaders": {
     "name": "Nazwa",
     "processName": "Nazwa procesu",
+    "createTime": "Czas utworzenia",
     "priority": "Priorytet",
     "dueDate": "Termin wykonania"
   },

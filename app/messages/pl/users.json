@@ -1,0 +1,11 @@
+{
+  "list": {
+    "title": "Użytkownicy",
+    "tableHeaders": {
+      "id": "ID",
+      "firstName": "Imię",
+      "lastName": "Nazwisko",
+      "email": "Adres e-mail"
+    }
+  }
+}

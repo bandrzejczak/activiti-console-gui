@@ -13,5 +13,5 @@
     }
   },
   "noDueDate": "No due date",
-  "noInstances": ""
+  "noInstances": "There are no started process instances"
 }

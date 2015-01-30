@@ -1,3 +1,17 @@
 {
-  "title": "Instancje procesów"
+  "title": "Instancje procesów",
+  "tableHeaders": {
+    "id": "ID",
+    "name": "Nazwa",
+    "startTime": "Czas rozpoczęcia",
+    "assignee": "Osoba odpowiedzialna",
+    "currentTask": {
+      "name": "Nazwa",
+      "createTime": "Czas utworzenia",
+      "priority": "Priorytet",
+      "dueDate": "Termin wykonania"
+    }
+  },
+  "noDueDate": "Brak terminu wykonania",
+  "noInstances": "Brak wystartowanych instancji procesów"
 }

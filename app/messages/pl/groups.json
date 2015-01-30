@@ -1,0 +1,14 @@
+{
+  "list": {
+    "title": "Grupy",
+    "tableHeaders": {
+      "id": "ID",
+      "name": "Nazwa",
+      "type": "Typ"
+    }
+  },
+  "types": {
+    "SECURITY_ROLE": "Rola bezpieczeństwa",
+    "ASSIGNMENT": "Rola w procesie"
+  }
+}
