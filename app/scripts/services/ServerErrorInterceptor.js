@@ -20,7 +20,7 @@ angular.module('bpmConsoleApp')
 
         return {
             'responseError': function (rejection) {
-                if (rejection.status === 500) {
+                if (rejection.status === 500 || (rejection.data && rejection.data.errorClass)) {
                     var errorMsg = errorMessage(rejection.data);
                     SweetAlert.swal(errorMsg.title, errorMsg.message, 'error');
                 }

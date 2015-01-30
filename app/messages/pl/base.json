@@ -43,6 +43,66 @@
     "ProcessDefinitionDoesntExistsException": {
       "title": "Definicja procesu nie istnije!",
       "message": "Nie mogliśmy znaleźć procesu, którego szukasz. Czy mógłbyś spróbować ponownie?"
+    },
+    "AccessDeniedException": {
+      "title": "Nie możesz zobaczyć tego zadania!",
+      "message": "Nie masz uprawnień do oglądania tego zadania."
+    },
+    "DeploymentTooBigException": {
+      "title": "Przesłany plik przekracza maksymalny rozmiar.",
+      "message": "Przesłany przez Ciebie plik nie może być wdrożony ze względu na jego rozmiar. Maksymalny rozmiar pliku to 3MB."
+    },
+    "ClaimForbiddenException": {
+      "title": "Nie możesz podjąć tego zadania!",
+      "message": "Nie należysz do grupy kandydatów do podjęcia tego zadania."
+    },
+    "AssignmentAlreadyExistsException": {
+      "title": "Nie możesz dodać tego użytkownika do wybranej grupy",
+      "message": "Ten użytkownik jest już członkiem wybranej grupy."
+    },
+    "WrongPasswordException": {
+      "title": "Hasła się nie zgadzają",
+      "message": "Podane przez Ciebie hasło i hasło zachowane w bazie nie są identyczne."
+    },
+    "UserAlreadyExistsException": {
+      "title": "Użytkownik o tym id już istnieje",
+      "message": "W bazie istnieje już zarejestrowany użytkownik o tym id"
+    },
+    "NoSuchGroupException": {
+      "title": "Nie istnieje grupa o tym id",
+      "message": "Nie mogliśmy znaleźć grupy o zadanym id"
+    },
+    "NoSuchProcessException": {
+      "title": "Nie istnieje proces o tym id",
+      "message": "Nie mogliśmy znaleźć procesu o zadanym id"
+    },
+    "EmptyDeploymentException": {
+      "title": "Wdrożony proces nie zawiera danych",
+      "message": "Wygląda na to, że Twój proces jest pusty. Czy mógłbyś to sprawdzić?"
+    },
+    "GroupAlreadyExistsException": {
+      "title": "Grupa o tym id już istnieje",
+      "message": "W bazie istnieje już stworzona grupa o tym id"
+    },
+    "NoSuchUserException": {
+      "title": "Nie istnieje użytkownik o tym id",
+      "message": "Nie mogliśmy znaleźć użytkownika o zadanym id"
+    },
+    "NoSuchTaskException": {
+      "title": "Nie istnieje zadanie o tym id",
+      "message": "Nie mogliśmy znaleźć zadania o zadanym id"
+    },
+    "UnclaimForbiddenException": {
+      "title": "Nie możesz zwrócić tego zadania!",
+      "message": "Nie jesteś przypisany do tego zadania lub nie byłeś kandydatem do jego podjęcia."
+    },
+    "ProcessStartForbiddenException": {
+      "title": "Nie możesz wystartować tego procesu!",
+      "message": "Nie należysz do grona kandydatów do wystartowania tego procesu."
+    },
+    "NoSuchAssignmentException": {
+      "title": "Nie możesz usunąć tego użytkownika z wybranej grupy!",
+      "message": "Ten użytkownik nie jest członkiem wybranej grupy."
     }
   }
 }

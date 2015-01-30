@@ -43,6 +43,66 @@
     "ProcessDefinitionDoesntExistsException": {
       "title": "Processes definition doesn't exist!",
       "message": "We couldn't find process definition you were asking for. Could you try again?"
+    },
+    "AccessDeniedException": {
+      "title": "You can't see this task!",
+      "message": "You have no rights to see chosen task."
+    },
+    "DeploymentTooBigException": {
+      "title": "Deployment file exceeds maximum size!",
+      "message": "Your deployment cannot be deployed because of it's size. Maximum deployment size is 3MB."
+    },
+    "ClaimForbiddenException": {
+      "title": "You cannot claim this task!",
+      "message": "You are not a candidate for claiming this task."
+    },
+    "AssignmentAlreadyExistsException": {
+      "title": "You cannot add this user to chosen group",
+      "message": "This user is already member of the chosen group"
+    },
+    "WrongPasswordException": {
+      "title": "Passwords don't match",
+      "message": "The password you supplied doesn't match the password stored in the database"
+    },
+    "UserAlreadyExistsException": {
+      "title": "User with such id already exists",
+      "message": "There is already user registered with the same id"
+    },
+    "NoSuchGroupException": {
+      "title": "There is no group with this id",
+      "message": "We couldn't find the group with a given id"
+    },
+    "NoSuchProcessException": {
+      "title": "There is no process with this id",
+      "message": "We couldn't find the process with a given id"
+    },
+    "EmptyDeploymentException": {
+      "title": "Deployed process has no data",
+      "message": "It seems, that your process is empty. Could you check again?"
+    },
+    "GroupAlreadyExistsException": {
+      "title": "Group with such id already exists",
+      "message": "There is already group registered with the same id"
+    },
+    "NoSuchUserException": {
+      "title": "There is no user with this id",
+      "message": "We couldn't find the user with a given id"
+    },
+    "NoSuchTaskException": {
+      "title": "There is no task with this id",
+      "message": "We couldn't find the task with a given id"
+    },
+    "UnclaimForbiddenException": {
+      "title": "You cannot unclaim this task!",
+      "message": "You are not assigned to this task or you were not a candidate for claiming it."
+    },
+    "ProcessStartForbiddenException": {
+      "title": "You cannot start this process!",
+      "message": "You are not a candidate for starting this process"
+    },
+    "NoSuchAssignmentException": {
+      "title": "You cannot remove this user from chosen group",
+      "message": "This user is not a member of the chosen group"
     }
   }
 }
