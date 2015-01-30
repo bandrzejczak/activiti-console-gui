@@ -1,0 +1,24 @@
+<div class="groups-list">
+    <h1>{{msg.groups.list.title}}</h1>
+    <table ng-table="tableParams" show-filter="true" class="table">
+        <colgroup>
+            <col width="30%"/>
+            <col width="45%"/>
+            <col width="25%"/>
+        </colgroup>
+        <tbody>
+        <tr ng-repeat="groups in $data" class="table-row-hover" ng-click="editGroup(groups.id)">
+            <td data-title="msg.groups.list.tableHeaders.id" sortable="'id'" filter="{ 'id': 'text' }">
+                {{groups.id}}
+            </td>
+            <td data-title="msg.groups.list.tableHeaders.name" sortable="'name'"
+                filter="{ 'name': 'text' }">
+                {{groups.name}}
+            </td>
+            <td data-title="msg.groups.list.tableHeaders.type" sortable="'type'" filter="{ 'type': 'text' }">
+                {{msg.groups.types[groups.type]}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

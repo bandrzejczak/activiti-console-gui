@@ -118,7 +118,8 @@ angular
             })
             .state('app.groups.list', {
                 url: '/list',
-                templateUrl: 'views/lipsum.html'
+                templateUrl: 'views/groups.list.html',
+                controller: 'ListGroupsCtrl'
             });
 
         cfpLoadingBarProvider.includeBar = true;

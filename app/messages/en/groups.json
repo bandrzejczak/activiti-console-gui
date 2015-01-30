@@ -1,0 +1,14 @@
+{
+  "list": {
+    "title": "Groups",
+    "tableHeaders": {
+      "id": "ID",
+      "name": "Name",
+      "type": "Type"
+    }
+  },
+  "types": {
+    "SECURITY_ROLE": "Security role",
+    "ASSIGNMENT": "Assignment"
+  }
+}

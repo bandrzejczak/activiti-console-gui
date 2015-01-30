@@ -2,17 +2,17 @@
 
 /**
  * @ngdoc function
- * @name bpmConsoleApp.controller:ListUsersCtrl
+ * @name bpmConsoleApp.controller:ListGroupsCtrl
  * @description
- * # ListUsersCtrl
+ * # ListGroupsCtrl
  * Controller of the bpmConsoleApp
  */
 angular.module('bpmConsoleApp')
-    .controller('ListUsersCtrl', ['$scope', '$filter', 'Users', 'ngTableParams', '$state',
-        function ($scope, $filter, Users, NgTableParams, $state) {
+    .controller('ListGroupsCtrl', ['$scope', '$filter', 'Groups', 'ngTableParams', '$state',
+        function ($scope, $filter, Groups, NgTableParams, $state) {
             var deleteResource;
 
-            Users.get().$promise.then(function (response) {
+            Groups.get().$promise.then(function (response) {
                 var data = response.response;
                 deleteResource = response.links.delete;
                 $scope.tableParams = new NgTableParams({
@@ -38,8 +38,8 @@ angular.module('bpmConsoleApp')
                     }
                 });
             });
-            $scope.editUser = function (userId) {
-                $state.go('app.users.edit', {id: userId});
+            $scope.editGroup = function (groupId) {
+                $state.go('app.groups.edit', {id: groupId});
             };
         }]
 );
