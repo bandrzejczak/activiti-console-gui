@@ -8,7 +8,7 @@
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')
-    .factory('RESTApiURLSetter', function (RESTApiURL) {
+    .factory('RESTApiURLSetter', ['RESTApiURL', function (RESTApiURL) {
         return {
             'request': function (config) {
                 if (config.url.substring(0, 4) === 'api/') {
@@ -17,7 +17,7 @@ angular.module('bpmConsoleApp')
                 return config;
             }
         };
-    })
-    .config(function ($httpProvider) {
+    }])
+    .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push('RESTApiURLSetter');
-    });
+    }]);

@@ -8,7 +8,7 @@
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')
-    .factory('ResourceLinkBuilder', function ($injector) {
+    .factory('ResourceLinkBuilder', ['$injector', function ($injector) {
 
         var pathPattern = /<(.*?)>/;
         var relPattern = /rel="(.*?)"/;
@@ -47,4 +47,4 @@ angular.module('bpmConsoleApp')
                 return links;
             }
         };
-    });
+    }]);

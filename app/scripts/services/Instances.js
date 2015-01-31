@@ -8,7 +8,7 @@
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')
-    .factory('Instances', function ($resource) {
+    .factory('Instances', ['$resource', function ($resource) {
         return $resource('api/instances', {}, {});
-    }
+    }]
 );

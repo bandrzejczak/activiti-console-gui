@@ -8,6 +8,6 @@
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')
-    .factory('Messages', function ($resource) {
+    .factory('Messages', ['$resource', function ($resource) {
         return $resource('messages/:lang/:packageName.json', {}, {});
-    });
+    }]);

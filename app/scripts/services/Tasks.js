@@ -8,7 +8,7 @@
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')
-    .factory('Tasks', function ($resource) {
+    .factory('Tasks', ['$resource', function ($resource) {
         return $resource(
             'api/tasks/:type/:action',
             {'type': '@type'},
@@ -18,4 +18,5 @@ angular.module('bpmConsoleApp')
                 unclaim: {method: 'POST', params: {action: 'unclaim'}},
                 submit: {method: 'POST', params: {action: 'submit'}}
             });
-    });
+    }]
+);

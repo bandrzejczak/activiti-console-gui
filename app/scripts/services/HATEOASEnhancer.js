@@ -8,7 +8,7 @@
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')
-    .factory('HATEOASEnhancer', function (ResourceLinkBuilder, RESTApiURL) {
+    .factory('HATEOASEnhancer', ['ResourceLinkBuilder', 'RESTApiURL', function (ResourceLinkBuilder, RESTApiURL) {
         return {
             'response': function (response) {
                 if(response.config.url.indexOf(RESTApiURL) === 0) {
@@ -23,7 +23,7 @@ angular.module('bpmConsoleApp')
                 return response;
             }
         };
-    })
-    .config(function ($httpProvider) {
+    }])
+    .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push('HATEOASEnhancer');
-    });
+    }]);

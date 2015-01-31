@@ -8,7 +8,7 @@
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')
-    .factory('UnauthorizedResponseInterceptor', function ($q, $location) {
+    .factory('UnauthorizedResponseInterceptor', ['$q', '$location', function ($q, $location) {
         return {
             'responseError': function (rejection) {
                 if (rejection.status === 401) {
@@ -17,7 +17,7 @@ angular.module('bpmConsoleApp')
                 return $q.reject(rejection);
             }
         };
-    })
-    .config(function ($httpProvider) {
+    }])
+    .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push('UnauthorizedResponseInterceptor');
-    });
+    }]);
