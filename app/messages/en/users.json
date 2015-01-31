@@ -19,7 +19,15 @@
     },
     "save": "Save",
     "back": "Back",
-    "editGroups": "Edit groups"
+    "editGroups": "Edit groups",
+    "delete": {
+      "button": "Delete",
+      "title": "Are you sure?",
+      "text": "This action is irreversible",
+      "confirmButtonText": "Yes, delete it!",
+      "cancelButtonText": "No, leave it",
+      "success": "User was deleted!"
+    }
   },
   "groups": {
     "title": "Groups of user"

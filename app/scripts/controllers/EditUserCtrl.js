@@ -38,6 +38,27 @@ angular.module('bpmConsoleApp')
                     $state.go('app.users.list');
                 });
             };
+
+            $scope.deleteUser = function () {
+                SweetAlert.swal({
+                    title: $scope.msg.users.edit.delete.title,
+                    text: $scope.msg.users.edit.delete.text,
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#DD6B55',
+                    confirmButtonText: $scope.msg.users.edit.delete.confirmButtonText,
+                    cancelButtonText: $scope.msg.users.edit.delete.cancelButtonText,
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                }, function () {
+                    Users.delete(
+                        {id: $scope.user.id}
+                    ).$promise.then(function () {
+                            $state.go('app.users.list');
+                            SweetAlert.swal($scope.msg.users.edit.delete.success, '', 'success');
+                        });
+                });
+            };
         }
     ]
 );
