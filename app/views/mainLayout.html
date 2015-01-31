@@ -2,8 +2,12 @@
     <div class="logoText">BPM Console</div>
     <div class="menu">
         <ul class="nav nav-tabs">
-            <li role="presentation" ui-sref-active="active"><a ui-sref="app.tasks.inbox" ng-bind="msg.base.menu.inbox"></a></li>
-            <li role="presentation" ui-sref-active="active"><a ui-sref="app.tasks.awaiting" ng-bind="msg.base.menu.awaitingTasks"></a></li>
+            <li role="presentation" ui-sref-active="active">
+                <a ui-sref="app.tasks.inbox" ng-bind="msg.base.menu.inbox"></a>
+            </li>
+            <li role="presentation" ui-sref-active="active">
+                <a ui-sref="app.tasks.awaiting" ng-bind="msg.base.menu.awaitingTasks"></a>
+            </li>
             <li admin role="presentation" ng-class="{active: stateIncludes('deployments')}" dropdown class="dropdown">
                 <a class="dropdown-toggle" dropdown-toggle href="#" role="button" aria-expanded="false">
                     <span ng-bind="msg.base.menu.deployments.dropdown"></span> <span class="caret"></span>
@@ -13,8 +17,9 @@
                     <li role="presentation"><a ui-sref="app.deployments.list" ng-bind="msg.base.menu.deployments.list"></a></li>
                 </ul>
             </li>
-            <li admin role="presentation" ui-sref-active="active"><a ui-sref="app.instances"
-                                                               ng-bind="msg.base.menu.instances"></a></li>
+            <li admin role="presentation" ui-sref-active="active">
+                <a ui-sref="app.instances" ng-bind="msg.base.menu.instances"></a>
+            </li>
             <li admin role="presentation" ng-class="{active: stateIncludes('users') || stateIncludes('groups')}"
                 dropdown class="dropdown">
                 <a class="dropdown-toggle" dropdown-toggle href="#" role="button" aria-expanded="false">
@@ -26,6 +31,12 @@
                     <li role="presentation"><a ui-sref="app.groups.add" ng-bind="msg.base.menu.users.addGroup"></a></li>
                     <li role="presentation"><a ui-sref="app.groups.list" ng-bind="msg.base.menu.users.listGroups"></a></li>
                 </ul>
+            </li>
+            <li role="presentation" ui-sref-active="active">
+                <a ng-href="#/profile" ng-bind="msg.base.menu.profile"></a>
+            </li>
+            <li role="presentation" ui-sref-active="active">
+                <a ng-href="#/logout" ng-bind="msg.base.menu.logout"></a>
             </li>
         </ul>
     </div>

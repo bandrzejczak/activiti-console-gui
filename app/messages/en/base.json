@@ -15,7 +15,9 @@
       "listUsers": "List users",
       "addGroup": "Add group",
       "listGroups": "List groups"
-    }
+    },
+    "profile": "Profile",
+    "logout": "Log out"
   },
   "directives": {
     "fileUpload": {

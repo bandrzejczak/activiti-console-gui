@@ -15,7 +15,9 @@
       "listUsers": "Pokaż listę użytkownika",
       "addGroup": "Dodaj grupę",
       "listGroups": "Pokaż listę grup"
-    }
+    },
+    "profile": "Profil",
+    "logout": "Wyloguj"
   },
   "directives": {
     "fileUpload": {

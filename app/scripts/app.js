@@ -21,6 +21,15 @@ angular
         'ngTable'
     ])
     .config(function ($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
+        $urlRouterProvider.when('/logout', ['Authorization', '$state', function (Authorization, $state) {
+            Authorization.logout();
+            $state.transitionTo('login');
+            return true;
+        }]);
+        $urlRouterProvider.when('/profile', ['Authorization', '$state', function (Authorization, $state) {
+            $state.transitionTo('app.users.edit', {id: Authorization.getUserLogin()});
+            return true;
+        }]);
         $urlRouterProvider.otherwise('/tasks/inbox');
 
         $stateProvider
@@ -37,6 +46,9 @@ angular
                         return $state.includes('app.'+name+'.*');
                     };
                 }
+            })
+            .state('app.profile', {
+
             })
             .state('app.tasks', {
                 abstract: true,

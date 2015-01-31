@@ -27,11 +27,13 @@ angular.module('bpmConsoleApp')
                     var auth = 'Basic ' + btoa(login + ':' + password);
                     $http.defaults.headers.common.Authorization = auth;
                     $cookies.Authorization = auth;
-                    $timeout(this.logout, loginTimeout * 60000);
+                    $timeout(this.logout.bind(this), loginTimeout * 60000);
                 },
                 logout: function () {
                     delete $http.defaults.headers.common.Authorization;
                     delete $cookies.Authorization;
+                    delete $cookies.AuthorizedUser;
+                    this.user = {};
                 },
                 setAuthorizedUser: function (login, groups) {
                     this.user = {
