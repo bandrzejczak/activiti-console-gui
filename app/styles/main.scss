@@ -18,6 +18,9 @@
 
 //animations
 @import 'errorShake';
+//fonts
+@import 'oswald';
+@import 'roboto';
 
 html, body {
   overflow: auto;
@@ -56,4 +59,8 @@ h2 {
 
 svg {
   fill: currentColor;
+}
+
+.sweet-alert {
+  font-family: 'Roboto', sans-serif !important;
 }
