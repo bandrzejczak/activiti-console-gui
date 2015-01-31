@@ -16,6 +16,12 @@
     "existing": {
       "title": "User",
       "success": "User data was successfully saved"
-    }
+    },
+    "save": "Save",
+    "back": "Back",
+    "editGroups": "Edit groups"
+  },
+  "groups": {
+    "title": "Groups of user"
   }
 }

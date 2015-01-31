@@ -18,10 +18,12 @@ angular.module('bpmConsoleApp')
                 Users.get({id: $stateParams.id}).$promise.then(function (data) {
                     $scope.user = data.response;
                 });
-                Users.groups({id: $stateParams.id}).$promise.then(function (data) {
-                    $scope.groups = data.response;
-                });
             }
+
+            $scope.editGroups = function () {
+                $state.go('app.users.groups', {id: $scope.user.id});
+            };
+
             $scope.save = function () {
                 var resource;
                 if ($scope.isNew)

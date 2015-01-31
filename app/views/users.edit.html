@@ -1,8 +1,17 @@
 <div class="user-edit">
-    <h1 ng-if="isNew">{{msg.users.edit.new.title}}</h1>
+    <table class="header-table">
+        <tr>
+            <td>
+                <h1 ng-if="isNew">{{msg.users.edit.new.title}}</h1>
 
-    <h1 ng-if="!isNew">{{msg.users.edit.existing.title}} {{user.id}}</h1>
-
+                <h1 ng-if="!isNew">{{msg.users.edit.existing.title}} {{user.id}}</h1>
+            </td>
+            <td>
+                <button admin class="btn btn-semi-lg btn-primary" ng-click="editGroups()">{{msg.users.edit.editGroups}}
+                </button>
+            </td>
+        </tr>
+    </table>
     <div class="fields">
         <form name="userForm" class="form-horizontal" novalidate ng-submit="save()">
             <fieldset>
@@ -63,8 +72,13 @@
                                ng-model="user.newPassword" ng-required="isNew || (!admin && user.currentPassword)"/>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 20px;">
-                    <button type="submit" class="btn btn-lg btn-primary" ng-disabled="!userForm.$valid">Save</button>
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-lg btn-danger" ui-sref="app.users.list">
+                        {{msg.users.edit.back}}
+                    </button>
+                    <button type="submit" class="btn btn-lg btn-primary" ng-disabled="!userForm.$valid">
+                        {{msg.users.edit.save}}
+                    </button>
                 </div>
             </fieldset>
         </form>

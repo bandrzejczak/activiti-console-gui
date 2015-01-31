@@ -1,0 +1,47 @@
+<div class="user-edit">
+    <h1>{{msg.users.groups.title}} {{user.id}}</h1>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="group in groups">
+            <table style="width: 100%">
+                <tr>
+                    <td>{{group.name}}</td>
+                    <td style="text-align: right">
+                        <span class="remove" ng-click="removeGroup(group.id)"></span>
+                    </td>
+                </tr>
+            </table>
+        </li>
+        <li class="list-group-item" ng-show="newGroup">
+            <table style="width: 100%">
+                <colgroup>
+                    <col width="90%"/>
+                    <col width="5%"/>
+                    <col width="5%"/>
+                </colgroup>
+                <tr>
+                    <td>
+                        <select class="form-control" name="newGroup" ng-model="newGroup">
+                            <option ng-repeat="availableGroup in availableGroups" value="{{availableGroup.id}}">
+                                {{availableGroup.name}}
+                            </option>
+                        </select>
+                    </td>
+                    <td style="text-align: right">
+                        <span class="add" ng-click="assignNew()"></span>
+                    </td>
+                    <td style="text-align: right">
+                        <span class="remove" ng-click="removeNew()"></span>
+                    </td>
+                </tr>
+            </table>
+        </li>
+        <li class="list-group-item" style="text-align: right" ng-hide="newGroup">
+            <button type="button" class="btn btn-primary" ng-click="addGroup()">Add new</button>
+        </li>
+    </ul>
+    <div class="form-buttons">
+        <button type="button" class="btn btn-lg btn-danger" ui-sref="app.users.edit({id: user.id})">
+            {{msg.users.edit.back}}
+        </button>
+    </div>
+</div>

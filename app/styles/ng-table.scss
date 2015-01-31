@@ -20,18 +20,6 @@ $icon-font-path: '/bower_components/bootstrap-sass-official/assets/fonts/bootstr
     @extend .glyphicon-minus;
   }
 
-  .remove {
-    font-size: 110%;
-    font-weight: bold;
-    cursor: pointer;
-    @extend .glyphicon;
-    @extend .glyphicon-remove;
-  }
-
-  .remove:hover {
-    color: #c70000;
-  }
-
   .table-row-hover:hover {
     td {
       background-color: #ddd;
@@ -47,4 +35,28 @@ $icon-font-path: '/bower_components/bootstrap-sass-official/assets/fonts/bootstr
     margin-bottom: 0;
   }
 
+}
+
+.add {
+  font-size: 110%;
+  font-weight: bold;
+  cursor: pointer;
+  @extend .glyphicon;
+  @extend .glyphicon-plus;
+}
+
+.add:hover {
+  color: #008c00;
+}
+
+.remove {
+  font-size: 110%;
+  font-weight: bold;
+  cursor: pointer;
+  @extend .glyphicon;
+  @extend .glyphicon-remove;
+}
+
+.remove:hover {
+  color: #c70000;
 }

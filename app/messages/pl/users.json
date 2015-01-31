@@ -16,6 +16,12 @@
     "existing": {
       "title": "Użytkownik",
       "success": "Dane użytkownika zostały pomyślnie zapisane"
-    }
+    },
+    "save": "Zapisz",
+    "back": "Wróć",
+    "editGroups": "Edytuj grupy"
+  },
+  "groups": {
+    "title": "Grupy użytkownika"
   }
 }

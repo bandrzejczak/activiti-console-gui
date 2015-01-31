@@ -108,7 +108,7 @@ angular
                 controller: 'EditUserCtrl'
             })
             .state('app.users.edit', {
-                url: '/edit/:id',
+                url: '/:id/edit',
                 templateUrl: 'views/users.edit.html',
                 controller: 'EditUserCtrl'
             })
@@ -116,6 +116,11 @@ angular
                 url: '/list',
                 templateUrl: 'views/users.list.html',
                 controller: 'ListUsersCtrl'
+            })
+            .state('app.users.groups', {
+                url: '/:id/groups',
+                templateUrl: 'views/users.groups.html',
+                controller: 'EditUserGroupsCtrl'
             })
             .state('app.groups', {
                 abstract: true,
@@ -127,7 +132,7 @@ angular
                 templateUrl: 'views/lipsum.html'
             })
             .state('app.groups.edit', {
-                url: '/edit/:id',
+                url: '/:id/edit',
                 templateUrl: 'views/lipsum.html'
             })
             .state('app.groups.list', {
