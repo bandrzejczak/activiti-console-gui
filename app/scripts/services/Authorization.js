@@ -11,28 +11,29 @@ angular.module('bpmConsoleApp')
     .provider('Authorization', {
         user: {},
 
-        $get: function ($http, $cookies, $timeout, loginTimeout) {
+        $get: function ($http, ipCookie, $timeout, loginTimeout) {
             var ADMIN_GROUP = 'admin';
+            var COOKIE_EXPIRATION = {expires: loginTimeout, expirationUnit: 'minutes'};
 
             return {
                 init: function () {
-                    if ($cookies.Authorization) {
-                        $http.defaults.headers.common.Authorization = $cookies.Authorization;
+                    if (ipCookie('Authorization')) {
+                        $http.defaults.headers.common.Authorization = ipCookie('Authorization');
                     }
-                    if ($cookies.AuthorizedUser) {
-                        this.user = angular.fromJson($cookies.AuthorizedUser);
+                    if (ipCookie('AuthorizedUser')) {
+                        this.user = angular.fromJson(ipCookie('AuthorizedUser'));
                     }
                 },
                 login: function (login, password) {
                     var auth = 'Basic ' + btoa(login + ':' + password);
                     $http.defaults.headers.common.Authorization = auth;
-                    $cookies.Authorization = auth;
+                    ipCookie('Authorization', auth, COOKIE_EXPIRATION);
                     $timeout(this.logout.bind(this), loginTimeout * 60000);
                 },
                 logout: function () {
                     delete $http.defaults.headers.common.Authorization;
-                    delete $cookies.Authorization;
-                    delete $cookies.AuthorizedUser;
+                    ipCookie.remove('Authorization');
+                    ipCookie.remove('AuthorizedUser');
                     this.user = {};
                 },
                 setAuthorizedUser: function (login, groups) {
@@ -40,7 +41,7 @@ angular.module('bpmConsoleApp')
                         login: login,
                         groups: groups
                     };
-                    $cookies.AuthorizedUser = angular.toJson(this.user);
+                    ipCookie('AuthorizedUser', angular.toJson(this.user), COOKIE_EXPIRATION);
                 },
                 getUserLogin: function () {
                     return this.user.login;

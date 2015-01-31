@@ -14,7 +14,7 @@ describe('Authorization', function () {
     var Authorization,
         mockHttp,
         http,
-        cookies,
+        ipCookie,
         timeout;
 
     beforeEach(module('bpmConsoleApp'));
@@ -25,18 +25,22 @@ describe('Authorization', function () {
 
 
     beforeEach(inject(
-            function (_Authorization_, $httpBackend, $http, $cookies, $timeout) {
+            function (_Authorization_, $httpBackend, $http, _ipCookie_, $timeout) {
                 mockHttp = $httpBackend;
                 http = $http;
-                cookies = $cookies;
+                ipCookie = _ipCookie_;
                 Authorization = _Authorization_;
                 timeout = $timeout;
             })
     );
 
+    afterEach(function () {
+        ipCookie.remove(EXPECTED_HEADER_NAME);
+    });
+
     it('should add authorization header if its saved as a cookie', function () {
         //given
-        cookies[EXPECTED_HEADER_NAME] = EXPECTED_HEADER_VALUE;
+        ipCookie(EXPECTED_HEADER_NAME, EXPECTED_HEADER_VALUE);
         Authorization.init();
 
         //when
@@ -47,7 +51,7 @@ describe('Authorization', function () {
         mockHttp.flush();
 
         //then
-        expect(cookies.Authorization).toBe(EXPECTED_HEADER_VALUE);
+        expect(ipCookie('Authorization')).toBe(EXPECTED_HEADER_VALUE);
         mockHttp.verifyNoOutstandingExpectation();
     });
 
@@ -57,7 +61,7 @@ describe('Authorization', function () {
 
     it('shouldnt add authorization header if user is not logged in', function () {
         expectAuthorizationHeaderNotToBeSet();
-        expect(cookies.Authorization).toBeUndefined();
+        expect(ipCookie('Authorization')).toBeUndefined();
         mockHttp.verifyNoOutstandingExpectation();
     });
 
@@ -67,7 +71,7 @@ describe('Authorization', function () {
 
         //then
         expectAuthorizationHeaderToBeSet();
-        expect(cookies.Authorization).toBe(EXPECTED_HEADER_VALUE);
+        expect(ipCookie('Authorization')).toBe(EXPECTED_HEADER_VALUE);
         mockHttp.verifyNoOutstandingExpectation();
     });
 
@@ -75,14 +79,14 @@ describe('Authorization', function () {
         //given
         Authorization.login(LOGIN, PASSWORD);
         expectAuthorizationHeaderToBeSet();
-        expect(cookies.Authorization).toBe(EXPECTED_HEADER_VALUE);
+        expect(ipCookie('Authorization')).toBe(EXPECTED_HEADER_VALUE);
 
         //when
         Authorization.logout();
 
         //then
         expectAuthorizationHeaderNotToBeSet();
-        expect(cookies.Authorization).toBeUndefined();
+        expect(ipCookie('Authorization')).toBeUndefined();
         mockHttp.verifyNoOutstandingExpectation();
     });
 

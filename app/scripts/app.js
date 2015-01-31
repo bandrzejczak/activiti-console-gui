@@ -10,12 +10,12 @@
  */
 angular
     .module('bpmConsoleApp', [
-        'ngCookies',
         'ngResource',
         'ui.router',
         'ui.bootstrap',
         'ngAnimate',
         'ngSanitize',
+        'ipCookie',
         'oitozero.ngSweetAlert',
         'angular-loading-bar',
         'ngTable'
