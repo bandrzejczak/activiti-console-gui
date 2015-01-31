@@ -11,12 +11,12 @@ angular.module('bpmConsoleApp')
     .controller('TasksCtrl', ['$scope', 'Tasks', 'ngTableParams', '$filter', '$state', 'SweetAlert',
         function ($scope, Tasks, NgTableParams, $filter, $state, SweetAlert) {
         $scope.type = $state.$current.type;
-            $scope.empty = true;
+            $scope.empty = false;
 
         Tasks.get({type: $scope.type}).$promise.then(function (response) {
             var data = response.response;
-            if (data.length > 0)
-                $scope.empty = false;
+            if (data.length < 1)
+                $scope.empty = true;
             $scope.tableParams = new NgTableParams({
                 page: 1,
                 count: 10,

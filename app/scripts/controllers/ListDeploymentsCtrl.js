@@ -11,12 +11,12 @@ angular.module('bpmConsoleApp')
     .controller('ListDeploymentsCtrl', ['$scope', '$filter', 'Deployments', 'ngTableParams', '$state', 'SweetAlert',
         function ($scope, $filter, Deployments, NgTableParams, $state, SweetAlert) {
             var deleteResource;
-            $scope.empty = true;
+            $scope.empty = false;
 
             Deployments.get().$promise.then(function (response) {
                 var data = response.response;
-                if (data.length > 0)
-                    $scope.empty = false;
+                if (data.length < 1)
+                    $scope.empty = true;
                 deleteResource = response.links.delete;
                 $scope.tableParams = new NgTableParams({
                     page: 1,

@@ -10,7 +10,7 @@
 angular.module('bpmConsoleApp')
     .controller('InstancesCtrl', ['$scope', 'Instances', 'ngTableParams', '$filter',
         function ($scope, Instances, NgTableParams, $filter) {
-            $scope.empty = true;
+            $scope.empty = false;
 
             function flatten(data) {
                 for (var i = 0; i < data.length; i++)
@@ -26,8 +26,8 @@ angular.module('bpmConsoleApp')
 
             Instances.get().$promise.then(function (response) {
                 var data = response.response;
-                if (data.length > 0)
-                    $scope.empty = false;
+                if (data.length < 1)
+                    $scope.empty = true;
                 data = flatten(data);
                 $scope.tableParams = new NgTableParams({
                     page: 1,

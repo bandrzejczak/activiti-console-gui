@@ -10,11 +10,11 @@
 angular.module('bpmConsoleApp')
     .controller('ProcessesCtrl', ['$scope', 'Processes', 'ngTableParams', '$filter', 'SweetAlert', '$state',
         function ($scope, Processes, NgTableParams, $filter, SweetAlert, $state) {
-            $scope.empty = true;
+            $scope.empty = false;
             Processes.get().$promise.then(function (response) {
                 var data = response.response;
-                if (data.length > 0)
-                    $scope.empty = false;
+                if (data.length < 1)
+                    $scope.empty = true;
                 $scope.tableParams = new NgTableParams({
                     page: 1,
                     count: 10,
