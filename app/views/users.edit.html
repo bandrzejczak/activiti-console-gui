@@ -1,0 +1,72 @@
+<div class="user-edit">
+    <h1 ng-if="isNew">{{msg.users.edit.new.title}}</h1>
+
+    <h1 ng-if="!isNew">{{msg.users.edit.existing.title}} {{user.id}}</h1>
+
+    <div class="fields">
+        <form name="userForm" class="form-horizontal" novalidate ng-submit="save()">
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label"
+                           ng-class="{'ng-invalid': !userForm.id.$pristine && userForm.id.$invalid}" for="id">ID</label>
+
+                    <div class="controls">
+                        <input class="form-control" type="text" id="id" name="id" ng-model="user.id" ng-required="isNew"
+                               ng-readonly="!isNew" ng-minlength="2" ng-maxlength="32"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"
+                           ng-class="{'ng-invalid': !userForm.firstName.$pristine && userForm.firstName.$invalid}"
+                           for="firstName">First name*</label>
+
+                    <div class="controls">
+                        <input class="form-control" type="text" id="firstName" name="firstName"
+                               ng-model="user.firstName" ng-required="true" ng-minlength="2" ng-maxlength="32"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"
+                           ng-class="{'ng-invalid': !userForm.lastName.$pristine && userForm.lastName.$invalid}"
+                           for="lastName">Last name*</label>
+
+                    <div class="controls">
+                        <input class="form-control" type="text" id="lastName" name="lastName" ng-model="user.lastName"
+                               ng-required="true" ng-minlength="2" ng-maxlength="32"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"
+                           ng-class="{'ng-invalid': !userForm.email.$pristine && userForm.email.$invalid}" for="email">Email*</label>
+
+                    <div class="controls">
+                        <input class="form-control" type="email" id="email" name="email" ng-model="user.email"
+                               ng-required="true"/>
+                    </div>
+                </div>
+                <div not-admin class="control-group">
+                    <label class="control-label" ng-class="{'ng-invalid': userForm.currentPassword.$invalid}"
+                           for="currentPassword">Current password</label>
+
+                    <div class="controls">
+                        <input class="form-control" type="password" id="currentPassword" name="currentPassword"
+                               ng-model="user.currentPassword" ng-required="!admin && user.newPassword"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"
+                           ng-class="{'ng-invalid': (!isNew || !userForm.newPassword.$pristine) && userForm.newPassword.$invalid}"
+                           for="newPassword">New password</label>
+
+                    <div class="controls">
+                        <input class="form-control" type="password" id="newPassword" name="newPassword"
+                               ng-model="user.newPassword" ng-required="isNew || (!admin && user.currentPassword)"/>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <button type="submit" class="btn btn-lg btn-primary" ng-disabled="!userForm.$valid">Save</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

@@ -104,11 +104,13 @@ angular
             })
             .state('app.users.add', {
                 url: '/add',
-                templateUrl: 'views/lipsum.html'
+                templateUrl: 'views/users.edit.html',
+                controller: 'EditUserCtrl'
             })
             .state('app.users.edit', {
                 url: '/edit/:id',
-                templateUrl: 'views/lipsum.html'
+                templateUrl: 'views/users.edit.html',
+                controller: 'EditUserCtrl'
             })
             .state('app.users.list', {
                 url: '/list',

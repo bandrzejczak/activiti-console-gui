@@ -47,7 +47,9 @@ angular.module('bpmConsoleApp')
                     return this.user.login;
                 },
                 userGroupsContain: function (group) {
-                    return this.user.groups.indexOf(group) !== -1;
+                    return this.user.groups.map(function (g) {
+                            return g.id;
+                        }).indexOf(group) !== -1;
                 },
                 isAdmin: function () {
                     return this.userGroupsContain(ADMIN_GROUP);

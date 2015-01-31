@@ -4,7 +4,7 @@ describe('Authorization', function () {
 
     var LOGIN = 'login',
         PASSWORD = 'password',
-        GROUPS = ['group'],
+        GROUPS = [{id: 'group'}],
         EXPECTED_HEADER_NAME = 'Authorization',
         EXPECTED_HEADER_VALUE = 'Basic ' + btoa(LOGIN + ':' + PASSWORD),
         TEST_URL = 'http://example.com/',
@@ -95,7 +95,7 @@ describe('Authorization', function () {
         Authorization.setAuthorizedUser(LOGIN, GROUPS);
         //then
         expect(Authorization.getUserLogin()).toBe(LOGIN);
-        expect(Authorization.userGroupsContain(GROUPS[0])).toBeTruthy();
+        expect(Authorization.userGroupsContain(GROUPS[0].id)).toBeTruthy();
     });
 
     it('should logout user after timeout', function () {

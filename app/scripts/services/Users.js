@@ -16,6 +16,8 @@ angular.module('bpmConsoleApp')
                 'action': '@action'
             },
             {
-                'groups': {method: 'GET', params: {action: 'groups'}}
+                'groups': {method: 'GET', params: {action: 'groups'}},
+                'create': {method: 'POST'},
+                'update': {method: 'PUT'}
             });
     });

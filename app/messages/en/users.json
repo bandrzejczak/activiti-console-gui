@@ -7,5 +7,15 @@
       "lastName": "Last name",
       "email": "Email"
     }
+  },
+  "edit": {
+    "new": {
+      "title": "New user",
+      "success": "User was successfully created"
+    },
+    "existing": {
+      "title": "User",
+      "success": "User data was successfully saved"
+    }
   }
 }

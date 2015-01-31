@@ -7,5 +7,15 @@
       "lastName": "Nazwisko",
       "email": "Adres e-mail"
     }
+  },
+  "edit": {
+    "new": {
+      "title": "Nowy użytkownik",
+      "success": "Użytkownik został pomyślnie utworzony"
+    },
+    "existing": {
+      "title": "Użytkownik",
+      "success": "Dane użytkownika zostały pomyślnie zapisane"
+    }
   }
 }
