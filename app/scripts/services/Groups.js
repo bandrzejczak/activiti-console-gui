@@ -18,6 +18,9 @@ angular.module('bpmConsoleApp')
             },
             {
                 'createAssignment': {method: 'POST', params: {action: 'members'}},
-                'removeAssignment': {method: 'DELETE', params: {action: 'members'}}
+                'removeAssignment': {method: 'DELETE', params: {action: 'members'}},
+                'create': {method: 'POST'},
+                'update': {method: 'PUT'},
+                'delete': {method: 'DELETE'}
             });
     });

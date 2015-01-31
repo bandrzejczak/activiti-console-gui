@@ -5,7 +5,9 @@
       "id": "ID",
       "firstName": "Imię",
       "lastName": "Nazwisko",
-      "email": "Adres e-mail"
+      "email": "Adres e-mail",
+      "currentPassword": "Current password",
+      "newPassword": "New password"
     }
   },
   "edit": {
@@ -19,7 +21,16 @@
     },
     "save": "Zapisz",
     "back": "Wróć",
-    "editGroups": "Edytuj grupy"
+    "editGroups": "Edytuj grupy",
+    "delete": {
+      "button": "Usuń",
+      "title": "Czy jesteś pewien?",
+      "text": "Po usunięciu użytkownika nie będzie można go odzyskać!",
+      "confirmButtonText": "Tak",
+      "cancelButtonText": "Nie",
+      "success": "Użytkownik został usunięty!"
+    },
+    "addGroup": "Dodaj kolejne"
   },
   "groups": {
     "title": "Grupy użytkownika"

@@ -5,7 +5,9 @@
       "id": "ID",
       "firstName": "First name",
       "lastName": "Last name",
-      "email": "Email"
+      "email": "Email",
+      "currentPassword": "Current password",
+      "newPassword": "New password"
     }
   },
   "edit": {
@@ -27,7 +29,8 @@
       "confirmButtonText": "Yes, delete it!",
       "cancelButtonText": "No, leave it",
       "success": "User was deleted!"
-    }
+    },
+    "addGroup": "Add new"
   },
   "groups": {
     "title": "Groups of user"

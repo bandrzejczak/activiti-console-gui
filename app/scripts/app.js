@@ -129,11 +129,13 @@ angular
             })
             .state('app.groups.add', {
                 url: '/add',
-                templateUrl: 'views/lipsum.html'
+                templateUrl: 'views/groups.edit.html',
+                controller: 'EditGroupCtrl'
             })
             .state('app.groups.edit', {
                 url: '/:id/edit',
-                templateUrl: 'views/lipsum.html'
+                templateUrl: 'views/groups.edit.html',
+                controller: 'EditGroupCtrl'
             })
             .state('app.groups.list', {
                 url: '/list',

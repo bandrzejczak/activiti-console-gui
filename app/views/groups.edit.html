@@ -1,0 +1,57 @@
+<div class="user-edit">
+    <h1 ng-if="isNew">{{msg.groups.edit.new.title}}</h1>
+
+    <h1 ng-if="!isNew">{{msg.groups.edit.existing.title}} {{group.id}}</h1>
+
+    <div class="fields">
+        <form name="groupForm" class="form-horizontal" novalidate ng-submit="save()">
+            <fieldset>
+                <div class="control-group">
+                    <label class="control-label"
+                           ng-class="{'ng-invalid': !groupForm.id.$pristine && groupForm.id.$invalid}" for="id">
+                        {{msg.groups.list.tableHeaders.id}}<span ng-if="isNew">*</span>
+                    </label>
+
+                    <div class="controls">
+                        <input class="form-control" type="text" id="id" name="id" ng-model="group.id"
+                               ng-required="isNew"
+                               ng-readonly="!isNew" ng-minlength="2" ng-maxlength="32"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"
+                           ng-class="{'ng-invalid': !groupForm.name.$pristine && groupForm.name.$invalid}"
+                           for="name">{{msg.groups.list.tableHeaders.name}}*</label>
+
+                    <div class="controls">
+                        <input class="form-control" type="text" id="name" name="group.name"
+                               ng-model="group.name" ng-required="true" ng-minlength="2" ng-maxlength="32"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"
+                           ng-class="{'ng-invalid': !groupForm.type.$pristine && groupForm.type.$invalid}"
+                           for="type">{{msg.groups.list.tableHeaders.type}}*</label>
+
+                    <div class="controls">
+                        <select class="form-control" id="type" name="type" ng-model="group.type" ng-required="true">
+                            <option value="SECURITY_ROLE">{{msg.groups.types.SECURITY_ROLE}}</option>
+                            <option value="ASSIGNMENT">{{msg.groups.types.ASSIGNMENT}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-buttons">
+                    <button type="button" class="btn btn-lg btn-warning" ui-sref="app.groups.list">
+                        {{msg.groups.edit.back}}
+                    </button>
+                    <button ng-if="!isNew" type="button" class="btn btn-lg btn-danger" ng-click="deleteGroup()">
+                        {{msg.groups.edit.delete.button}}
+                    </button>
+                    <button type="submit" class="btn btn-lg btn-primary" ng-disabled="!groupForm.$valid">
+                        {{msg.groups.edit.save}}
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

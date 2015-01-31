@@ -7,6 +7,24 @@
       "type": "Type"
     }
   },
+  "edit": {
+    "new": {
+      "title": "New group"
+    },
+    "existing": {
+      "title": "Group"
+    },
+    "save": "Save",
+    "back": "Back",
+    "delete": {
+      "button": "Delete",
+      "title": "Are you sure?",
+      "text": "This action is irreversible",
+      "confirmButtonText": "Yes, delete it!",
+      "cancelButtonText": "No, leave it",
+      "success": "Group was deleted!"
+    }
+  },
   "types": {
     "SECURITY_ROLE": "Security role",
     "ASSIGNMENT": "Assignment"

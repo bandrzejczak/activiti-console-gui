@@ -21,7 +21,8 @@
                 <tr>
                     <td>
                         <select class="form-control" name="newGroup" ng-model="newGroup">
-                            <option ng-repeat="availableGroup in availableGroups" value="{{availableGroup.id}}">
+                            <option ng-repeat="availableGroup in availableGroups" value="{{availableGroup.id}}"
+                                    ng-if="!groupContains(groups, availableGroup)">
                                 {{availableGroup.name}}
                             </option>
                         </select>
@@ -35,8 +36,9 @@
                 </tr>
             </table>
         </li>
-        <li class="list-group-item" style="text-align: right" ng-hide="newGroup">
-            <button type="button" class="btn btn-primary" ng-click="addGroup()">Add new</button>
+        <li class="list-group-item" style="text-align: right"
+            ng-hide="newGroup || groups.length === availableGroups.length">
+            <button type="button" class="btn btn-primary" ng-click="addGroup()">{{msg.users.edit.addGroup}}</button>
         </li>
     </ul>
     <div class="form-buttons">

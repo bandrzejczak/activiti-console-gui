@@ -7,6 +7,24 @@
       "type": "Typ"
     }
   },
+  "edit": {
+    "new": {
+      "title": "Nowa grupa"
+    },
+    "existing": {
+      "title": "Grupa"
+    },
+    "save": "Zapisz",
+    "back": "Wróć",
+    "delete": {
+      "button": "Usuń",
+      "title": "Czy jesteś pewien?",
+      "text": "Po usunięciu grupy nie będzie można jej odzyskać!",
+      "confirmButtonText": "Tak",
+      "cancelButtonText": "Nie",
+      "success": "Grupa została usunięta!"
+    }
+  },
   "types": {
     "SECURITY_ROLE": "Rola bezpieczeństwa",
     "ASSIGNMENT": "Rola w procesie"

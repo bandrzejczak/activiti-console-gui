@@ -17,7 +17,9 @@
             <fieldset>
                 <div class="control-group">
                     <label class="control-label"
-                           ng-class="{'ng-invalid': !userForm.id.$pristine && userForm.id.$invalid}" for="id">ID</label>
+                           ng-class="{'ng-invalid': !userForm.id.$pristine && userForm.id.$invalid}" for="id">
+                        {{msg.users.list.tableHeaders.id}}<span ng-if="isNew">*</span>
+                    </label>
 
                     <div class="controls">
                         <input class="form-control" type="text" id="id" name="id" ng-model="user.id" ng-required="isNew"
@@ -27,7 +29,7 @@
                 <div class="control-group">
                     <label class="control-label"
                            ng-class="{'ng-invalid': !userForm.firstName.$pristine && userForm.firstName.$invalid}"
-                           for="firstName">First name*</label>
+                           for="firstName">{{msg.users.list.tableHeaders.firstName}}*</label>
 
                     <div class="controls">
                         <input class="form-control" type="text" id="firstName" name="firstName"
@@ -37,7 +39,7 @@
                 <div class="control-group">
                     <label class="control-label"
                            ng-class="{'ng-invalid': !userForm.lastName.$pristine && userForm.lastName.$invalid}"
-                           for="lastName">Last name*</label>
+                           for="lastName">{{msg.users.list.tableHeaders.lastName}}*</label>
 
                     <div class="controls">
                         <input class="form-control" type="text" id="lastName" name="lastName" ng-model="user.lastName"
@@ -46,7 +48,9 @@
                 </div>
                 <div class="control-group">
                     <label class="control-label"
-                           ng-class="{'ng-invalid': !userForm.email.$pristine && userForm.email.$invalid}" for="email">Email*</label>
+                           ng-class="{'ng-invalid': !userForm.email.$pristine && userForm.email.$invalid}" for="email">
+                        {{msg.users.list.tableHeaders.email}}*
+                    </label>
 
                     <div class="controls">
                         <input class="form-control" type="email" id="email" name="email" ng-model="user.email"
@@ -55,7 +59,7 @@
                 </div>
                 <div not-admin class="control-group">
                     <label class="control-label" ng-class="{'ng-invalid': userForm.currentPassword.$invalid}"
-                           for="currentPassword">Current password</label>
+                           for="currentPassword">{{msg.users.list.tableHeaders.currentPassword}}</label>
 
                     <div class="controls">
                         <input class="form-control" type="password" id="currentPassword" name="currentPassword"
@@ -65,7 +69,8 @@
                 <div class="control-group">
                     <label class="control-label"
                            ng-class="{'ng-invalid': (!isNew || !userForm.newPassword.$pristine) && userForm.newPassword.$invalid}"
-                           for="newPassword">New password</label>
+                           for="newPassword">{{msg.users.list.tableHeaders.newPassword}}<span
+                            ng-if="isNew">*</span></label>
 
                     <div class="controls">
                         <input class="form-control" type="password" id="newPassword" name="newPassword"
@@ -76,7 +81,7 @@
                     <button type="button" class="btn btn-lg btn-warning" ui-sref="app.users.list">
                         {{msg.users.edit.back}}
                     </button>
-                    <button type="button" class="btn btn-lg btn-danger" ng-click="deleteUser()">
+                    <button ng-if="!isNew && admin" type="button" class="btn btn-lg btn-danger" ng-click="deleteUser()">
                         {{msg.users.edit.delete.button}}
                     </button>
                     <button type="submit" class="btn btn-lg btn-primary" ng-disabled="!userForm.$valid">

@@ -22,7 +22,9 @@ angular.module('bpmConsoleApp')
             $scope.newGroup = undefined;
 
             $scope.addGroup = function () {
-                $scope.newGroup = $scope.availableGroups[0].id;
+                for (var i = $scope.availableGroups.length - 1; i >= 0; i--)
+                    if (!$scope.groupContains($scope.groups, $scope.availableGroups[i]))
+                        $scope.newGroup = $scope.availableGroups[i].id;
             };
 
             $scope.removeGroup = function (id) {
@@ -51,6 +53,10 @@ angular.module('bpmConsoleApp')
                         });
                         $scope.removeNew();
                     });
+            };
+
+            $scope.groupContains = function (groups, group) {
+                return findGroupIndex(groups, group.id) !== -1;
             };
 
             function findGroupIndex(groups, id) {
