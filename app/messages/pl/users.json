@@ -6,8 +6,8 @@
       "firstName": "Imię",
       "lastName": "Nazwisko",
       "email": "Adres e-mail",
-      "currentPassword": "Current password",
-      "newPassword": "New password"
+      "currentPassword": "Obecne hasło",
+      "newPassword": "Nowe hasło"
     }
   },
   "edit": {
