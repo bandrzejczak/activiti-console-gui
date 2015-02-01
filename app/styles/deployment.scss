@@ -12,13 +12,7 @@
 
 .white-tooltip + .tooltip > .tooltip-inner {
   background-color: #fff;
-}
-
-.deployment-list {
-
-  .white-tooltip + .tooltip > .tooltip-inner {
-    background-color: #fff;
-  }
+  border: 1px solid #666;
 }
 
 .tooltip.in {

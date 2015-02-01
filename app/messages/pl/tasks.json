@@ -34,5 +34,10 @@
     "submit": "Prześlij",
     "unclaim": "Zwróć"
   },
-  "noTasks": "To już wszystko na dzisiaj!"
+  "noTasks": "To już wszystko na dzisiaj!",
+  "header": {
+  	"priority": "Priorytet",
+  	"created": "Utworzone",
+  	"dueDate": "Termin wykonania"
+  }
 }

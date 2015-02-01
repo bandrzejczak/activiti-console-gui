@@ -72,6 +72,12 @@ angular.module('bpmConsoleApp')
             return parseValue[type] || parseValue.string;
         }
 
+        function parseImmutable(text, readOnly) {
+            if(readOnly)
+                text = text.replace('formData', 'immutableData');
+            return text;
+        }
+
         return {
             restrict: 'E',
             scope: {
@@ -88,7 +94,12 @@ angular.module('bpmConsoleApp')
             },
             link: function (scope, element) {
                 scope.dates = {};
-                scope.formData[scope.id] = parser(scope.type)(scope.value, scope.enumOptions);
+                scope.immutableData = {};
+                var value = parser(scope.type)(scope.value, scope.enumOptions);
+                if(!scope.readOnly)
+                    scope.formData[scope.id] = value;
+                else
+                    scope.immutableData[scope.id] = value;
                 if (scope.type === 'date')
                     scope.dates[scope.id] = formatDate(scope.value);
                 scope.open = function ($event) {
@@ -100,7 +111,7 @@ angular.module('bpmConsoleApp')
                 scope.parseDate = function (id, date) {
                     scope.formData[id] = parseDate(date);
                 };
-                element.html(getTemplate(scope.type)).show();
+                element.html(parseImmutable(getTemplate(scope.type), scope.readOnly)).show();
                 $compile(element.contents())(scope);
             }
         };

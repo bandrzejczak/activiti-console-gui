@@ -34,5 +34,10 @@
     "submit": "Submit",
     "unclaim": "Unclaim"
   },
-  "noTasks": "Looks like you're done for today!"
+  "noTasks": "Looks like you're done for today!",
+  "header": {
+    "priority": "Priority",
+    "created": "Created",
+    "dueDate": "Due date"
+  }
 }

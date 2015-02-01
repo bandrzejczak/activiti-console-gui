@@ -5,18 +5,18 @@
 
     <div class="clear"></div>
     <div class="form-data-piece">
-        <div class="label">Priority</div>
+        <div class="label">{{msg.tasks.header.priority}}</div>
         <progressbar animate="false" class="progress-bar-big" value="task.priority"
                      type="{{progressBarType(task.priority)}}"></progressbar>
     </div>
     <div class="form-data-piece">
-        <div class="label">Created</div>
+        <div class="label">{{msg.tasks.header.created}}</div>
         <progressbar animate="false" class="progress-bar-center progress-bar-big" value="100" type="success">
             {{task.createTime | date:'yyyy-MM-dd HH:mm:ss'}}
         </progressbar>
     </div>
     <div class="form-data-piece">
-        <div class="label">Due date</div>
+        <div class="label">{{msg.tasks.header.dueDate}}</div>
         <progressbar ng-if="task.dueDate" ng-show="task.dueDate" class="progress-bar-center progress-bar-big"
                      value="dateProgress(task.dueDate, task.createTime)"
                      type="{{progressBarType(dateProgress(task.dueDate, task.createTime))}}">{{task.dueDate |
