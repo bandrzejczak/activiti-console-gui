@@ -39,5 +39,6 @@
   	"priority": "Priorytet",
   	"created": "Utworzone",
   	"dueDate": "Termin wykonania"
-  }
+  },
+  "description": "Opis zadania"
 }

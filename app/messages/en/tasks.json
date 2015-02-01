@@ -39,5 +39,6 @@
     "priority": "Priority",
     "created": "Created",
     "dueDate": "Due date"
-  }
+  },
+  "description": "Task description"
 }
