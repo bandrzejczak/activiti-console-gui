@@ -11,7 +11,7 @@ angular.module('bpmConsoleApp')
     .provider('Authorization', {
         user: {},
 
-        $get: function ($http, ipCookie, $timeout, loginTimeout) {
+        $get: ['$http', 'ipCookie', '$timeout', 'loginTimeout', function ($http, ipCookie, $timeout, loginTimeout) {
             var ADMIN_GROUP = 'admin';
             var COOKIE_EXPIRATION = {expires: loginTimeout, expirationUnit: 'minutes'};
 
@@ -47,7 +47,7 @@ angular.module('bpmConsoleApp')
                     return this.user.login;
                 },
                 userGroupsContain: function (group) {
-                    return this.user.groups.map(function (g) {
+                    return this.user && this.user.groups.map(function (g) {
                             return g.id;
                         }).indexOf(group) !== -1;
                 },
@@ -55,8 +55,8 @@ angular.module('bpmConsoleApp')
                     return this.userGroupsContain(ADMIN_GROUP);
                 }
             };
-        }
+        }]
     })
-    .run(function (Authorization) {
+    .run(['Authorization', function (Authorization) {
         Authorization.init();
-    });
+    }]);

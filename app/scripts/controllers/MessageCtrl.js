@@ -8,7 +8,8 @@
  * Controller of the bpmConsoleApp
  */
 angular.module('bpmConsoleApp')
-    .controller('MessageCtrl', function ($rootScope, $state, $window, language, Messages) {
+    .controller('MessageCtrl', ['$rootScope', '$state', '$window', 'language', 'Messages',
+        function ($rootScope, $state, $window, language, Messages) {
         $rootScope.$on('$stateChangeStart', function (event, toState) {
             var newLocation = getLocationBasePath($state.href(toState));
             if (!$rootScope.msg[newLocation]) {
@@ -50,4 +51,5 @@ angular.module('bpmConsoleApp')
                 lang: $rootScope.lang
             })
         };
-    });
+        }]
+);

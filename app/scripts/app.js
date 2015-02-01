@@ -20,7 +20,8 @@ angular
         'angular-loading-bar',
         'ngTable'
     ])
-    .config(function ($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
+    .config(['$stateProvider', '$urlRouterProvider', 'cfpLoadingBarProvider',
+        function ($stateProvider, $urlRouterProvider, cfpLoadingBarProvider) {
         $urlRouterProvider.when('/logout', ['Authorization', '$state', function (Authorization, $state) {
             Authorization.logout();
             $state.transitionTo('login');
@@ -41,11 +42,11 @@ angular
             .state('app', {
                 abstract: true,
                 templateUrl: 'views/mainLayout.html',
-                controller: function ($scope, $state) {
+                controller: ['$scope', '$state', function ($scope, $state) {
                     $scope.stateIncludes = function(name){
                         return $state.includes('app.'+name+'.*');
                     };
-                }
+                }]
             })
             .state('app.profile', {
 
@@ -146,7 +147,7 @@ angular
         cfpLoadingBarProvider.includeBar = true;
         cfpLoadingBarProvider.includeSpinner = true;
         cfpLoadingBarProvider.latencyThreshold = 0;
-    })
+        }])
     .value('language', {
         supported: ['en', 'pl'],
         default: 'en'

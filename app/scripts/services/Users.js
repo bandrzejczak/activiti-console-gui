@@ -8,7 +8,7 @@
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')
-    .factory('Users', function ($resource) {
+    .factory('Users', ['$resource', function ($resource) {
         return $resource(
             'api/users/:id/:action',
             {
@@ -21,4 +21,4 @@ angular.module('bpmConsoleApp')
                 'update': {method: 'PUT'},
                 'delete': {method: 'DELETE'}
             });
-    });
+    }]);

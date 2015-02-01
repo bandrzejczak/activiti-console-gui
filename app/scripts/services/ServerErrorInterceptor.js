@@ -8,7 +8,7 @@
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')
-    .factory('ServerErrorInterceptor', function ($q, $rootScope) {
+    .factory('ServerErrorInterceptor', ['$q', '$rootScope', function ($q, $rootScope) {
 
 
         return {
@@ -19,7 +19,7 @@ angular.module('bpmConsoleApp')
                 return $q.reject(rejection);
             }
         };
-    })
-    .config(function ($httpProvider) {
+    }])
+    .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push('ServerErrorInterceptor');
-    });
+    }]);

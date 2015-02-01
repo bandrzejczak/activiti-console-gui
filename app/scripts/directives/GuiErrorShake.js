@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('bpmConsoleApp')
-    .directive('guiErrorShake', function ($animate) {
+    .directive('guiErrorShake', ['$animate', function ($animate) {
         return {
             scope: {
                 errorMsg: '='
@@ -16,4 +16,5 @@ angular.module('bpmConsoleApp')
                 });
             }
         };
-    });
+    }]
+);

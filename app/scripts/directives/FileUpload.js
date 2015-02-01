@@ -1,6 +1,6 @@
 'use strict';
 angular.module('bpmConsoleApp')
-    .directive('fileUpload', function (SweetAlert, $rootScope, $window) {
+    .directive('fileUpload', ['SweetAlert', '$rootScope', '$window', function (SweetAlert, $rootScope, $window) {
         var $ = $window.jQuery;
         var maxSize;
 
@@ -68,6 +68,6 @@ angular.module('bpmConsoleApp')
                 });
             }
         };
-    }
+    }]
 );
 

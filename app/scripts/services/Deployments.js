@@ -8,6 +8,6 @@
  * Service in the bpmConsoleApp.
  */
 angular.module('bpmConsoleApp')
-    .factory('Deployments', function ($resource) {
+    .factory('Deployments', ['$resource', function ($resource) {
         return $resource('api/deployments', {}, {});
-    });
+    }]);
