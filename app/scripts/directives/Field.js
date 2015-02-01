@@ -41,7 +41,7 @@ angular.module('bpmConsoleApp')
             boolean: function (value) {
                 return Boolean(value);
             },
-            enum: function (value, enumOptions) {
+            enum: function (value) {
                 if(value)
                     return value;
                 return undefined;
@@ -97,7 +97,7 @@ angular.module('bpmConsoleApp')
             link: function (scope, element) {
                 scope.dates = {};
                 scope.immutableData = {};
-                var value = parser(scope.type)(scope.value, scope.enumOptions);
+                var value = parser(scope.type)(scope.value);
                 if(!scope.readOnly)
                     scope.formData[scope.id] = value;
                 else
