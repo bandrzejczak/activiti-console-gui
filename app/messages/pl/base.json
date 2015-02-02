@@ -12,7 +12,7 @@
     "users": {
       "dropdown": "Użytkownicy",
       "addUser": "Dodaj użytkownika",
-      "listUsers": "Pokaż listę użytkownika",
+      "listUsers": "Pokaż listę użytkowników",
       "addGroup": "Dodaj grupę",
       "listGroups": "Pokaż listę grup"
     },
@@ -105,6 +105,10 @@
     "NoSuchAssignmentException": {
       "title": "Nie możesz usunąć tego użytkownika z wybranej grupy!",
       "message": "Ten użytkownik nie jest członkiem wybranej grupy."
+    },
+    "CannotDeleteOwnAccountException": {
+      "title": "Nie można usunąć użytkownika, na którego konto jest się zalogowanym!",
+      "message": ""
     }
   }
 }

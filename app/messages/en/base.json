@@ -105,6 +105,10 @@
     "NoSuchAssignmentException": {
       "title": "You cannot remove this user from chosen group",
       "message": "This user is not a member of the chosen group"
+    },
+    "CannotDeleteOwnAccountException": {
+      "title": "You cannot remove user, that you are currently logged in!",
+      "message": ""
     }
   }
 }
